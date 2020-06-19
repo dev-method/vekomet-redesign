@@ -1,0 +1,52 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block CSS %}
+    <link rel="stylesheet" href="{% static 'core/vendor/tinyslider/tiny-slider.css' %}">
+{% endblock %}
+{% block Content %}
+    <div class="section-container metall-analysis">
+        <div class="section-title-container">
+            <div class="section-title">
+                <h1>АНАЛИЗ ЛОМА</h1>
+            </div>
+        </div>
+        <div class="analysis-container">
+            <div class="analysis-left-wr">
+                {% for text in texts %}
+                    {{ text.sub1|safe }}
+                {% endfor %}
+            </div>
+            <div class="analysis-right-wr">
+                <div class="analysis-carousel-wr">
+                    <div class="analysis-carousel" id="analysis-carousel">
+                        {% for photo in photos %}
+                            <img alt="Анализ лома" src="{{ photo.photo.url }}"/>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="analysis-right-text">
+                    {% for text in texts %}
+                    {{ text.sub2|safe }}
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block JS %}
+    <script src="{% static 'core/vendor/tinyslider/tiny-slider.js' %}"></script>
+    <script>
+    var mini_slider = tns({
+            container: '#analysis-carousel',
+            mode: "gallery",
+            controls: false,
+            autoplayButtonOutput: false,
+            items: 1,
+            nav: false,
+            mouseDrag: true,
+            slideBy: 'page',
+            speed: 500,
+            autoplay: true
+        });
+    </script>
+{% endblock %}

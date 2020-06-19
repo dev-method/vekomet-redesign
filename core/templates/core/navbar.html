@@ -1,0 +1,211 @@
+{% load static %}
+
+        <!--MOBILE-TOPBAR-COMPONENT-->
+
+        <div class="mobile-topbar-container" id="mobile-navbar">
+            <div class="mobile-topbar-logo-wr">
+                    <a href="/"><img height="60px" alt="ООО ВеКо - прием цветных и редкоземельных металлов" src="{% static 'core/imgs/mobile_topbar/veko-logo-150.png' %}"/></a>
+            </div>
+            <div class="mobile-topbar-textlogo-wr">
+                <a href="/"><img height="25px" alt="Прием цветмета и чермета" src="{% static 'core/imgs/mobile_topbar/text_logo_35.png' %}"/></a>
+            </div>
+            <div class="mobile-topbar-burger-wr">
+                    <div id="nav-icon3" onclick="burgerFunction()">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+            </div>
+        </div>
+        <div class="mobile-menu" id="mobile-menu">
+            <div class="mobile-container mobile-menu-wr">
+                {% if mainpage_navigation_flag %}
+                    <div onclick="toggleMobileMenuItem('collapse-item-1','open-icon-1', 'close-icon-1', 'hidden-item-1')" id="collapse-item-1" class="mob-menu-item-collapse-wr">
+                    <a href="/"><div class="mobile-menu-item">ГЛАВНАЯ</div></a>
+                    <div class="mob-menu-plus-wr">
+                        <img id="open-icon-1" height="20px" alt="Раскрыть меню" src="{% static 'core/imgs/mobile_topbar/plus_icon_white_100.svg' %}"/>
+                        <img id="close-icon-1" style="display: none;" height="20px" alt="Свернуть меню" src="{% static 'core/imgs/mobile_topbar/circle-cross-white-100.svg' %}"/>
+                    </div>
+                </div>
+                <div id="hidden-item-1" class="mob-menu-hidden-item-wr">
+                    <a href="#about-company-link"><div class="mobile-menu-item"><div class="menu-dot-icon-wr"><img class="menu-dot-icon" alt="" src="{% static 'core/imgs/mobile_topbar/list-dot-white-50.svg' %}"/></div>О КОМПАНИИ</div></a>
+                    <a href="#news-link"><div class="mobile-menu-item"><div class="menu-dot-icon-wr"><img class="menu-dot-icon" alt="" src="{% static 'core/imgs/mobile_topbar/list-dot-white-50.svg' %}"/></div>НОВОСТИ</div></a>
+                    <a href="#form-link"><div class="mobile-menu-item"><div class="menu-dot-icon-wr"><img class="menu-dot-icon" alt="" src="{% static 'core/imgs/mobile_topbar/list-dot-white-50.svg' %}"/></div>ОСТАВИТЬ СООБЩЕНИЕ</div></a>
+                    <a href="#advantages-link"><div class="mobile-menu-item"><div class="menu-dot-icon-wr"><img class="menu-dot-icon" alt="" src="{% static 'core/imgs/mobile_topbar/list-dot-white-50.svg' %}"/></div>НАШИ ПРЕИМУЩЕСТВА</div></a>
+                    <a href="#howto-link"><div class="mobile-menu-item"><div class="menu-dot-icon-wr"><img class="menu-dot-icon" alt="" src="{% static 'core/imgs/mobile_topbar/list-dot-white-50.svg' %}"/></div>КАК МЫ РАБОТАЕМ</div></a>
+                    <a href="#shortprice-link"><div class="mobile-menu-item"><div class="menu-dot-icon-wr"><img class="menu-dot-icon" alt="" src="{% static 'core/imgs/mobile_topbar/list-dot-white-50.svg' %}"/></div>ЦЕНЫ НА ЛОМ НАЛИЧНЫМИ</div></a>
+                    <a href="#directions-link"><div class="mobile-menu-item"><div class="menu-dot-icon-wr"><img class="menu-dot-icon" alt="" src="{% static 'core/imgs/mobile_topbar/list-dot-white-50.svg' %}"/></div>НАШИ НАПРАВЛЕНИЯ</div></a>
+                    <a href="#maps-link"><div class="mobile-menu-item"><div class="menu-dot-icon-wr"><img class="menu-dot-icon" alt="" src="{% static 'core/imgs/mobile_topbar/list-dot-white-50.svg' %}"/></div>МЫ НА КАРТЕ</div></a>
+                </div>
+                {% else %}
+                <a href="/"><div class="mobile-menu-item">ГЛАВНАЯ</div></a>
+                {% endif %}
+                <a href="/pricelist/"><div class="mobile-menu-item">ПРАЙС-ЛИСТ</div></a>
+                <a href="/metall-analysis/"><div class="mobile-menu-item">АНАЛИЗ</div></a>
+                <a href="/wiki/"><div class="mobile-menu-item">СПРАВОЧНИК</div></a>
+                <div onclick="toggleMobileMenuItem('collapse-item-2','open-icon-2', 'close-icon-2', 'hidden-item-2')" id="collapse-item-2" class="mob-menu-item-collapse-wr">
+                    <a href="#"><div class="mobile-menu-item">МАТЕРИАЛЫ</div></a>
+                    <div class="mob-menu-plus-wr">
+                        <img id="open-icon-2"  height="20px" alt="Раскрыть меню" src="{% static 'core/imgs/mobile_topbar/plus_icon_white_100.svg' %}"/>
+                        <img id="close-icon-2" style="display: none;" height="20px" alt="Свернуть меню" src="{% static 'core/imgs/mobile_topbar/circle-cross-white-100.svg' %}"/>
+                    </div>
+                </div>
+                <div id="hidden-item-2" class="mob-menu-hidden-item-wr">
+                    <a href="/news/"><div class="mobile-menu-item"><div class="menu-dot-icon-wr"><img class="menu-dot-icon" alt="" src="{% static 'core/imgs/mobile_topbar/list-dot-white-50.svg' %}"/></div>НОВОСТИ</div></a>
+                    <a href="/articles/"><div class="mobile-menu-item"><div class="menu-dot-icon-wr"><img class="menu-dot-icon" alt="" src="{% static 'core/imgs/mobile_topbar/list-dot-white-50.svg' %}"/></div>СТАТЬИ</div></a>
+                </div>
+                <a href="/contacts/"><div class="mobile-menu-item">КОНТАКТЫ</div></a>
+            </div>
+        </div>
+        <!--END MOBILE-TOPBAR-COMPONENT-->
+
+         <!--TOPBAR-COMPONENT-->
+
+            <div class="topbar-container" id="topbar-container">
+                <div class="section-container">
+                <div class="topbar-logo-wr">
+                    <img height="30px" alt="ООО ВеКо" src="{% static 'core/imgs/topbar/text_logo_35.png' %}"/>
+                </div>
+                <div class="topbar-address-wr">
+                    <div class="topbar-address">
+                        <h3>ГОРОД ЭЛЕКТРОСТАЛЬ УЛИЦА ПИОНЕРСКАЯ ДОМ 22</h3>
+                    </div>
+                </div>
+                <div class="topbar-socicon-wr">
+                    <div class="topbar-vk-icon">
+                        <a href="https://vk.com/vekomet"><img class="soc-icon-image" alt="VK-vekomet" src="{% static 'core/imgs/topbar/vk_icon_white.svg' %}"/></a>
+                    </div>
+                    <div class="topbar-insta-icon">
+                        <a href="https://www.instagram.com/vekomet/"><img class="soc-icon-image" alt="Instagram-vekomet" src="{% static 'core/imgs/topbar/instagram_icon_white.svg' %}"/></a>
+                    </div>
+                    <div class="topbar-gplay-icon">
+                        <a href="https://play.google.com/store/apps/details?id=com.vekornapp"><img class="soc-icon-image" alt="Google Play - металлист" src="{% static 'core/imgs/topbar/gplay_icon_white.svg' %}"/></a>
+                    </div>
+                    <div class="topbar-phone-icon" id="phone-icon-wide">
+                        <img class="soc-icon-image" alt="ООО ВеКо - телефоны" src="{% static 'core/imgs/topbar/cellphone_icon_white.svg' %}"/>
+                    </div>
+                    <div onclick="togglePhoneBlock()" class="topbar-phone-icon" id="phone-icon-mobile">
+                        <img class="soc-icon-image" alt="ООО ВеКо - телефоны" src="{% static 'core/imgs/topbar/cellphone_icon_white.svg' %}"/>
+                    </div>
+                    <div class="topbar-mail-icon" id="form-icon-wide">
+                        <img class="soc-icon-image" alt="ООО ВеКо - почта" src="{% static 'core/imgs/topbar/email_icon_white.svg' %}"/>
+                    </div>
+                    <div onclick="toggleFormBlock()" class="topbar-mail-icon" id="form-icon-mobile">
+                        <img class="soc-icon-image" alt="ООО ВеКо - почта" src="{% static 'core/imgs/topbar/email_icon_white.svg' %}"/>
+                    </div>
+                </div>
+                </div>
+            </div>
+        <!--END TOPBAR-COMPONENT-->
+
+        <!--TOPBAR-SLDING-BLOCKS-->
+            <div id="phone-block-pointer" class="phone-block-pointer"></div>
+            <div id="form-block-pointer" class="form-block-pointer"></div>
+            <div id="phone-block" class="topbar-phoneblock">
+                    <div class="topbar-phone-text">
+                        <a href="tel:+74994998474"><div class="phone-text-wr-1"><div class="phone-text-icon"><img alt="+7(499)499-84-74" height="25px" src="{% static 'core/imgs/mobile_topbar/phone_icon_white.svg' %}"/></div><div class="phone-text">+7(499)499-84-74</div></div></a>
+                        <a href="tel:+79175995222"><div class="phone-text-wr-2"><div class="phone-text-icon"><img alt="+7(917)599-52-22+" height="25px" src="{% static 'core/imgs/mobile_topbar/phone_icon_white.svg' %}"/></div><div class="phone-text">+7(917)599-52-22</div></div></a>
+                    </div>
+                    <div class="phone-block-closer"><img onclick="togglePhoneBlock()" alt="Закрыть блок" height="30px" src="{% static 'core/imgs/mobile_topbar/cross_icon_150_white.svg' %}"/></div>
+            </div>
+            <div class="hidden-form-block" id="hidden-form-block">
+                <div onclick="toggleFormBlock()" class="form-close-icon">
+                    <img alt="Закрыть блок" height="30px" src="{% static 'core/imgs/mobile_topbar/cross_icon_150_white.svg' %}"/>
+                </div>
+                <div class="hidden-form-container">
+                <div class="hidden-form-wr">
+                        <form>
+                            <div class="form-group">
+                                <label for="m_clientName">Как вас зовут:</label>
+                                <input class="form-control" id="m_clientName" placeholder="Как к вам обращаться?">
+                            </div>
+                            <div class="form-group">
+                                <label for="m_clientNamePhone">Ваш телефон или почта:</label>
+                                <input class="form-control" id="m_clientNamePhone" placeholder="Укажите телефон или почту">
+                            </div>
+                            <div class="form-group">
+                                <label for="m_clientMessage">Ваше сообщение</label>
+                                <textarea class="form-control" id="m_clientMessage" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">ОТПРАВИТЬ</button>
+                        </form>
+                </div>
+                </div>
+            </div>
+    <!--END TOPBAR-SLDING-BLOCKS-->
+
+    <!-- TOPBAR-MODAL-BLOCKS -->
+
+    <div id="phone-modal" class="modal">
+        <div class="modal-content phone-modal">
+            <div id="ph-modal-close"><span class="close" >&times;</span></div>
+            <div class="modal-phone-wr">
+                <a href="tel:+74994998474"><div class="modal-phone-text-wr"><div class="modal-phone-icon"><img alt="+7(499)499-84-74" height="25px" src="{% static 'core/imgs/topbar/user-icon-50.svg' %}"/></div><div class="modal-phone-text">+7(499)499-84-74</div></div></a>
+                <a href="tel:+79175995222"><div class="modal-phone-text-wr"><div class="modal-phone-icon"><img alt="+7(917)599-52-22+" height="25px" src="{% static 'core/imgs/topbar/user-icon-50.svg' %}"/></div><div class="modal-phone-text">+7(917)599-52-22</div></div></a>
+            </div>
+        </div>
+    </div>
+    <div id="form-modal" class="modal">
+        <div class="modal-content form-modal">
+            <div id="f-modal-close"><span class="close" >&times;</span></div>
+            <div class="modal-form-wr">
+                <form>
+                    <div class="form-group">
+                        <label for="clientName">Как вас зовут:</label>
+                        <input class="form-control" id="clientName" placeholder="Как к вам обращаться?">
+                    </div>
+                    <div class="form-group">
+                        <label for="clientNamePhone">Ваш телефон или почта:</label>
+                        <input class="form-control" id="clientNamePhone" placeholder="Укажите телефон или почту">
+                    </div>
+                    <div class="form-group">
+                        <label for="clientMessage">Ваше сообщение</label>
+                        <textarea class="form-control" id="clientMessage" rows="5"></textarea>
+                    </div>
+                    <div class="form-button-wr">
+                        <button type="submit" class="btn btn-primary">ОТПРАВИТЬ</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- END TOPBAR-MODAL-BLOCKS -->
+
+    <!-- NAVBAR -->
+
+            <nav class="navbar-container" id="navbar">
+                <div class="section-container">
+                    <div class="navbar">
+                        <div id="navbar-first-item" class="navbar-item main-dropdown {{ mainpage_flag }}">
+                            <a href="/" data-hover="ГЛАВНАЯ">ГЛАВНАЯ</a>
+                            <img class="dropdown-icon" alt="Раскрыть меню" src="{% static 'core/imgs/navbar/arrow-down-white-100.svg' %}"/>
+                        <div id="navbar-collapse-wr" class="navbar-collapse-wr main-collapse">
+                            <div class="navbar-collapse-item"><a href="#about-company-link">О КОМПАНИИ</a></div>
+                            <div class="navbar-collapse-item"><a href="#news-link">НОВОСТИ</a></div>
+                            <div class="navbar-collapse-item"><a href="#form-link">ОСТАВИТЬ СООБЩЕНИЕ</a></div>
+                            <div class="navbar-collapse-item"><a href="#advantages-link">НАШИ ПРЕИМУЩЕСТВА</a></div>
+                            <div class="navbar-collapse-item"><a href="#howto-link">КАК МЫ РАБОТАЕМ</a></div>
+                            <div class="navbar-collapse-item"><a href="#shortprice-link">ЦЕНЫ НА ЛОМ НАЛИЧНЫМИ</a></div>
+                            <div class="navbar-collapse-item"><a href="#directions-link">НАШИ НАПРАВЛЕНИЯ</a></div>
+                            <div class="navbar-collapse-item"><a href="#maps-link">МЫ НА КАРТЕ</a></div>
+                        </div>
+                        </div>
+                        <div class="navbar-item-arrow-wr"></div>
+                        <div class="navbar-item {{ pricelist_flag }}"><a href="/pricelist/" data-hover="ПРАЙС-ЛИСТ">ПРАЙС-ЛИСТ</a></div>
+                        <div class="navbar-item {{ analyze_flag }}"><a href="/metall-analysis/" data-hover="АНАЛИЗ">АНАЛИЗ</a></div>
+                        <div class="navbar-item {{ wiki_flag }}"><a href="/wiki/" data-hover="СПРАВОЧНИК">СПРАВОЧНИК</a></div>
+                        <div id="material-dropdown" class="navbar-item material-dropdown {{ materials_flag }}">
+                            <a href="#" data-hover="МАТЕРИАЛЫ">МАТЕРИАЛЫ</a>
+                            <img class="dropdown-icon" alt="Раскрыть меню" src="{% static 'core/imgs/navbar/arrow-down-white-100.svg' %}"/>
+                        <div id="navbar-collapse-wr" class="navbar-collapse-wr material-collapse">
+                            <div class="navbar-collapse-item"><a href="/news/">НОВОСТИ</a></div>
+                            <div class="navbar-collapse-item"><a href="/articles/">СТАТЬИ</a></div>
+                        </div>
+                        </div>
+                        <div class="navbar-item {{ contacts_flag }}"><a href="/contacts/" data-hover="КОНТАКТЫ">КОНТАКТЫ</a></div>
+                    </div>
+                </div>
+            </nav>
+
+    <!-- END NAVBAR -->

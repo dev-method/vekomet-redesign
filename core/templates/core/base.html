@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {% load static %}
+    <meta http-equiv="content-language" content="ru"/>
+    <meta charset="utf-8" />
+    {% block LangLink %}
+    {% endblock %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static 'core/favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'core/favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'core/favicon/favicon-16x16.png' %}">
+    <link rel="mask-icon" href="{% static 'core/favicon/safari-pinned-tab.svg' %}">
+    {% block Meta %}
+        {% for s in seo %}
+            <title>{{ s.title }}</title>
+            <meta name="Keywords" content="{{ s.keywords }}"/>
+            <meta name="Description" content="{{s.description}}"/>
+        {% endfor %}
+    {% endblock %}
+    {% block PreloadPrefetch %}
+    {% endblock %}
+    {% if debug_flag %}
+        <link rel="stylesheet" href="{% static 'core/css/base.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'core/css/576.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'core/css/768.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'core/css/992.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'core/css/custom.css' %}" type="text/css">
+    {% endif %}
+    {% block CSS %}
+    {% endblock %}
+</head>
+<body>
+<div class="main-container" id="page-top">
+{% include 'core/navbar.html' %}
+</div>
+<div id="sliding-container" class="sliding-container">
+{% block Content %}
+{% endblock %}
+{% include 'core/footer.html' %}
+</div>
+{% block JS %}
+{% endblock %}
+<div class="toTop-button-wr" id="toTopButton">
+    <a data-scroll href="#page-top"><img class="toTop-button" height="150px" alt="Вернуться наверх сайта" src="{% static 'core/imgs/toTop/toTop-icon-250.png' %}"/></a>
+</div>
+<script src="{% static 'core/vendor/smooth-scroll/smooth-scroll.polyfills.min.js' %}"></script>
+<script>
+     var scroll = new SmoothScroll('a[href*="#"]');
+</script>
+<script src="{% static 'core/js/navbar.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block CSS %}
+    <link rel="stylesheet" href="{% static 'core/vendor/plyr/plyr.css' %}">
+{% endblock %}
+{% block Content %}
+<div class="section-container wiki-summaterials">
+    <div class="section-container-content">
+         <div class="section-main-area">
+             <div class="wiki-sum-header">
+                 <div class="sum-header-image-wr" style="background: url({{ metallslug.photo_grid.url }}); background-size: cover;">
+                     <div class="sum-header-image-fill">
+
+                     </div>
+                 </div>
+                 <div class="sum-header-text-wr">
+                     <div class="sum-header-title">{{ metallslug.title }}</div>
+                 </div>
+             </div>
+             <div class="wiki-sum-container">
+             <div class="wiki-sum-sprav-title">
+                 ПЕРЕЧЕНЬ СПРАВОЧНЫХ МАТЕРИАЛОВ:
+             </div>
+             <div class="wiki-sum-sprav-items-wr">
+                 {% for material in materials %}
+                     {% if material.category_id == 1 %}
+                         <div class="wiki-sum-sprav-item wiki-item-video"><a href="/wiki/materials/{{ material.id }}"><span class="wiki-item-icon"></span>{{ material.title }}</a> | <span onclick="showYouTube({{ material.id}})">СМОТРЕТЬ</span></div>
+                     {% elif material.category_id == 2 %}
+                         <div class="wiki-sum-sprav-item wiki-item-text"><a href="/wiki/materials/{{ material.id }}"><span class="wiki-item-icon"></span>{{ material.title }}</a></div>
+                     {% elif material.category_id == 3 %}
+                         <div class="wiki-sum-sprav-item wiki-item-filehost"><a href="{{ material.host_file.url }}" download><span class="wiki-item-icon"></span>{{ material.title }}</a></div>
+                     {% elif material.category_id == 4 %}
+                         <div class="wiki-sum-sprav-item wiki-item-filelink"><a href="{{ material.file_url }}" target="_blank"><span class="wiki-item-icon"></span>{{ material.title }}</a></div>
+                     {% endif %}
+                 {% endfor %}
+             </div>
+             </div>
+             {% for material in materials %}
+                  {% if material.category_id == 1 %}
+                      <div class="youtube-modal" id="youtube-modal-{{ material.id }}">
+                          <div class="youtube-modal-content">
+                              <span class="youtube-close" onclick="closeYouTube({{ material.id}})" id="youtube-close-{{ material.id }}">&times;</span>
+                              <div class="plyr__video-embed" id="player-{{ material.id }}">
+                                  <iframe src="https://www.youtube.com/embed/bTqVqk7FSmY?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
+                                          allowfullscreen
+                                          allowtransparency
+                                          allow="autoplay"
+                                  ></iframe>
+                              </div>
+                          </div>
+                      </div>
+                  {% endif %}
+             {% endfor %}
+             </div>
+         <div class="section-sidebar">
+             <div class="wiki-sum-news-sidebar-wr">
+               {% include 'core/news-sidebar.html' %}
+             </div>
+         </div>
+    </div>
+</div>
+{% endblock %}
+{% block JS %}
+    <script src="{% static 'core/vendor/plyr/plyr.min.js' %}"></script>
+    <script>
+        function showYouTube(id) {
+            var modal = document.getElementById('youtube-modal-'+id);
+            modal.style.display = "block";
+            var player = new Plyr('#player-'+id);
+        }
+        function closeYouTube(id) {
+            var modal = document.getElementById('youtube-modal-'+id);
+            modal.style.display = "none";
+        }
+    </script>
+{% endblock %}

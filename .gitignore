@@ -1,0 +1,9 @@
+/.idea/*
+/node_modules/*
+settings.py
+node_modules
+/.sync/*
+**/__pycache__
+*.pyc
+.directory
+/files/*

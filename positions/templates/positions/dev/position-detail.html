@@ -1,0 +1,103 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block Meta %}
+    {% if position.seotitle|length > 2 %}
+        <title>{{ position.seotitle }}</title>
+    {% else %}
+        <title>Принимаем {{ position.title }} по цене {{ position.price }}</title>
+    {% endif %}
+    <meta name="Keywords" content="{{ position.seokeywords }}"/>
+    <meta name="Description" content="{{position.seodescript}}"/>
+    {% if position.canonicdes %}
+        <link rel="canonical" href="https://www.vekomet.ru/metall/{{ position.slug }}/" />
+    {% else %}
+
+    {% endif %}
+    {% if position.indexdes %}
+        <meta name="robots" content="noindex"/>
+    {% else %}
+    {% endif %}
+    {% if position.description_amp %}
+        <link rel="amphtml" href="http://vekomet.ru/metall-amp/{{ position.slug }}/">
+    {% else %}
+    {% endif %}
+{% endblock %}
+{% block CSS %}
+    <link rel="stylesheet" href="{% static 'pricelist/vendor/lightgallery/lightgallery.min.css' %}" />
+{% endblock %}
+{% block Content %}
+    <!-- POSITION PAGE -->
+    <div class="section-container position-page">
+        <div class="position-price-menu">
+            <div class="position-pr-menu-item first-item"><a href="/pricelist/#common-table">ОБЩИЕ МЕТАЛЛЫ И СПЛАВЫ</a></div>
+            <div class="position-pr-menu-item"><a href="/pricelist/#rare-table">РЕДКОЗЕМЕЛЬНЫЕ МЕТАЛЛЫ</a></div>
+            <div class="position-pr-menu-item last-item"><a href="/pricelist/#tantal">ТАНТАЛ</a></div>
+        </div>
+       <div class="section-title-container">
+        {% if position.titlealt %}
+            <div class="section-title">
+                <h1>{{ position.titlealt }}</h1>
+            </div>
+        {% else %}
+            <div class="section-title">
+                <h1>{{ position.title }}&nbsp;|&nbsp;{{ position.price }}</h1>
+            </div>
+        {% endif %}
+       </div>
+       {% if position.tablepricegroup %}
+           <div class="price-wr">
+               <h1>Цены по смежным позициям:</h1>
+           </div>
+           <div class="metall_dt_tablewrapper">
+               <table class="pricelist-table">
+                    <tr class="greyrow">
+                        <th class="pricelist-table-item table-position-width">Позиция</th>
+                        <th class="pricelist-table-item table-nal-width">Наличный расчет (физ.лица)</th>
+                        <th class="pricelist-table-item table-beznal-width">Безналичный расчет (юр.лица)</th>
+                    </tr>
+                   {% for item in positions %}
+                       {% if item.tablepricegroup == position.tablepricegroup %}
+                           {% if item.visible %}
+                               <tr class="det-table">
+                                   <td class="pricelist-table-item"><a href="/metall/{{ item.slug }}/">{{ item.title }}</a></td>
+                                   <td class="pricelist-table-item"><a href="/metall/{{ item.slug }}/">{{ item.price }}</a></td>
+                                   <td class="pricelist-table-item"><a href="/metall/{{ item.slug }}/">{{ item.price_bn }}</a></td>
+                               </tr>
+                           {% endif %}
+                       {% endif %}
+                   {% endfor %}
+               </table>
+           </div>
+       {% else %}
+       {% endif %}
+       {% if fotos %}
+           <div class="position-slider" id="position-slider">
+               {% for foto in fotos %}
+                   <a data-fancybox="{{ position }}" href="{{ foto.foto.url }}"><img src="{{ foto.galleryfoto.url }}"/></a>
+               {% endfor %}
+           </div>
+       {% else %}
+       {% endif %}
+       <div class="title-to-price-wr">
+           <a href="/pricelist/"><h1>ПЕРЕЙТИ К ПОЛНОМУ ПРАЙС-ЛИСТУ</h1></a>
+       </div>
+        {% if position.description1 %}
+            <div class="position-description">
+                {{ position.description1|safe }}
+            </div>
+        {% else %}
+            <p>Мы еще не добавили информацию. Но скоро обязательно добавим!</p>
+        {% endif %}
+        <div class="title-to-analysis">
+           <a href="/pricelist/"><h1>УЗНАЙТЕ КАК ПРОВОДЯТ АНАЛИЗ ЛОМА</h1></a>
+       </div>
+    {% include 'orders/main-form.html' %}
+    </div>
+
+{% endblock %}
+{% block JS %}
+    <script src="{% static 'pricelist/vendor/lightgallery/lightgallery.min.js' %}"></script>
+    <script>
+        lightGallery(document.getElementById('position-slider'));
+    </script>
+{% endblock %}

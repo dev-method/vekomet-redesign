@@ -1,0 +1,29 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block Content %}
+    <div class="section-container wiki">
+        <div class="section-title-container">
+            <div class="section-title">
+                <h1>СПРАВОЧНИК</h1>
+            </div>
+        </div>
+        <div class="wiki-container">
+            {% for item in list %}
+                <div class="wiki-item-wr">
+                    <div class="wiki-item-back"></div>
+                    <div class="wiki-content-back" style="background: url({{ item.photo_amp_1.url }}); background-size: cover;">
+                        <div class="wiki-item-content">
+                            <div class="wiki-item-title">
+                                <a href="/wiki/{{ item.slug }}">{{ item.title }}</a>
+                            </div>
+                            <div class="wiki-item-more">
+                                <a href="/wiki/{{ item.slug }}">СМОТРЕТЬ МАТЕРИАЛЫ ></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

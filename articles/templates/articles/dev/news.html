@@ -1,0 +1,30 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block Meta %}
+    {% for s in seo %}
+        <title>{{ s.title }}</title>
+        <meta name="Keywords" content="{{ s.keywords }}"/>
+        <meta name="Description" content="{{s.description}}"/>
+    {% endfor %}
+{% endblock %}
+{% block PreloadPrefetch %}
+        <link rel="preload" href="{% static 'core/svelte/news-bundle-dev.js' %}" as="script">
+{% endblock %}
+{% block Content %}
+
+    <!-- MATERIALS-BLOCK -->
+
+    <div class="section-container news-block">
+        <div class="section-title-container">
+            <div class="section-title">
+                <h1>НОВОСТИ</h1>
+            </div>
+        </div>
+        <div id="news-container">
+
+        </div>
+    </div>
+{% endblock %}
+{% block JS %}
+    <script src="{% static 'core/svelte/news-bundle-dev.js' %}"></script>
+{% endblock %}

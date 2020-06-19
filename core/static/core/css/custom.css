@@ -1,0 +1,52 @@
+
+@media (min-width: 1250px) {
+
+    /* MAINPAGE-SLIDER */
+    .leftbar-content {
+        flex-direction: row;
+        height: 500px;
+    }
+    .leftbar-rightside {
+        display: flex;
+    }
+    .contacts-slider-text {
+        font-size: 1.3em;
+        padding-left: 30px;
+    }
+    .slider-logo {
+        height: 330px;
+    }
+    .slider-leftbar {
+        display: block;
+    }
+    .shedule-icon {
+        height: 110px;
+    }
+    .contacts-icon {
+        height: 107px;
+    }
+    .leftside-text-wr {
+        font-size: 2em;
+    }
+    .leftside-blank-div {
+        display: block;
+        flex: 3;
+    }
+    .leftside-slider-wr {
+        flex: 5;
+    }
+    .leftbar-leftside {
+        flex: 4;
+    }
+    .mobile-mini-slider {
+        display: none;
+    }
+    /* TOPBAR-MODAL-BLOCKS */
+
+    .form-modal {
+        width: 35%;
+    }
+    .modal-form-wr {
+        width: 80%;
+    }
+}

@@ -1,0 +1,453 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block CSS %}
+    <link rel="stylesheet" href="{% static 'core/vendor/tinyslider/tiny-slider.css' %}">
+{% endblock %}
+{% block Content %}
+        <!-- MAINPAGE-SLIDER -->
+        <div class="mainpage-slider-wr">
+            <div class="slider-leftbar">
+                <div class="leftbar-content">
+                    <div class="leftbar-rightside">
+                        <div class="leftbar-rightside-image-wr">
+                            <img class="slider-logo" alt="ООО ВеКо" src="{% static 'core/imgs/slider/veko-logo-white-border-350.png' %}"/>
+                        </div>
+                        <div class="leftbar-rightside-shedule-wr" id="shedule-wr">
+                            <div style="display: flex; width: 100%;">
+                            <div class="contacts-slider-item">
+                                <div class="cont-slider-item-img-wr">
+                                    <img class="shedule-icon" alt="График работы" style="margin-left: 10px;" src="{% static 'core/imgs/slider/shedule-icon-white-300.svg' %}">
+                                </div>
+                                <div class="contacts-slider-text">
+                                    <p><span class="cont-slide-text-span">пн-пт:</span>&nbsp;8.00 до 18.30</p>
+                                    <p><span class="cont-slide-text-span">сб:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9.00 до 13.00</p>
+                                    <p><span class="cont-slide-text-span">вс:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;выходной</p>
+                                </div>
+                            </div>
+                            </div>
+                            <div style="display: flex; width: 100%;">
+                            <div class="contacts-slider-item">
+                                <div class="cont-slider-item-img-wr"><img class="contacts-icon" alt="Контакты" src="{% static 'core/imgs/slider/contacts-icon-white-300.svg' %}"></div>
+                                <div class="contacts-slider-text">
+                                    <a href="tel:+74994998474"><p>8(499)499-84-74</p></a>
+                                    <a href="tel:+79175995222"><p>8(917)599-52-22</p></a>
+                                    <a href="mailto:vekomet@gmail.com"><p>vekomet@gmail.com</p></a>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="leftbar-leftside">
+                            <div class="leftside-slider-wr">
+                                <div id="leftside-slider">
+                                <div class="leftside-text-wr">
+                                    ПРИИМАЕМ ЛОМ ЦВЕТНЫХ И РЕДКОЗЕМЕЛЬНЫХ МЕТАЛЛОВ
+                                </div>
+                                <div class="leftside-text-wr">
+                                    ЛОМ ЦВЕТНЫХ И РЕДКОЗЕМЕЛЬНЫХ МЕТАЛЛОВ
+                                </div>
+                                </div>
+                            </div>
+                            <div class="leftside-blank-div">
+
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div id="main-page-slider" class="main-page-slider">
+                <div class="slider-item"><img src="{% static 'core/imgs/slider/Slide_1.jpg' %}"></div>
+                <div class="slider-item"><img src="{% static 'core/imgs/slider/Slide_2.jpg' %}"></div>
+                <div class="slider-item"><img src="{% static 'core/imgs/slider/Slide_3.jpg' %}"></div>
+            </div>
+        </div>
+        <div class="mobile-mini-slider" id="mini-slider">
+            <div>
+            <div class="mini-slide-wr">
+                <div class="cont-slider-item-img-wr">
+                    <img class="contacts-icon" alt="Контакты" height="95px" src="{% static 'core/imgs/slider/contacts-icon-white-300.svg' %}">
+                </div>
+                <div class="contacts-slider-text">
+                    <a href="tel:+74994998474"><p>8(499)499-84-74</p></a>
+                    <a href="tel:+79175995222"><p>8(917)599-52-22</p></a>
+                    <a href="mailto:vekomet@gmail.com"><p>vekomet@gmail.com</p></a>
+                </div>
+            </div>
+            </div>
+            <div>
+            <div class="mini-slide-wr">
+                <div class="cont-slider-item-img-wr">
+                    <img class="shedule-icon" alt="График работы" height="95px" src="{% static 'core/imgs/slider/shedule-icon-white-300.svg' %}">
+                </div>
+                <div class="contacts-slider-text">
+                    <p><span class="cont-slide-text-span">пн-пт:</span>&nbsp;8.00 до 18.30</p>
+                    <p><span class="cont-slide-text-span">сб:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9.00 до 13.00</p>
+                    <p><span class="cont-slide-text-span">вс:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;выходной</p>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- END MAINPAGE-SLIDER -->
+
+        <!-- MAIN-TEXT-PART-1,2 -->
+
+        <div class="section-container" id="about-company-link">
+            <div class="main-text-wr-pt1">
+            <div class="section-title-container">
+                <div class="section-title">
+                    <h1>О КОМПАНИИ</h1>
+                </div>
+            </div>
+            <div class="main-text-wr">
+                <div class="main-text-left">{{ main_text_p1.sub1|safe }}</div>
+                <div class="main-text-right">{{ main_text_p1.sub2|safe }}</div>
+            </div>
+            </div>
+        </div>
+
+        <div class="section-container">
+            <div class="main-text-banner-wr">
+                 <a href="/metall-calculator/">
+                    <picture>
+                         <source media="(max-width: 576px)" srcset="{% static "core/imgs/maintext_banner/banner-calc-adaptive-576.jpg" %}" />
+                         <source media="(max-width: 768px)" srcset="{% static "core/imgs/maintext_banner/banner-calc-adaptive-768.jpg" %}" />
+                         <img class="responsive" alt="Калькулятор металла" src="{% static "core/imgs/maintext_banner/banner-calc.jpg" %}">
+                    </picture>
+                </a>
+            </div>
+        </div>
+
+        <div class="section-container">
+            <div class="main-text-wr-pt2">
+            <div class="main-text-wr">
+                <div class="main-text-left">{{ main_text_p2.sub1|safe }}</div>
+                <div class="main-text-right">{{ main_text_p2.sub2|safe }}</div>
+            </div>
+            </div>
+        </div>
+
+        <!-- END-MAIN-TEXT-PART-1,2 -->
+
+        <!-- NEWS-BLOCK -->
+
+        <div class="section-container news-block" id="news-link">
+            <div class="section-title-container">
+                <div class="section-title">
+                    <h1>НОВОСТИ</h1>
+                </div>
+            </div>
+            <div class="news-container">
+                <div class="news-item-wr" style="background: url({{ first_new.cover.url }}); background-size: cover;">
+                    <div class="news-item-content">
+                        <div class="news-item-corner">
+                            <img width="125px" alt='Новости' src="{% static 'core/imgs/newsblock/news-block-corner.png' %}"/>
+                        </div>
+                        <div class="news-item-title">
+                            <h2>{{ first_new.title }}</h2>
+                        </div>
+                        <div class="news-item-divider"></div>
+                        <div class="news-item-date">18.02.2020г</div>
+                    </div>
+                </div>
+                <div class="news-divider-wr">
+                    <img alt="Следующая новость" width="20px" src="{% static 'core/imgs/newsblock/news-divider.png' %}"/>
+                </div>
+                <div class="news-item-wr" style="background: url({{ second_new.cover.url }}); background-size: cover;">
+                    <div class="news-item-content">
+                        <div class="news-item-corner">
+                            <img width="125px" alt='Новости' src="{% static 'core/imgs/newsblock/news-block-corner.png' %}"/>
+                        </div>
+                        <div class="news-item-title">
+                            <h2>{{ first_new.title }}</h2>
+                        </div>
+                        <div class="news-item-divider"></div>
+                        <div class="news-item-date">18.02.2020г</div>
+                    </div>
+                </div>
+                <div class="news-divider-wr last-news-divider">
+                    <img alt="Следующая новость" width="20px" src="{% static 'core/imgs/newsblock/news-divider.png' %}"/>
+                </div>
+                <div class="news-item-wr last-news" style="background: url({{ third_new.cover.url }}); background-size: cover;">
+                    <div class="news-item-content">
+                        <div class="news-item-corner">
+                            <img width="125px" alt='Новости' src="{% static 'core/imgs/newsblock/news-block-corner.png' %}"/>
+                        </div>
+                        <div class="news-item-title">
+                            <h2>{{ first_new.title }}</h2>
+                        </div>
+                        <div class="news-item-divider"></div>
+                        <div class="news-item-date">18.02.2020г</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- END-NEWS-BLOCK -->
+
+        <!-- FORM-BANNER-BLOCK -->
+
+        <div class="section-container" id="form-link">
+            <div class="form-banner-container" style="background: url({% static 'core/imgs/form_banner_block/Rectangle_18.png' %}); background-size: cover;">
+                <div class="form-banner-text-wr">
+                    <div class="form-banner-text">
+                        Вы можете оставить нам сообщение, мы ответим вам при первой возможности
+                    </div>
+                </div>
+                <div class="form-banner-form-wr">
+                    <form>
+                            <div class="form-group">
+                                <label for="m_clientName">Как вас зовут:</label>
+                                <input class="form-control" id="m_clientName" placeholder="Как к вам обращаться?">
+                            </div>
+                            <div class="form-group">
+                                <label for="m_clientNamePhone">Ваш телефон или почта:</label>
+                                <input class="form-control" id="m_clientNamePhone" placeholder="Укажите телефон или почту">
+                            </div>
+                            <div class="form-group">
+                                <label for="m_clientMessage">Ваше сообщение</label>
+                                <textarea class="form-control" id="m_clientMessage" rows="3"></textarea>
+                            </div>
+                        <div class="form-group-button">
+                            <button type="submit" class="btn btn-primary">ОТПРАВИТЬ</button>
+                        </div>
+                        </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- END-FORM-BANNER-BLOCK -->
+
+        <!-- ADVANTAGES-BLOCK -->
+        <div class="section-container advantages" id="advantages-link">
+            <div class="section-title-container">
+                <div class="section-title">
+                    <h1>НАШИ ПРЕИМУЩЕСТВА</h1>
+                </div>
+            </div>
+            <div class="advantages-container">
+                <div class="advantages-part1">
+                    {% for adv_item_1 in advantages_part1 %}
+                        <div class="adv-item-wr">
+                            <div class="adv-item-image-wr">
+                                <img alt="{{ adv_item_1.text }}" src="{{ adv_item_1.image.url }}">
+                            </div>
+                            <div class="adv-item-text-wr">
+                                {{ adv_item_1.text }}
+                            </div>
+                        
+                        </div>
+                        {% if adv_item_1.order == 4 %}
+                        {% else %}
+                        <div class="adv-item-divider-wr">
+                            <div class="adv-item-divider">
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="advantages-part2">
+                    {% for adv_item_2 in advantages_part2 %}
+                        <div class="adv-item-wr">
+                            <div class="adv-item-image-wr">
+                                <img alt="{{ adv_item_2.text }}" src="{{ adv_item_2.image.url }}">
+                            </div>
+                            <div class="adv-item-text-wr">
+                                {{ adv_item_2.text }}
+                            </div>
+
+                        </div>
+                        {% if adv_item_2.order == 7 %}
+                        {% else %}
+                        <div class="adv-item-divider-wr">
+                            <div class="adv-item-divider">
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- END-ADVANTAGES-BLOCK -->
+
+        <!-- HOWTO-BANNER-BLOCK -->
+
+        <div class="howto-banner-container" id="howto-link">
+            <picture>
+                <source media="(max-width: 576px)" srcset="{% static "core/imgs/howtobanner/banner_main_adaptive_576.jpg" %}" />
+                <source media="(max-width: 768px)" srcset="{% static "core/imgs/howtobanner/banner_main_adaptive_768.jpg" %}" />
+                <img class="responsive" style="width: 100%; height: auto;" alt="Как мы работаем" src="{% static "core/imgs/howtobanner/banner_main.jpg" %}">
+            </picture>
+        </div>
+
+        <!-- END-HOWTO-BANNER-BLOCK -->
+
+        <!-- SHORT-PRICE-BLOCK -->
+        <div class="section-container shortprice" id="shortprice-link">
+            <div class="section-title-container">
+                <div class="section-title">
+                    <h1>ЦЕНЫ НА ЛОМ НАЛИЧНЫМИ</h1>
+                </div>
+            </div>
+            <div class="short-price-wr">
+                {% for met in metalls %}
+                <div class="short-price-row">
+                    <div class="short-price-title-wr">
+                        {{ met.title }}
+                    </div>
+                    <div class="short-price-nal-wr">
+                        {{ met.price }}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="short-price-button-wr">
+                <div class="short-price-button">
+                    СМОТРЕТЬ ПОЛНЫЙ ПРАЙС-ЛИСТ
+                </div>
+            </div>
+
+        </div>
+
+        <!-- END-SHORT-PRICE-BLOCK -->
+
+        <!-- DIRECTIONS-BLOCK -->
+        <div class="section-container directions" id="directions-link">
+            <div class="section-title-container">
+                <div class="section-title">
+                    <h1>НАШИ НАПРАВЛЕНИЯ</h1>
+                </div>
+            </div>
+            <div class="directions-wr">
+                <div class="directions-item-wr">
+                    <div class="directions-item-image">
+                        <a href="https://www.vekomet.ru/"><img alt="vekomet.ru" src="{% static 'core/imgs/directions/logo-veko-app 2.png' %}"/></a>
+                    </div>
+                    <div class="directions-item-divider">
+                        <img height="25px" alt="Разделитель" src="{% static 'core/imgs/directions/directions-divider.png' %}"/>
+                    </div>
+                    <div class="directions-item-text">
+                        <div class="dir-item-text-title">
+                            <a href="https://www.vekomet.ru/">www.vekomet.ru</a>
+                        </div>
+                        <div class="dir-item-text-content">
+                            Прием лома цветных и редкоземельных
+                            металлов
+                        </div>
+                    </div>
+                </div>
+                <div class="directions-item-wr">
+                    <div class="directions-item-image">
+                        <a href="https://vekolom.ru/"><img alt="vekolom.ru" src="{% static 'core/imgs/directions/icon250x250.svg' %}"/></a>
+                    </div>
+                    <div class="directions-item-divider">
+                        <img height="25px" alt="Разделитель" src="{% static 'core/imgs/directions/directions-divider.png' %}"/>
+                    </div>
+                    <div class="directions-item-text">
+                        <div class="dir-item-text-title">
+                            <a href="https://vekolom.ru/">www.vekolom.ru</a>
+                        </div>
+                        <div class="dir-item-text-content">
+                            Прием электронного лома: платы, процессоры, звуковые и сетевые карты и прочее
+                        </div>
+                    </div>
+                </div>
+                <div class="directions-item-wr">
+                    <div class="directions-item-image">
+                        <a href="https://vekokat.ru/"><img alt="vekokat.ru" src="{% static 'core/imgs/directions/vekokat_logo.png' %}"/></a>
+                    </div>
+                    <div class="directions-item-divider">
+                        <img height="25px" alt="Разделитель" src="{% static 'core/imgs/directions/directions-divider.png' %}"/>
+                    </div>
+                    <div class="directions-item-text">
+                        <div class="dir-item-text-title">
+                            <a href="https://vekokat.ru/">www.vekokat.ru</a>
+                        </div>
+                        <div class="dir-item-text-content">
+                            Покупка автокатализаторов, сажевых фильтров
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END-DIRECTIONS-BLOCK -->
+
+        <!-- MAP-BLOCK -->
+        <div class="section-container" id="maps-link">
+            <div class="section-title-container">
+                <div class="section-title">
+                    <h1>МЫ НА КАРТЕ</h1>
+                </div>
+            </div>
+        </div>
+        <div class="mapblock-wr">
+            <picture>
+                <source media="(max-width: 576px)" srcset="{% static "core/imgs/mapblock/static_map_576.jpg" %}" />
+                <source media="(max-width: 768px)" srcset="{% static "core/imgs/mapblock/static_map_768.jpg" %}" />
+                <img class="responsive" alt="Как добраться" src="{% static "core/imgs/mapblock/static_map_base.jpeg" %}">
+            </picture>
+            <div class="mapblock-button-wr">
+                <a href="/map">
+                    <div class="mapblock-button">
+                        ПЕРЕЙТИ К ИНТЕРАКТИВНОЙ КАРТЕ
+                    </div>
+                </a>
+            </div>
+        </div>
+        <!-- END-MAP-BLOCK -->
+{% endblock %}
+{% block JS %}
+    <script src="{% static 'core/vendor/tinyslider/tiny-slider.js' %}"></script>
+    <script>
+        if(document.body.clientWidth<768) {
+            var mini_slider = tns({
+            container: '#mini-slider',
+            mode: "gallery",
+            controls: false,
+            autoplayButtonOutput: false,
+            items: 1,
+            nav: false,
+            mouseDrag: true,
+            slideBy: 'page',
+            speed: 500,
+            autoplay: true
+        });
+        }
+        var slider = tns({
+            container: '#shedule-wr',
+            mode: "gallery",
+            controls: false,
+            autoplayButtonOutput: false,
+            items: 1,
+            nav: false,
+            mouseDrag: true,
+            slideBy: 'page',
+            speed: 500,
+            autoplay: true
+        });
+        var text_slider = tns({
+            container: '#leftside-slider',
+            mode: "gallery",
+            controls: false,
+            autoplayButtonOutput: false,
+            items: 1,
+            nav: false,
+            mouseDrag: true,
+            slideBy: 'page',
+            speed: 500,
+            autoplay: true
+        });
+        var shedule_slider = tns({
+            container: '#main-page-slider',
+            mode: "gallery",
+            controls: false,
+            autoplayButtonOutput: false,
+            items: 1,
+            nav: false,
+            mouseDrag: true,
+            slideBy: 'page',
+            speed: 800,
+            autoplay: true,
+            autoplayTimeout: 10000
+        });
+    </script>
+{% endblock %}
