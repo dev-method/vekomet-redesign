@@ -2002,6 +2002,44 @@ footer {
      color: #1d1f21;
 }
 
+/* MATERIALS-ITEM-PAGE */
+
+.materials-item {
+    margin-top: 60px;
+    flex-direction: column;
+}
+.materials-item-header {
+    display: flex;
+    flex-direction: column;
+}
+.mat-item-image-wr {
+    height: 300px;
+}
+.mat-item-title-wr {
+    margin-top: 40px;
+    text-align: center;
+    padding-left: 0;
+    text-transform: uppercase;
+    font-size: 2em;
+    color: #4a4949;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.mat-item-body-wr {
+    margin-top: 60px;
+    margin-bottom: 60px;
+    font-size: 1.3em;
+    line-height: 1.5em;
+    color: #5F5E5E;
+}
+.mat-item-body-wr table{
+    overflow: auto;
+}
+.mat-item-body-wr a{
+    color: #678595;
+}
+
 /* CALCULATOR */
 
 .calculator {

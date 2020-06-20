@@ -410,6 +410,22 @@
         margin-bottom: 0;
     }
 
+    /* MATERIALS-ITEM-PAGE */
+    .materials-item-header {
+        flex-direction: row;
+    }
+    .mat-item-image-wr {
+        flex: 1;
+    }
+    .mat-item-title-wr {
+        margin-top: 0;
+        text-align: left;
+        padding-left: 20px;
+        justify-content: flex-start;
+        font-size: 1.7em;
+        flex: 1;
+    }
+
     /* CONTACTS-PAGE */
 
     .contacts-page-container {
