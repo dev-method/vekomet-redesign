@@ -33,10 +33,10 @@ label {
 .section-main-area {
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 100%;
 }
 .section-sidebar {
-    width: 30%;
+    display: none;
 }
 .section-title-container {
     display: flex;
@@ -1670,12 +1670,13 @@ footer {
 
 .wiki-sum-header {
     width: 100%;
-    height: 250px;
+    height: auto;
     display: flex;
-    flex-direction: row;
+    flex-direction: column-reverse;
 }
 .sum-header-image-wr {
-    flex: 3;
+    height: 300px;
+    width: 100%;
 }
 .sum-header-image-fill {
     width: 100%;
@@ -1683,16 +1684,17 @@ footer {
     background-color: #00000040;
 }
 .sum-header-text-wr {
-    padding-left: 30px;
+    padding-left: 0;
     padding-right: 30px;
-    flex: 8;
+    width: 100%;
     display: flex;
     flex-direction: column;
+    margin-bottom: 60px;
 }
 .sum-header-title {
     text-transform: uppercase;
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: flex-start;
     font-size: 2.5em;
     color: #628BA3;
@@ -1704,6 +1706,7 @@ footer {
     margin-top: 60px;
 }
 .wiki-sum-news-sidebar-wr {
+    width: 100%;
     margin-top: 60px;
 }
 .wiki-sum-sprav-title {
@@ -1780,6 +1783,7 @@ footer {
 /* NEWS SIDEBAR PAGE */
 
 .news-sidebar-wr {
+    width: 100%;
     display: flex;
     flex-direction: column;
     padding-bottom: 60px;
@@ -1838,6 +1842,9 @@ footer {
     display: flex;
     align-items: center;
     flex: 1;
+}
+.config-icon-wr img{
+   cursor: pointer;
 }
 .materials-page-change-wr {
     font-size: 1.5em;

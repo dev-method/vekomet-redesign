@@ -410,6 +410,18 @@
         margin-bottom: 0;
     }
 
+     /* NEWS SIDEBAR PAGE */
+    .news-sidebar-item {
+        width: 100%;
+    }
+    .section-main-area {
+        width: 70%;
+    }
+    .section-sidebar {
+        display: flex;
+        width: 30%;
+    }
+
     /* MATERIALS-ITEM-PAGE */
     .materials-item-header {
         flex-direction: row;
@@ -426,6 +438,24 @@
         flex: 1;
     }
 
+    /* WIKI SUMMATERIALS PAGE */
+
+    .sum-header-image-wr {
+        height: auto;
+        flex: 6;
+    }
+    .sum-header-text-wr {
+        padding-left: 30px;
+        flex: 8;
+        margin-bottom: 0;
+    }
+    .sum-header-title {
+        justify-content: flex-end;
+    }
+    .wiki-sum-header {
+        height: 250px;
+        flex-direction: row;
+    }
     /* CONTACTS-PAGE */
 
     .contacts-page-container {

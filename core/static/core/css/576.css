@@ -304,6 +304,14 @@
     .materials-config-wr {
         flex-direction: column;
     }
+    /* NEWS SIDEBAR PAGE */
+
+    .section-sidebar {
+       display: none;
+    }
+    .section-main-area {
+        width: 100%;
+    }
 
     /* MATERIALS-ITEM-PAGE */
     .materials-item-header {
@@ -316,6 +324,26 @@
         justify-content: center;
         font-size: 1.7em;
     }
+
+    /* WIKI SUMMATERIALS PAGE */
+
+    .sum-header-image-wr {
+        height: auto;
+        flex: 6;
+    }
+    .sum-header-text-wr {
+        padding-left: 30px;
+        flex: 8;
+        margin-bottom: 0;
+    }
+    .sum-header-title {
+        justify-content: flex-end;
+    }
+    .wiki-sum-header {
+        height: 250px;
+        flex-direction: row;
+    }
+
 
     /* CONTACTS-PAGE */
 
