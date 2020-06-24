@@ -17,6 +17,12 @@ gulp.task('minifyArticlesNewsHtml', function() {
         .pipe(gulp.dest('articles/templates/articles/prod/'));
 });
 
+gulp.task('minifyWikiHtml', function() {
+    return gulp.src('wiki/templates/wiki/dev/*.html')
+        .pipe(htmlmin({collapseWhitespace: true }))
+        .pipe(gulp.dest('wiki/templates/wiki/prod/'));
+});
+
 // TASKS: *** COMPRESS IMAGES ***
 
 gulp.task('minifyImages', function() {

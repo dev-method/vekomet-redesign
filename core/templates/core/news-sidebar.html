@@ -1,11 +1,15 @@
 <!-- NEWS SIDEBAR -->
 <div class="news-sidebar-wr">
     <div class="news-sidebar-title">
-        ПОСЛЕДНИЕ ЗАПИСИ
+        <a href="/news/">ПОСЛЕДНИЕ НОВОСТИ</a>
     </div>
     {% for item in news %}
-    <div class="news-sidebar-item sidebar-first-new" style="background: url({{ item.cover.url }}); background-size: cover;">
-
+    <div class="news-sidebar-item" style="background: url({{ item.cover.url }}); background-size: cover;">
+        {% if debug %}
+            <div class="news-sidebar-item-title"><a href="http://127.0.0.1:8000/news/{{ item.slug }}">{{ item.title }}</a></div>
+        {% else %}
+            <div class="news-sidebar-item-title"><a href="https://www.vekomet.ru/news/{{ item.slug }}">{{ item.title }}</a></div>
+        {% endif %}
     </div>
     {% endfor %}
 </div>

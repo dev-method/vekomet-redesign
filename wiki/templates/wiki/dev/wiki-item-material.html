@@ -1,8 +1,5 @@
 {% extends "core/base.html" %}
 {% load static %}
-{% block CSS %}
-    <link rel="stylesheet" href="{% static 'core/vendor/plyr/plyr.css' %}">
-{% endblock %}
 {% block Meta %}
          {% if material.seotitle %}
          <title>{{ material.seotitle }}</title>
@@ -16,6 +13,9 @@
          <meta name="Description" content="{{material.seodescript}}"/>
          {% else %}
          {% endif %}
+{% endblock %}
+{% block CSS %}
+    <link rel="stylesheet" href="{% static 'core/vendor/plyr/plyr.css' %}">
 {% endblock %}
 {% block Content %}
 <div class="section-container wiki-item-material">
@@ -49,7 +49,8 @@
         </div>
         <div class="section-sidebar">
              <div class="wiki-material-sidebar-wr">
-               {% include 'core/news-sidebar.html' %}
+                 {% load show_materials %}
+                 {% show_news %}
              </div>
          </div>
     </div>

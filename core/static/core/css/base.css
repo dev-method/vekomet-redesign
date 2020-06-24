@@ -1597,7 +1597,6 @@ footer {
     flex-direction: column;
 }
 .wiki-container {
-    padding-left: 10px;
     padding-top: 40px;
     display: flex;
     flex-direction: row;
@@ -1625,16 +1624,7 @@ footer {
     width: 100%;
     height: 100%;
 }
-.wiki-item-back {
-    z-index: 10;
-    top: -3%;
-    left: -3%;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: #909298;
-    animation: all 0.5s;
-}
+
 .wiki-item-title {
     top: 7%;
     left: 7%;
@@ -1675,6 +1665,7 @@ footer {
     flex-direction: column-reverse;
 }
 .sum-header-image-wr {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.15),0 6px 20px 0 rgba(0,0,0,0.15);
     height: 300px;
     width: 100%;
 }
@@ -1704,12 +1695,14 @@ footer {
 
 .wiki-sum-container {
     margin-top: 60px;
+    margin-bottom: 60px;
 }
 .wiki-sum-news-sidebar-wr {
     width: 100%;
     margin-top: 60px;
 }
 .wiki-sum-sprav-title {
+    text-decoration: underline;
     color: #495057;
     font-size: 2em;
     text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
@@ -1719,14 +1712,18 @@ footer {
 }
 .wiki-sum-sprav-item {
     color: #3c3b3b;
-    font-size: 1.7em;
+    font-size: 1.5em;
     padding-top: 20px;
     padding-bottom: 20px;
 }
 
 .wiki-sum-sprav-item a {
+    cursor: pointer;
     color: #3c3b3b;
     text-transform: uppercase;
+}
+.wiki-sum-sprav-item span {
+    cursor: pointer;
 }
 .youtube-modal {
     display: none;
@@ -1789,8 +1786,33 @@ footer {
     padding-bottom: 60px;
 }
 .news-sidebar-item {
+    margin-bottom: 60px;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
     height: 250px;
     width: 60%;
+}
+.news-sidebar-item-title {
+    width: 100%;
+    background-color: #808080d1;
+    padding: 10px;
+    color: white;
+}
+.news-sidebar-item-title a {
+    color: white;
+    font-size: 1.2em;
+}
+
+.news-sidebar-item a{
+    z-index: 100;
+}
+.news-sidebar-item-filter {
+    background-color: #80808054;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
 }
 .sidebar-first-new {
     margin-bottom: 40px;
@@ -1801,6 +1823,9 @@ footer {
 .news-sidebar-title {
     text-decoration: underline;
     margin-bottom: 25px;
+}
+.news-sidebar-title a {
+    color: black;
 }
 
 /* MATERIALS BLOCK */

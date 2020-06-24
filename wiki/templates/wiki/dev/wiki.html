@@ -1,5 +1,12 @@
 {% extends "core/base.html" %}
 {% load static %}
+{% block Meta %}
+         {% for s in seo %}
+             <title>{{ s.title }}</title>
+             <meta name="Keywords" content="{{ s.keywords }}"/>
+             <meta name="Description" content="{{ s.description }}"/>
+         {% endfor %}
+{% endblock %}
 {% block Content %}
     <div class="section-container wiki">
         <div class="section-title-container">
@@ -10,7 +17,6 @@
         <div class="wiki-container">
             {% for item in list %}
                 <div class="wiki-item-wr">
-                    <div class="wiki-item-back"></div>
                     <div class="wiki-content-back" style="background: url({{ item.photo_amp_1.url }}); background-size: cover;">
                         <div class="wiki-item-content">
                             <div class="wiki-item-title">
