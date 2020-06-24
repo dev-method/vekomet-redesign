@@ -87,7 +87,11 @@ class WikiMaterials(models.Model):
         return "/directory/%s/" % self.slug
 
 class WikiMaterialsAdmin(admin.ModelAdmin):
-    list_display = ('title','category')
+    list_display = ('title', 'get_position', 'category')
+    def get_position(self, obj):
+        return obj.position.title
+    get_position.short_description = "Позиция"
+    search_fields = ['title']
     exclude = ('slug', 'pubdate',)
     fieldsets = [
         (None,    {'fields': ['title','position', 'category']}),
