@@ -96,7 +96,8 @@ class MetallAdmin(admin.ModelAdmin):
     search_fields = ['title']
     fieldsets = [
         (None,               {'fields': ['title','en_title','price','price_bn','visible','category']}),
-        ('SEO', {'fields': ['seotitle','en_seotitle','seodescript','en_seodescript','seokeywords','en_seokeywords', 'titlealt','en_titlealt', 'canonicdes', 'canonicder', 'indexdes', 'indexder'], 'classes': ['collapse']}),
+        ('SEO для страницы каталога', {'fields': ['seotitle','en_seotitle','seodescript','en_seodescript','seokeywords','en_seokeywords', 'titlealt','en_titlealt', 'canonicdes', 'canonicder', 'indexdes', 'indexder'], 'classes': ['collapse']}),
+        ('SEO для страницы справочника', {'fields': ['wiki_seo_title', 'wiki_seo_descript', 'wiki_seo_keywords '],'classes': ['collapse']}),
         ('Описание(лом+справочник)', {'fields': ['description1','description2'], 'classes': ['collapse']}),
         ('Описание англ.', {'fields': ['en_description1', 'en_description2'], 'classes': ['collapse']}),
         ('Группировка в прайсах', {'fields': ['priority','group', 'tablepricegroup', 'alterslug','group_priority'], 'classes': ['collapse']}),

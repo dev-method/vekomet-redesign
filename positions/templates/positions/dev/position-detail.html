@@ -1,4 +1,4 @@
-{% extends "core/base.html" %}
+{% extends "core/base-with-form.html" %}
 {% load static %}
 {% block Meta %}
     {% if position.seotitle|length > 2 %}
@@ -21,6 +21,10 @@
         <link rel="amphtml" href="http://vekomet.ru/metall-amp/{{ position.slug }}/">
     {% else %}
     {% endif %}
+{% endblock %}
+{% block PreloadPrefetch %}
+    <link rel="preload" href="{% static 'pricelist/vendor/lightgallery/lightgallery.min.css' %}" as="style">
+    <link rel="preload" href="{% static 'pricelist/vendor/lightgallery/lightgallery.min.js' %}" as="script">
 {% endblock %}
 {% block CSS %}
     <link rel="stylesheet" href="{% static 'pricelist/vendor/lightgallery/lightgallery.min.css' %}" />
@@ -70,11 +74,19 @@
            </div>
        {% else %}
        {% endif %}
-       {% if fotos %}
+       {% if first_foto %}
            <div class="position-slider" id="position-slider">
-               {% for foto in fotos %}
-                   <a data-fancybox="{{ position }}" href="{{ foto.foto.url }}"><img src="{{ foto.galleryfoto.url }}"/></a>
-               {% endfor %}
+               <a data-fancybox="{{ position }}" href="{{ first_foto.foto.url }}"><img src="{{ first_foto.galleryfoto.url }}"/></a>
+               <a data-fancybox="{{ position }}" href="{{ second_foto.foto.url }}"><img src="{{ second_foto.galleryfoto.url }}"/></a>
+               <a data-fancybox="{{ position }}" href="{{ third_foto.foto.url }}"><img src="{{ third_foto.galleryfoto.url }}"/></a>
+               {% if fotos.lenght > 0 %}
+               <div class="pos-foto-hidden">
+                   {% for foto in fotos %}
+                       <a data-fancybox="{{ position }}" href="{{ foto.foto.url }}"><img src="{{ foto.galleryfoto.url }}"/></a>
+                   {% endfor %}
+               </div>
+               {% else %}
+               {% endif %}
            </div>
        {% else %}
        {% endif %}
@@ -91,7 +103,30 @@
         <div class="title-to-analysis">
            <a href="/pricelist/"><h1>УЗНАЙТЕ КАК ПРОВОДЯТ АНАЛИЗ ЛОМА</h1></a>
        </div>
-    {% include 'orders/main-form.html' %}
+    <div class="position-contacts-container">
+       <div class="contacts-form-wr">
+           <div class="pos-form-title">
+               <h2>Оставьте сообщение для нас</h2>
+           </div>
+           <div id="form-container">
+               {% csrf_token %}
+           </div>
+       </div>
+        <div class="position-contacts-text-wr">
+            <h2 style="color: black">Контакты для связи:</h2>
+            <div class="pos-det-info-block">
+            <h3><a href="tel:+79175995222">8(917)599-52-22</a></h3>
+            <h3><a href="tel:+74994998474">8(499)499-84-74</a></h3>
+            <h3><a href="mailto:vekomet@gmail.com">vekomet@gmail.com</a></h3>
+        </div>
+    </div>
+    </div>
+    <div class="pos-det-vk">
+        <h2><a href="https://vk.com/vekomet" style="color: #544e4e">Наша группа в VK:  vk.com/vekomet</a></h2>
+    </div>
+    <div class="pos-det-play">
+        <h2 ><a href="https://play.google.com/store/apps/details?id=com.vekornapp" style="color: #544e4e">Скачать приложение для андроид</a></h2>
+    </div>
     </div>
 
 {% endblock %}

@@ -1555,6 +1555,7 @@ footer {
     filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.65));
 }
 
+
 /* ANALYSIS PAGE */
 
 .metall-analysis {
@@ -2242,15 +2243,46 @@ footer {
     justify-content: flex-end;
 }
 .position-slider {
+    margin-top: 40px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
+.position-slider img {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.15),0 6px 20px 0 rgba(0,0,0,0.15);
+}
+.pos-foto-hidden {
+    display: none;
+}
 .position-description {
     color: #3c3b3b;
     font-size: 1.4em;
+    line-height: 1.5em;
 }
 
+.title-to-price-wr {
+    margin-top: 40px;
+}
+.title-to-price-wr a {
+    color: #678595;
+}
+.title-to-analysis {
+    margin-top: 20px;
+}
+.title-to-analysis a {
+    color: #678595;
+}
+.position-contacts-container {
+    display: flex;
+    flex-direction: row;
+}
+.position-contacts-text-wr {
+    padding-left: 30px;
+    width: 50%;
+}
+.position-contacts-text-wr a {
+    color: #678595;
+}
 /* CONTACTS-PAGE */
 .contacts-page {
     margin-bottom: 40px;

@@ -1,4 +1,4 @@
-{% extends "core/base.html" %}
+{% extends "core/base-with-form.html" %}
 {% load static %}
 {% block Meta %}
     {% for s in seo %}
@@ -7,25 +7,9 @@
         <meta name="Description" content="{{s.description}}"/>
     {% endfor %}
 {% endblock %}
-{% block PreloadPrefetch %}
-    {% if debug_flag %}
-        <link rel="preload" href="{% static 'contacts/css/dev/main-form.css' %}" as="style">
-        <link rel="preload" href="{% static 'contacts/js/svelte/contacts-form-dev.js' %}" as="script">
-    {% else %}
-        <link rel="preload" href="{% static 'contacts/css/prod/main-form.css' %}" as="style">
-        <link rel="preload" href="{% static 'contacts/js/svelte/contacts-form-prod.js' %}" as="script">
-    {% endif %}
-{% endblock %}
 {% block LangLink %}
     <meta http-equiv="content-language" content="ru"/>
     <link rel="alternate" href="/en/contacts/" hreflang="en-en">
-{% endblock %}
-{% block CSS %}
-    {% if debug_flag %}
-        <link rel="stylesheet" href="{% static 'contacts/css/dev/main-form.css' %}" />
-    {% else %}
-        <link rel="stylesheet" href="{% static 'contacts/css/prod/main-form.css' %}" />
-    {% endif %}
 {% endblock %}
 {% block Content %}
 
@@ -51,12 +35,4 @@
     <div class="contacts-map-wr">
         <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A320fbfdba4906dd87339040b034ea6a47fcb5cc25cddfa5d765c53a598162010&amp;source=constructor" width="100%" height="400" frameborder="0"></iframe>
     </div>
-{% endblock %}
-{% block JS %}
-    {% if debug_flag %}
-        <script src="{% static 'contacts/js/svelte/contacts-form-dev.js' %}"></script>
-    {% else %}
-        <script src="{% static 'contacts/js/svelte/contacts-form-prod.js' %}"></script>
-    {% endif %}
-    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
 {% endblock %}
