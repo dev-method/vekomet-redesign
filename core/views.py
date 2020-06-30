@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.shortcuts import render
-from core.models import MainPageText_P1, MainPageText_P2, Advantage
+from core.models import MainPageText_P1, MainPageText_P2, Advantage, MainPhoto, MainSeo
 from articles.models import NewArticle
 from positions.models import Metall
 
@@ -15,6 +15,7 @@ def mainpage(request):
         main_text_p2 = MainPageText_P2.objects.all()[0]
     except IndexError:
         main_text_p2 = "Tекcт не найден"
+    seo = MainSeo.objects.all()
     first_new = NewArticle.objects.filter(category_id=2).order_by("-pubdate")[0]
     second_new = NewArticle.objects.filter(category_id=2).order_by("-pubdate")[1]
     third_new = NewArticle.objects.filter(category_id=2).order_by("-pubdate")[2]

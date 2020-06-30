@@ -7,28 +7,21 @@ from imagekit.admin import AdminThumbnail
 from ckeditor_uploader.fields import RichTextUploadingField
 from imagekit.models import ProcessedImageField
 from imagekit.processors import ResizeToFill
+from PIL import Image
+from vekomet_redesign import settings
+import os, time
+from celery import shared_task
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+if settings.DEBUG:
+    media_path = '/home/vladimir/Projects/vekomet-django-react-redesign/vekomet_redesign/files/media/media/'
+    app_url = '/home/vladimir/Projects/vekomet-django-react-redesign/vekomet_redesign'
+else:
+    media_path = '/usr/src/vekomet.ru/vekomet_redesign/media/media/'
+    app_url = '/usr/src/vekomet.ru/vekomet_redesign'
 
 # Create your models here.
 
-class MainText(models.Model):
-    title=models.CharField('Заголовок', max_length=400)
-    en_title = models.CharField('EN--->Заголовок', max_length=400, null=True, blank=True)
-    sub1=RichTextUploadingField('Текст в правой колонке', max_length=6000)
-    en_sub1 = RichTextUploadingField('EN--->Текст в правой колонке', max_length=6000, blank=True, null=True)
-    sub2=RichTextUploadingField('Текст в левой колонке', max_length=6000, blank=True, null=True)
-    en_sub2 = RichTextUploadingField('EN--->Текст в левой колонке', max_length=6000, blank=True, null=True)
-    sub1_turbo=RichTextUploadingField('Турбо-страницы | Первый абзац', max_length=6000, blank=True, null=True)
-    sub2_turbo=RichTextUploadingField('Турбо-страницы | Второй абзац', max_length=6000, blank=True, null=True)
-    sub1_amp=RichTextUploadingField('AMP-страницы|Первый абзац', max_length=6000, blank=True, null=True)
-    sub2_amp=RichTextUploadingField('AMP-страницы|Второй абзац', max_length=6000, blank=True, null=True)
-
-    class Meta:
-        verbose_name = ('Основной текст')
-        verbose_name_plural = ('Основной текст')
-
-    def __str__(self):
-        self.title="Текст на главной странице"
-        return u'%s' % self.title
 
 class MainPageText_P1(models.Model):
     title=models.CharField('Заголовок', max_length=400)
@@ -60,59 +53,45 @@ class MainPageText_P2(models.Model):
         self.text="Редактировать текст"
         return u'%s' % self.text
 
-class MainTextBanner(models.Model):
-    photo=ProcessedImageField(verbose_name='Фото для баннерв - 992px',upload_to='media/',
-                                           format='JPEG',
-                                           options={'quality': 90})
-    photo768 = ProcessedImageField(verbose_name='Фото для баннерв - 768px', upload_to='media/',
-                                format='JPEG',
-                                options={'quality': 90},null=True, blank=True)
-    photo576 = ProcessedImageField(verbose_name='Фото для баннерв - 576px', upload_to='media/',
-                                   format='JPEG',
-                                   options={'quality': 90},null=True, blank=True)
-    avatarphoto = ImageSpecField(source='photo',
-                                 processors=[ResizeToFill(150, 100)],
-                                 format='JPEG',
-                                 options={'quality': 50})
-
-    class Meta:
-        verbose_name = ('Баннер раздела "О КОМПАНИИ"')
-        verbose_name_plural = ('Баннер раздела "О КОМПАНИИ"')
-
-    def __str__(self):
-        self.title="Фото"
-        return u'%s' % self.title
-
-class MainTextBannerInline(admin.TabularInline):
-    model = MainTextBanner
-
-class MainTextBannerAdmin(admin.ModelAdmin):
-    list_display = ('__str__','admin_thumbnail',)
-    admin_thumbnail = AdminThumbnail(image_field='avatarphoto')
-    tabular=[MainTextBannerInline]
-
-
 class MainPhoto(models.Model):
-    photo=ProcessedImageField(verbose_name='Фото для главного слайдера(992px)',upload_to='media/',
+    photo=ProcessedImageField(verbose_name='ФОТО | JPEG | 1920х500', upload_to='media/',
                                            format='JPEG',
                                            options={'quality': 90})
-    photo768 = ProcessedImageField(verbose_name='Фото для главного слайдера(768px)', upload_to='media/',
+    photo_low = ImageSpecField(source='photo',
+                               format='JPEG',
+                               options={'quality': 1})
+    photo_webp = models.CharField(verbose_name='ФОТО | WEBP | 1920х500',
+                                  max_length=600, null=True, blank=True)
+    photo_jp2 = models.CharField(verbose_name='ФОТО | JPEG 2000 | 1920х500', max_length=600, null=True, blank=True)
+    photo768 = ProcessedImageField(verbose_name='ФОТО | JPEG | 768х', upload_to='media/',
                                 format='JPEG',
                                 options={'quality': 90},null=True, blank=True)
+    photo_768_low = ImageSpecField(source='photo768',
+                               format='JPEG',
+                               options={'quality': 1})
+    photo_768_webp = models.CharField(verbose_name='ФОТО | WEBP | 768х',
+                                  max_length=600, null=True, blank=True)
+    photo_768_jp2 = models.CharField(verbose_name='ФОТО | JPEG 2000 | 768х', max_length=600, null=True, blank=True)
     photo576 = ProcessedImageField(verbose_name='Фото для главного слайдера(576px)', upload_to='media/',
                                    format='JPEG',
                                    options={'quality': 90},null=True, blank=True)
+    photo_576_low = ImageSpecField(source='photo576',
+                                   format='JPEG',
+                                   options={'quality': 1})
+    photo_576_webp = models.CharField(verbose_name='ФОТО | WEBP | 576х',
+                                      max_length=600, null=True, blank=True)
+    photo_576_jp2 = models.CharField(verbose_name='ФОТО | JPEG 2000 | 576х', max_length=600, null=True, blank=True)
     avatarphoto = ImageSpecField(source='photo',
                                  processors=[ResizeToFill(150, 100)],
                                  format='JPEG',
                                  options={'quality': 50})
 
     class Meta:
-        verbose_name = ('Фото для главной карусели')
-        verbose_name_plural = ('Фото для главной карусели')
+        verbose_name = ('ГЛАВНЫЙ СЛАЙДЕР | ФОТО')
+        verbose_name_plural = ('ГЛАВНЫЙ СЛАЙДЕР | ФОТО')
 
     def __str__(self):
-        self.title="Фото"
+        self.title="Изображение"
         return u'%s' % self.title
 
 class MainPhotoInline(admin.TabularInline):
@@ -122,37 +101,51 @@ class MainPhotoAdmin(admin.ModelAdmin):
     list_display = ('__str__','admin_thumbnail',)
     admin_thumbnail = AdminThumbnail(image_field='avatarphoto')
     tabular=[MainPhotoInline]
+    fieldsets = [
+        ('ФОТО | РАЗМЕР 1920x', {'fields': ['photo', 'photo_webp', 'photo_jp2']}),
+        ('ФОТО | РАЗМЕР 768x', {'fields': ['photo768', 'photo_768_webp', 'photo_768_jp2'],
+                 'classes': ['collapse']}),
+        ('ФОТО | РАЗМЕР 576x', {'fields': ['photo576', 'photo_576_webp', 'photo_576_jp2'], 'classes': ['collapse']}),
+    ]
 
-class MainPhotoEn(models.Model):
-    photo=ProcessedImageField(verbose_name='Фото для главного слайдера',upload_to='media/',
-                                           format='JPEG',
-                                           options={'quality': 90})
-    photo768 = ProcessedImageField(verbose_name='Фото для главного слайдера(768px)', upload_to='media/',
-                                   format='JPEG',
-                                   options={'quality': 90}, null=True, blank=True)
-    photo576 = ProcessedImageField(verbose_name='Фото для главного слайдера(576px)', upload_to='media/',
-                                   format='JPEG',
-                                   options={'quality': 90}, null=True, blank=True)
-    avatarphoto = ImageSpecField(source='photo',
-                                 processors=[ResizeToFill(150, 100)],
-                                 format='JPEG',
-                                 options={'quality': 50})
+@shared_task(acks_late=True)
+def mainphoto_alter_formats(pk):
+    time.sleep(1)
+    mainphoto_item = MainPhoto.objects.get(pk=pk)
+    origin_name = os.path.basename(mainphoto_item.photo.url)
+    clear_name = origin_name.split('.')[0]
+    Image.open(media_path+origin_name).save(media_path+clear_name+'.webp', 'webp', quality='70')
+    Image.open(media_path + origin_name).save(media_path + clear_name + '.jpx', quality_mode='dB', quality_layers=[34])
+    mainphoto_item.photo_webp = '/media/media/' + clear_name+'.webp'
+    mainphoto_item.photo_jp2 = '/media/media/' + clear_name + '.jpx'
+    origin_name_768 = os.path.basename(mainphoto_item.photo768.url)
+    clear_name_768 = origin_name_768.split('.')[0]
+    Image.open(media_path + origin_name_768).save(media_path + clear_name_768 + '.webp', 'webp', quality='70')
+    Image.open(media_path + origin_name_768).save(media_path + clear_name_768 + '.jpx', quality_mode='dB', quality_layers=[34])
+    mainphoto_item.photo_768_webp = '/media/media/' + clear_name_768 + '.webp'
+    mainphoto_item.photo_768_jp2 = '/media/media/' + clear_name_768 + '.jpx'
+    origin_name_576 = os.path.basename(mainphoto_item.photo576.url)
+    clear_name_576 = origin_name_576.split('.')[0]
+    Image.open(media_path + origin_name_576).save(media_path + clear_name_576 + '.webp', 'webp', quality='70')
+    Image.open(media_path + origin_name_576).save(media_path + clear_name_576 + '.jpx', quality_mode='dB',
+                                                  quality_layers=[34])
+    mainphoto_item.photo_576_webp = '/media/media/' + clear_name_576 + '.webp'
+    mainphoto_item.photo_576_jp2 = '/media/media/' + clear_name_576 + '.jpx'
+    mainphoto_item.save()
 
-    class Meta:
-        verbose_name = ('Фото для главной карусели-->англ.версия')
-        verbose_name_plural = ('Фото для главной карусели-->англ.версия')
-
-    def __str__(self):
-        self.title="Фото"
-        return u'%s' % self.title
-
-class MainPhotoEnInline(admin.TabularInline):
-    model = MainPhoto
-
-class MainPhotoEnAdmin(admin.ModelAdmin):
-    list_display = ('__str__','admin_thumbnail',)
-    admin_thumbnail = AdminThumbnail(image_field='avatarphoto')
-    tabular=[MainPhotoEnInline]
+@receiver(post_save, sender= MainPhoto)
+def methods_image(instance, **kwargs):
+    if instance.photo_webp and instance.photo_jp2:
+        if not os.path.isfile(app_url+instance.photo_webp):
+            mainphoto_alter_formats(instance.pk)
+        elif not os.path.isfile(app_url+instance.photo_jp2):
+            mainphoto_alter_formats(instance.pk)
+        else:
+            pass
+    elif instance.photo:
+        mainphoto_alter_formats(instance.pk)
+    else:
+        pass
 
 class Advantage(models.Model):
     image=ProcessedImageField(verbose_name='Фото',upload_to='media/',
@@ -213,73 +206,6 @@ class FooterPhotoAdmin(admin.ModelAdmin):
     list_display = ('__str__','admin_thumbnail',)
     admin_thumbnail = AdminThumbnail(image_field='adminphoto')
     tabular=[FooterPhotoInline]
-
-class MPBanner(models.Model):
-    photo=ProcessedImageField(verbose_name='Фото для баннера(992px)',upload_to='media/',
-                                           format='JPEG',
-                                           options={'quality': 90})
-    photo768 = ProcessedImageField(verbose_name='Фото для баннера(768px)', upload_to='media/',
-                                   format='JPEG',
-                                   options={'quality': 90}, null=True, blank=True)
-    photo576 = ProcessedImageField(verbose_name='Фото для баннера(576px)', upload_to='media/',
-                                   format='JPEG',
-                                   options={'quality': 90}, null=True, blank=True)
-    adminphoto = ImageSpecField(source='photo',
-                                 processors=[ResizeToFill(150, 100)],
-                                 format='JPEG',
-                                 options={'quality': 50})
-
-    class Meta:
-        verbose_name = ('Фото для баннера')
-        verbose_name_plural = ('Фото для баннера')
-
-    def __str__(self):
-        self.title="Фото"
-        return u'%s' % self.title
-class MPBannerInline(admin.TabularInline):
-    model = MPBanner
-
-class MPBannerAdmin(admin.ModelAdmin):
-    list_display = ('__str__','admin_thumbnail',)
-    admin_thumbnail = AdminThumbnail(image_field='adminphoto')
-    tabular=[MPBannerInline]
-
-class MPBannerEN(models.Model):
-    photo=ProcessedImageField(verbose_name='Фото для баннера',upload_to='media/',
-                                           format='JPEG',
-                                           options={'quality': 90})
-    adminphoto = ImageSpecField(source='photo',
-                                 processors=[ResizeToFill(150, 100)],
-                                 format='JPEG',
-                                 options={'quality': 50})
-
-    class Meta:
-        verbose_name = ('Фото для баннера англ.версия')
-        verbose_name_plural = ('Фото для баннера англ.версия')
-
-    def __str__(self):
-        self.title="Фото"
-        return u'%s' % self.title
-class MPBannerEnInline(admin.TabularInline):
-    model = MPBannerEN
-
-class MPBannerEnAdmin(admin.ModelAdmin):
-    list_display = ('__str__','admin_thumbnail',)
-    admin_thumbnail = AdminThumbnail(image_field='adminphoto')
-    tabular=[MPBannerEnInline]
-
-
-class FooterContacts(models.Model):
-    block=RichTextUploadingField('Текст контактов', max_length=4000)
-    en_block = RichTextUploadingField('EN--->Текст контактов', max_length=4000, null=True,blank=True)
-
-    class Meta:
-        verbose_name = ('Текст контактов в футере')
-        verbose_name_plural = ('Текст контактов в футере')
-
-    def __str__(self):
-        self.title="Текст"
-        return u'%s' % self.title
 
 class MainSeo(models.Model):
     title=models.TextField('title', max_length=300, null=True,blank=True)
