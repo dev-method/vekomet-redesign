@@ -2,18 +2,18 @@ window.onscroll = function() {
     stickyFunction();
     toTopFunction();
 };
-var navbar = document.getElementById("navbar");
+var navbarDev = document.getElementById("navbar");
 var mob_navbar = document.getElementById("mobile-navbar");
-var sticky = navbar.offsetTop;
+var sticky = navbarDev.offsetTop;
 var mob_sticky = mob_navbar.offsetTop;
 
 function stickyFunction() {
     if (window.pageYOffset > sticky) {
-        navbar.classList.add("sticky");
-        navbar.style.height = "50px";
+        navbarDev.classList.add("sticky");
+        navbarDev.style.height = "50px";
     } else {
-        navbar.classList.remove("sticky");
-        navbar.style.height = "70px";
+        navbarDev.classList.remove("sticky");
+        navbarDev.style.height = "70px";
     }
     if (window.pageYOffset > mob_sticky) {
         mob_navbar.classList.add("sticky");
