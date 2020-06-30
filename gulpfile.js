@@ -89,6 +89,22 @@ gulp.task('compressCoreJs', function () {
   );
 });
 
+gulp.task('collectPricelistJS', function() {
+  return gulp.src(['pricelist/static/pricelist/vendor/tabs/tabby.min.js', 'pricelist/static/pricelist/vendor/tabs/tabby.polyfills.min.js',
+  'core/static/core/vendor/lightgallery/lightgallery.min.js'])
+    .pipe(concat('pricelist.js'))
+    .pipe(gulp.dest('pricelist/static/pricelist/js/prod/'));
+});
+
+gulp.task('compressPricelistJS', function () {
+  return pipeline(
+        gulp.src('pricelist/static/pricelist/js/prod/*.js'),
+        uglify(),
+        gulp.dest('pricelist/static/pricelist/js/prod/')
+  );
+});
+
+
 // TASKS: *** COMPRESS IMAGES ***
 
 gulp.task('minifyImages', function() {
@@ -104,5 +120,5 @@ gulp.task('prepareHtml', gulp.series('minifyAnalysisHtml', 'minifyContactsHtml',
 
 gulp.task('prepareCss', gulp.series('createProdCss', 'minifyContactsCss'));
 
-gulp.task('prepareJS', gulp.series('collectCoreJS', 'compressCoreJs'));
+gulp.task('prepareJS', gulp.series('collectCoreJS', 'compressCoreJs', 'collectPricelistJS', 'compressPricelistJS'));
 

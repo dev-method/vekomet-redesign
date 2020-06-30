@@ -1,5 +1,12 @@
 {% extends "core/base.html" %}
 {% load static %}
+{% block PreloadPrefetch %}
+    {% if debug_flag %}
+    {% else %}
+        <link rel="preload" href="{% static 'pricelist/vendor/lightgallery/lightgallery.min.css' %}" as="style">
+        <link rel="preload" href="{% static 'pricelist/js/prod/pricelist.js' %}" as="script">
+    {% endif %}
+{% endblock %}
 {% block CSS %}
     <link rel="stylesheet" href="{% static 'pricelist/vendor/lightgallery/lightgallery.min.css' %}" />
 {% endblock %}
@@ -664,9 +671,13 @@
     </div>
 {% endblock %}
 {% block JS %}
-    <script src="{% static 'pricelist/vendor/tabs/tabby.min.js' %}"></script>
-    <script src="{% static 'pricelist/vendor/tabs/tabby.polyfills.min.js' %}"></script>
-    <script src="{% static 'pricelist/vendor/lightgallery/lightgallery.min.js' %}"></script>
+    {% if debug_flag %}
+        <script src="{% static 'pricelist/vendor/tabs/tabby.min.js' %}"></script>
+        <script src="{% static 'pricelist/vendor/tabs/tabby.polyfills.min.js' %}"></script>
+        <script src="{% static 'pricelist/vendor/lightgallery/lightgallery.min.js' %}"></script>
+    {% else %}
+           <script src="{% static 'pricelist/js/prod/pricelist.js' %}"></script>
+    {% endif %}
     <script>
         var tabs = new Tabby('[data-tabs]');
     </script>

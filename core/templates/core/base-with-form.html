@@ -18,24 +18,25 @@
             <meta name="Description" content="{{s.description}}"/>
         {% endfor %}
     {% endblock %}
-    {% if debug_flag %}
-        <link rel="preload" href="{% static 'contacts/css/dev/main-form.css' %}" as="style">
-        <link rel="preload" href="{% static 'contacts/js/svelte/contacts-form-dev.js' %}" as="script">
-    {% else %}
-        <link rel="preload" href="{% static 'contacts/css/prod/main-form.css' %}" as="style">
-        <link rel="preload" href="{% static 'contacts/js/svelte/contacts-form-prod.js' %}" as="script">
-    {% endif %}
     {% block PreloadPrefetch %}
     {% endblock %}
     {% if debug_flag %}
-        <link rel="stylesheet" href="{% static 'core/css/base.css' %}" type="text/css">
-        <link rel="stylesheet" href="{% static 'core/css/576.css' %}" type="text/css">
-        <link rel="stylesheet" href="{% static 'core/css/768.css' %}" type="text/css">
-        <link rel="stylesheet" href="{% static 'core/css/992.css' %}" type="text/css">
-        <link rel="stylesheet" href="{% static 'core/css/custom.css' %}" type="text/css">
-        <link rel="stylesheet" href="{% static 'contacts/css/dev/main-form.css' %}" />
+        <link rel="stylesheet" href="{% static 'core/css/dev/base.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'core/css/dev/576.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'core/css/dev/768.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'core/css/dev/992.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'core/css/dev/custom.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'contacts/css/dev/main-form.css' %}" type="text/css">
     {% else %}
-        <link rel="stylesheet" href="{% static 'contacts/css/prod/main-form.css' %}" />
+        <link rel="preload" href="{% static 'core/js/prod/core.js' %}" as="script">
+        <link rel="preload" href="{% static 'core/css/prod/prod.css' %}" as="style">
+        <link rel="preload" href="{% static 'contacts/css/prod/main-form.css' %}" as="style">
+        <link rel="preload" href="{% static 'contacts/js/svelte/contacts-form-prod.js' %}" as="script">
+        <link rel="prefetch" href="{% static 'core/svelte/articles-bundle-prod.js' %}" as="script">
+        <link rel="prefetch" href="{% static 'core/svelte/calculator-bundle.js' %}" as="script">
+        <link rel="prefetch" href="{% static 'core/svelte/news-bundle-prod.js' %}" as="script">
+        <link rel="stylesheet" href="{% static 'core/css/prod/prod.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'contacts/css/prod/main-form.css' %}" type="text/css">
     {% endif %}
     {% block CSS %}
     {% endblock %}
@@ -54,16 +55,16 @@
 <div class="toTop-button-wr" id="toTopButton">
     <a data-scroll href="#page-top"><img class="toTop-button" height="150px" alt="Вернуться наверх сайта" src="{% static 'core/imgs/toTop/toTop-icon-250.png' %}"/></a>
 </div>
-<script src="{% static 'core/vendor/smooth-scroll/smooth-scroll.polyfills.min.js' %}"></script>
-<script>
-     var scroll = new SmoothScroll('a[href*="#"]');
-</script>
-<script src="{% static 'core/js/navbar.js' %}"></script>
 {% if debug_flag %}
+    <script src="{% static 'core/vendor/smooth-scroll/smooth-scroll.polyfills.min.js' %}"></script>
+    <script src="{% static 'core/js/dev/navbar-dev.js' %}"></script>
     <script src="{% static 'contacts/js/svelte/contacts-form-dev.js' %}"></script>
 {% else %}
+    <script src="{% static 'core/js/prod/core.js' %}"></script>
     <script src="{% static 'contacts/js/svelte/contacts-form-prod.js' %}"></script>
 {% endif %}
-<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+    <script>
+        var scroll = new SmoothScroll('a[href*="#"]');
+    </script>
 </body>
 </html>
