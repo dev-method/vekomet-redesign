@@ -14,6 +14,13 @@
          {% else %}
          {% endif %}
 {% endblock %}
+{% block PreloadPrefetch %}
+    {% if debug_flag %}
+    {% else %}
+        <link rel="preload" href="{% static 'core/vendor/plyr/plyr.css' %}" as="style">
+        <link rel="preload" href="{% static 'core/vendor/plyr/plyr.min.js' %}" as="script">
+    {% endif %}
+{% endblock %}
 {% block CSS %}
     <link rel="stylesheet" href="{% static 'core/vendor/plyr/plyr.css' %}">
 {% endblock %}
