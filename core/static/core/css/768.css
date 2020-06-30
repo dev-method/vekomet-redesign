@@ -456,6 +456,37 @@
         height: 250px;
         flex-direction: row;
     }
+
+    /* POSITION PAGE  */
+    .position-contacts-container {
+        flex-direction: row;
+    }
+    .position-contacts-text-wr {
+        text-align: left;
+        margin-top: 0;
+        padding-left: 60px;
+        width: 50%;
+    }
+    .pos-det-vk {
+        text-align: left;
+    }
+    .pos-det-play {
+        text-align: left;
+    }
+    .position-slider {
+        justify-content: space-between;
+    }
+    .pos-gallery-first-item {
+        padding-right: 10px;
+    }
+    .pos-gallery-third-item {
+        padding-left: 10px;
+        display: block;
+    }
+    .pos-gallery-second-item {
+        display: block;
+    }
+
     /* CONTACTS-PAGE */
 
     .contacts-page-container {

@@ -12,8 +12,8 @@ class Order(models.Model):
     description=models.TextField('Запрос',max_length=4000 )
 
     class Meta:
-        verbose_name = ('Заявка')
-        verbose_name_plural = ('Заявки')
+        verbose_name = ('ЗАЯВКА')
+        verbose_name_plural = ('ЗАЯВКИ')
 
     def __str__(self):
         return u'%s' % self.name

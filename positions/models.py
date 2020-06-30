@@ -72,15 +72,15 @@ class Metall(models.Model):
                                       options={'quality': 90}, null=True, blank=True)
 
     class Meta:
-        verbose_name = ('Металл или сплав')
-        verbose_name_plural = ('Металлы и сплавы')
+        verbose_name = ('ПОЗИЦИЯ КАТАЛОГА')
+        verbose_name_plural = ('ПОЗИЦИИ КАТАЛОГА')
 
     def __str__(self):
         return u'%s' % self.title
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.title, max_length=200)
+            self.slug = slugify(self.title)
         return super(Metall, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
@@ -121,8 +121,8 @@ class PositionFoto(models.Model):
     position=models.ForeignKey('Metall', verbose_name="Металл или сплав", on_delete=models.CASCADE)
 
     class Meta:
-        verbose_name = ('Фото для позиции')
-        verbose_name_plural = ('Фото для позиции')
+        verbose_name = ('ФОТО ДЛЯ ПОЗИЦИЙ КАТАЛОГА')
+        verbose_name_plural = ('ФОТО ДЛЯ ПОЗИЦИЙ КАТАЛОГА')
 
     def __str__(self):
         self.title = "Фото"
@@ -165,11 +165,11 @@ class PriceData(models.Model):
     oldpricedate=models.CharField('Старая дата прайса', max_length=50, null=True,blank=True)
 
     class Meta:
-        verbose_name = ('Дата изменения прайса')
-        verbose_name_plural = ('Дата изменения прайса')
+        verbose_name = ('ДАТА ПРАЙСА')
+        verbose_name_plural = ('ДАТА ПРАЙСА')
 
     def __str__(self):
-        self.title="Дата прайса"
+        self.title="Дата"
         return u'%s' % self.title
 
     def save(self, *args, **kwargs):
@@ -204,11 +204,11 @@ class Catalizator(models.Model):
                                 null=True, blank=True)
 
     class Meta:
-        verbose_name = ('Катализаторы')
-        verbose_name_plural = ('Катализаторы')
+        verbose_name = ('РАЗДЕЛ "КАТАЛИЗАТОРЫ"')
+        verbose_name_plural = ('РАЗДЕЛ "КАТАЛИЗАТОРЫ"')
 
     def __str__(self):
-        self.title="Описание для катализаторов"
+        self.title="Содержание раздела"
         return u'%s' % self.title
 
 class TantalPositions(models.Model):
@@ -217,8 +217,8 @@ class TantalPositions(models.Model):
     priority = models.FloatField('Порядок следования', null=True, blank=True)
 
     class Meta:
-        verbose_name = ('Тантал позиции')
-        verbose_name_plural = ('Тантал позиции')
+        verbose_name = ('ТАНТАЛ КАТАЛОГ ПОЗИЦИЙ')
+        verbose_name_plural = ('ТАНТАЛ КАТАЛОГ ПОЗИЦИЙ')
 
     def __str__(self):
         return u'%s' % self.title
@@ -232,11 +232,11 @@ class TantalDesc(models.Model):
                                  options={'quality': 90}, null=True, blank=True)
 
     class Meta:
-        verbose_name = ('Тантал описание')
-        verbose_name_plural = ('Тантал описание')
+        verbose_name = ('ТАНТАЛ КАТАЛОГ | ТЕКСТА')
+        verbose_name_plural = ('ТАНТАЛ КАТАЛОГ | ТЕКСТА')
 
     def __str__(self):
-        self.text='Блок описания'
+        self.text='Блок описания для каталога тантала'
         return u'%s' % self.text
 
 class TantalFoto(models.Model):
@@ -254,8 +254,8 @@ class TantalFoto(models.Model):
     position=models.ForeignKey('TantalPositions', verbose_name="Тантал позиция", related_name='positions', related_query_name='position',on_delete=models.CASCADE)
 
     class Meta:
-        verbose_name = ('Фото для позиций тантала')
-        verbose_name_plural = ('Фото для позиций тантала')
+        verbose_name = ('ТАНТАЛ КАТАЛОГ | ФОТО')
+        verbose_name_plural = ('ТАНТАЛ КАТАЛОГ | ФОТО')
 
     def __str__(self):
         self.title = "Фото"

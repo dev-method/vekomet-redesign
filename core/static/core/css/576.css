@@ -343,7 +343,34 @@
         height: 250px;
         flex-direction: row;
     }
-
+    /* POSITION PAGE  */
+    .position-contacts-container {
+        flex-direction: column;
+    }
+    .position-contacts-text-wr {
+        text-align: left;
+        margin-top: 40px;
+        padding-left: 0;
+        width: 100%;
+    }
+    .position-slider {
+        justify-content: space-between;
+    }
+    .pos-det-vk {
+        text-align: left;
+    }
+    .pos-det-play {
+        text-align: left;
+    }
+    .pos-gallery-first-item {
+        padding-right: 10px;
+    }
+    .pos-gallery-third-item {
+        display: none;
+    }
+    .pos-gallery-second-item {
+        display: block;
+    }
 
     /* CONTACTS-PAGE */
 

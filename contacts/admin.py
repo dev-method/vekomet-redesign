@@ -5,4 +5,3 @@ from contacts.models import ContactsSeo, ContactsBanner, ContactsBannerAdmin
 # Register your models here.
 admin.site.register(ContactsSeo)
 admin.site.register(ContactsText, ContTextAdmin)
-admin.site.register(ContactsBanner, ContactsBannerAdmin)

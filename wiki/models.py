@@ -72,8 +72,8 @@ class WikiMaterials(models.Model):
     category = models.ForeignKey('WikiCategory', verbose_name="Тип материала", blank=True, null=True,
                                  on_delete=models.CASCADE)
     class Meta:
-        verbose_name = 'Материал для справочника'
-        verbose_name_plural = 'Материалы для справочника'
+        verbose_name = 'МАТЕРИАЛ ДЛЯ СПРАВОЧНИКА'
+        verbose_name_plural = 'МАТЕРИАЛЫ ДЛЯ СПРАВОЧНИКА'
 
     def __str__(self):
         return u'%s' % self.title

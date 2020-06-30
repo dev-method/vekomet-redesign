@@ -11,8 +11,8 @@ class ModAppMess(models.Model):
     message =models.TextField('Сообщение',max_length=5000, blank=True, null=True)
 
     class Meta:
-        verbose_name = ('Заявка')
-        verbose_name_plural = ('Заявки')
+        verbose_name = ('ЗАЯВКА С МОБИЛЬНОГО ПРИЛОЖЕНИЯ')
+        verbose_name_plural = ('ЗАЯВКИ С МОБИЛЬНОГО ПРИЛОЖЕНИЯ')
 
     def __str__(self):
         return u'%s' % self.name

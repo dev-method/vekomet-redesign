@@ -14,25 +14,25 @@ class TextAnalysis(models.Model):
     sub2=RichTextField('Абзац2', max_length=6000)
 
     class Meta:
-        verbose_name = ('Текст на стр Анализ металла')
-        verbose_name_plural = ('Текста на стр Анализ металла')
+        verbose_name = ('ТЕКСТ РАЗДЕЛА')
+        verbose_name_plural = ('ТЕКСТ РАЗДЕЛА')
 
     def __str__(self):
-        self.title="Текс для стр Анализ металла"
+        self.title="Изменить текст"
         return u'%s' % self.title
 
 
 class AnalysisPhoto(models.Model):
-    photo=ProcessedImageField(verbose_name='Фото для слайдера',upload_to='media/',
+    photo=ProcessedImageField(verbose_name='Изображение',upload_to='media/',
                                            processors=[ResizeToFill(620, 300)],
                                            format='JPEG',
                                            options={'quality': 90})
     class Meta:
-        verbose_name = ('Фото для слайдера на стр. Анализ металла')
-        verbose_name_plural = ('Фото для слайдера на стр. Анализ металла')
+        verbose_name = ('СЛАЙДЕР | ФОТО')
+        verbose_name_plural = ('СЛАЙДЕР | ФОТО')
 
     def __str__(self):
-        self.title="Фото для слайдера на стр. Анализ металла"
+        self.title="Фото для слайдера"
         return u'%s' % self.title
 
 class AnalizeBanner(models.Model):
@@ -66,8 +66,8 @@ class AnalysisSeo(models.Model):
     keywords=models.TextField('keywords', max_length=1000, null=True,blank=True)
 
     class Meta:
-        verbose_name = ('SEO')
-        verbose_name_plural = ('SEO')
+        verbose_name = ('SEO ДЛЯ РАЗДЕЛА "АНАЛИЗ"')
+        verbose_name_plural = ('SEO ДЛЯ РАЗДЕЛА "АНАЛИЗ"')
 
     def __str__(self):
         self.title="SEO"

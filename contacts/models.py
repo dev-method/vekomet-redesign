@@ -17,11 +17,11 @@ class ContactsText(models.Model):
     en_sub1 = RichTextUploadingField('Текст( EN )', help_text="Английская версия текста, отображаемого на странице Контакты", max_length=6000, null=True,blank=True)
 
     class Meta:
-        verbose_name = ('Текст на стр Контакты')
-        verbose_name_plural = ('Текст на стр Контакты')
+        verbose_name = ('БЛОК КОНТАКТОВ НА СТРАНИЦЕ')
+        verbose_name_plural = ('БЛОК КОНТАКТОВ НА СТРАНИЦЕ')
 
     def __str__(self):
-        self.title="Содержание текста"
+        self.title="Содержание блока"
         return u'%s' % self.title
 
 class ContTextAdmin(admin.ModelAdmin):
@@ -64,8 +64,8 @@ class ContactsSeo(models.Model):
     en_keywords = models.TextField('EN--->keywords', max_length=1000, null=True, blank=True)
 
     class Meta:
-        verbose_name = ('SEO')
-        verbose_name_plural = ('SEO')
+        verbose_name = ('SEO ДЛЯ РАЗДЕЛА КОНТАКТЫ')
+        verbose_name_plural = ('SEO ДЛЯ РАЗДЕЛА КОНТАКТЫ')
 
     def __str__(self):
         self.title="SEO"

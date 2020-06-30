@@ -76,9 +76,9 @@
        {% endif %}
        {% if first_foto %}
            <div class="position-slider" id="position-slider">
-               <a data-fancybox="{{ position }}" href="{{ first_foto.foto.url }}"><img src="{{ first_foto.galleryfoto.url }}"/></a>
-               <a data-fancybox="{{ position }}" href="{{ second_foto.foto.url }}"><img src="{{ second_foto.galleryfoto.url }}"/></a>
-               <a data-fancybox="{{ position }}" href="{{ third_foto.foto.url }}"><img src="{{ third_foto.galleryfoto.url }}"/></a>
+               <a data-fancybox="{{ position }}" class="pos-gallery-first-item" href="{{ first_foto.foto.url }}"><img src="{{ first_foto.galleryfoto.url }}"/></a>
+               <a data-fancybox="{{ position }}" class="pos-gallery-second-item" href="{{ second_foto.foto.url }}"><img src="{{ second_foto.galleryfoto.url }}"/></a>
+               <a data-fancybox="{{ position }}" class="pos-gallery-third-item" href="{{ third_foto.foto.url }}"><img src="{{ third_foto.galleryfoto.url }}"/></a>
                {% if fotos.lenght > 0 %}
                <div class="pos-foto-hidden">
                    {% for foto in fotos %}
@@ -91,17 +91,19 @@
        {% else %}
        {% endif %}
        <div class="title-to-price-wr">
-           <a href="/pricelist/"><h1>ПЕРЕЙТИ К ПОЛНОМУ ПРАЙС-ЛИСТУ</h1></a>
+           <a href="/pricelist/"><h1><img class="position-title-icon" alt="ПЕРЕЙТИ К ПОЛНОМУ ПРАЙС-ЛИСТУ" height="25px" src="{% static 'core/imgs/common/arrow_icon_position.svg' %}"/>ПЕРЕЙТИ К ПОЛНОМУ ПРАЙС-ЛИСТУ</h1></a>
        </div>
         {% if position.description1 %}
             <div class="position-description">
                 {{ position.description1|safe }}
             </div>
         {% else %}
-            <p>Мы еще не добавили информацию. Но скоро обязательно добавим!</p>
+            <div class="position-description">
+                <p>Мы еще не добавили информацию. Но скоро обязательно добавим!</p>
+            </div>
         {% endif %}
         <div class="title-to-analysis">
-           <a href="/pricelist/"><h1>УЗНАЙТЕ КАК ПРОВОДЯТ АНАЛИЗ ЛОМА</h1></a>
+           <a href="/pricelist/"><h1><img class="position-title-icon" alt="УЗНАЙТЕ КАК ПРОВОДЯТ АНАЛИЗ ЛОМА" height="25px" src="{% static 'core/imgs/common/bulb_icon_position.svg' %}"/>УЗНАЙТЕ КАК ПРОВОДЯТ АНАЛИЗ ЛОМА</h1></a>
        </div>
     <div class="position-contacts-container">
        <div class="contacts-form-wr">
@@ -113,11 +115,11 @@
            </div>
        </div>
         <div class="position-contacts-text-wr">
-            <h2 style="color: black">Контакты для связи:</h2>
+            <h2>Контакты для связи:</h2>
             <div class="pos-det-info-block">
-            <h3><a href="tel:+79175995222">8(917)599-52-22</a></h3>
-            <h3><a href="tel:+74994998474">8(499)499-84-74</a></h3>
-            <h3><a href="mailto:vekomet@gmail.com">vekomet@gmail.com</a></h3>
+            <h3><a href="tel:+79175995222"><img class="position-title-icon" alt="Телефон для связи" height="15px" src="{% static 'core/imgs/common/phone_icon_position.svg' %}"/>8(917)599-52-22</a></h3>
+            <h3><a href="tel:+74994998474"><img class="position-title-icon" alt="Телефон для связи" height="15px" src="{% static 'core/imgs/common/phone_icon_position.svg' %}"/>8(499)499-84-74</a></h3>
+            <h3><a href="mailto:vekomet@gmail.com"><img class="position-title-icon" alt="Адрес почты" height="15px" src="{% static 'core/imgs/common/mail_icon_position.svg' %}"/>vekomet@gmail.com</a></h3>
         </div>
     </div>
     </div>

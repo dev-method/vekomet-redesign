@@ -39,8 +39,8 @@ class MainPageText_P1(models.Model):
     en_sub2 = RichTextUploadingField('EN--->Текст в левой колонке', max_length=6000, blank=True, null=True)
 
     class Meta:
-        verbose_name = ('О компании(часть 1)')
-        verbose_name_plural = ('О компании(часть 1)')
+        verbose_name = ('О КОМПАНИИ | ТЕКСТ | ЧАСТЬ 1')
+        verbose_name_plural = ('О КОМПАНИИ | ТЕКСТ | ЧАСТЬ 1')
 
     def __str__(self):
         self.text="Редактировать текст"
@@ -53,8 +53,8 @@ class MainPageText_P2(models.Model):
     en_sub2 = RichTextUploadingField('EN--->Текст в левой колонке', max_length=6000, blank=True, null=True)
 
     class Meta:
-        verbose_name = ('О компании(часть 2)')
-        verbose_name_plural = ('О компании(часть 2)')
+        verbose_name = ('О КОМПАНИИ | ТЕКСТ | ЧАСТЬ 2')
+        verbose_name_plural = ('О КОМПАНИИ | ТЕКСТ | ЧАСТЬ 2')
 
     def __str__(self):
         self.text="Редактировать текст"
@@ -167,11 +167,11 @@ class Advantage(models.Model):
     order = models.IntegerField('Порядок следования на страницк', blank=True, null=True)
 
     class Meta:
-        verbose_name = ('Блок преимущества')
-        verbose_name_plural = ('Блоки преимущества')
+        verbose_name = ('ПРЕИМУЩЕСТВА | БЛОК')
+        verbose_name_plural = ('ПРЕИМУЩЕСТВА | БЛОКИ')
 
     def __str__(self):
-        self.title="Блок"
+        self.title="Блок преимущества"
         return u'%s' % self.title
 
 class AdvantageInline(admin.TabularInline):
@@ -290,8 +290,8 @@ class MainSeo(models.Model):
     en_keywords = models.TextField('EN--->keywords', max_length=1000, null=True, blank=True)
 
     class Meta:
-        verbose_name = ('SEO')
-        verbose_name_plural = ('SEO')
+        verbose_name = ('SEO ДЛЯ ГЛАВНОЙ СТРАНИЦЫ')
+        verbose_name_plural = ('SEO ДЛЯ ГЛАВНОЙ СТРАНИЦЫ')
 
     def __str__(self):
         self.title="SEO"

@@ -4,6 +4,11 @@ const imagemin = require('gulp-imagemin');
 const cleanCSS = require('gulp-clean-css');
 
 // TASKS: *** MINIFY HTML ***
+gulp.task('minifyAnalysisHtml', function() {
+    return gulp.src('analysis/templates/analysis/dev/*.html')
+        .pipe(htmlmin({collapseWhitespace: true }))
+        .pipe(gulp.dest('analysis/templates/analysis/prod/'));
+});
 
 gulp.task('minifyContactsHtml', function() {
     return gulp.src('contacts/templates/contacts/dev/*.html')
@@ -21,6 +26,19 @@ gulp.task('minifyPositionHtml', function() {
     return gulp.src('positions/templates/positions/dev/*.html')
         .pipe(htmlmin({collapseWhitespace: true }))
         .pipe(gulp.dest('positions/templates/positions/prod/'));
+});
+
+gulp.task('minifyPricelisttml', function() {
+    return gulp.src('pricelist/templates/pricelist/dev/*.html')
+        .pipe(htmlmin({collapseWhitespace: true }))
+        .pipe(gulp.dest('pricelist/templates/pricelist/prod/'));
+});
+
+
+gulp.task('minifyCoreHtml', function() {
+    return gulp.src('core/templates/core/dev/*.html')
+        .pipe(htmlmin({collapseWhitespace: true }))
+        .pipe(gulp.dest('core/templates/core/prod/'));
 });
 
 gulp.task('minifyWikiHtml', function() {

@@ -13,8 +13,8 @@ class PriceSeo(models.Model):
     en_keywords = models.TextField('EN--->keywords', max_length=1000, null=True, blank=True)
 
     class Meta:
-        verbose_name = ('SEO')
-        verbose_name_plural = ('SEO')
+        verbose_name = ('SEO ДЛЯ СТРАНИЦЫ "ПРАЙС-ЛИСТ"')
+        verbose_name_plural = ('SEO ДЛЯ СТРАНИЦЫ "ПРАЙС-ЛИСТ"')
 
     def __str__(self):
         self.title="SEO"

@@ -89,8 +89,8 @@ class NewArticle(models.Model):
                                  on_delete=models.CASCADE)
 
     class Meta:
-        verbose_name = 'Статья/Новость'
-        verbose_name_plural = 'Статьи/Новости'
+        verbose_name = 'СТАТЬЯ | НОВОСТЬ'
+        verbose_name_plural = 'СТАТЬИ | НОВОСТИ'
 
     def __str__(self):
         return u'%s' % self.title
@@ -139,8 +139,8 @@ class ArticlesSeo(models.Model):
     keywords=models.TextField('keywords', max_length=1000, null=True,blank=True)
 
     class Meta:
-        verbose_name = ('SEO | СТАТЬИ')
-        verbose_name_plural = ('SEO | СТАТЬИ')
+        verbose_name = ('SEO ДЛЯ РАЗДЕЛА "СТАТЬИ"')
+        verbose_name_plural = ('SEO ДЛЯ РАЗДЕЛА "СТАТЬИ"')
 
     def __str__(self):
         self.title="SEO"
@@ -152,8 +152,8 @@ class NewsSeo(models.Model):
     keywords=models.TextField('keywords', max_length=1000, null=True,blank=True)
 
     class Meta:
-        verbose_name = ('SEO | НОВОСТИ')
-        verbose_name_plural = ('SEO | НОВОСТИ')
+        verbose_name = ('SEO ДЛЯ РАЗДЕЛА "НОВОСТИ"')
+        verbose_name_plural = ('SEO ДЛЯ РАЗДЕЛА "НОВОСТИ"')
 
     def __str__(self):
         self.title="SEO"
