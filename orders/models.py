@@ -2,6 +2,9 @@
 from __future__ import unicode_literals
 from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
+from orders.send_order_tasks import send_order
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 # Create your models here.
@@ -42,7 +45,11 @@ class OrdersSeo(models.Model):
     def __str__(self):
         self.title="SEO"
         return u'%s' % self.title
-
+"""
+@receiver(post_save, sender=Order)
+def new_order_sendmail(sender, instance, created, raw, using, **kwargs):
+    send_order(instance.name, instance.contacts, instance.description)
+"""
 
 
 

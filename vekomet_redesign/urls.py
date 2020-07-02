@@ -14,11 +14,13 @@ from analysis import views as analize_views
 from articles import views as articles_views
 from wiki import views as wiki_views
 from contacts import views as contacts_views
+from orders.decorators import check_recaptcha
 
 urlpatterns = [
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('admin/', admin.site.urls),
-    path('', coreviews.mainpage, name="main"),
+    path('', check_recaptcha(coreviews.mainpage), name="main"),
+    path('en/', coreviews.en_mainpage, name="en_main"),
     path('api-auth/', include('rest_framework.urls')),
     path('articles/api/total/', articles_views.articles_collection, name="articles_collection"),
     path('articles/api/news/', articles_views.articles_news_collection, name="articles_news_collection"),

@@ -1,24 +1,34 @@
 {% load static %}
 <footer>
     <div class="section-container footer">
-        <div class="footer-content-container">
+        <div class="vcard footer-content-container" itemscope itemtype="http://schema.org/Organization">
+            <meta itemprop="name" content="ООО ВеКо">
+            <span class="fn org">
+                <span class="value-title" title="ООО ВеКо"> </span>
+            </span>
+            <span class="category">
+                <span class="value-title" title="Прием лома цветных и редкоземельных металлов"> </span>
+            </span>
+            <span class="url">
+                <span class="value-title" title="http://www.vekomet.ru"> </span>
+            </span>
             <div class="footer-contacts-wr">
                 <div class="footer-contacts-title">
                     КОНТАКТЫ
                 </div>
-                <div class="footer-contacts-text">
-                    город Электросталь<br>
-                    ул.Пионерска дом 22<br>
-                    <a href="tel:+74994998474">+7(499)499-84-74</a><br>
-                    <a href="tel:+79175995222">+7(917)599-52-22</a><br>
-                    <a href="mailto:vekomet@gmail.com">vekomet@gmail.com</a><br>
+                <div class="adr footer-contacts-text" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                    <span class="locality" itemprop="addressLocality">город Электросталь</span><br>
+                    <span class="street-address" itemprop="streetAddress">ул.Пионерска дом 22</span><br>
+                    <a class="tel" href="tel:+74994998474" itemprop="telephone">+7(499)499-84-74</a><br>
+                    <a class="tel" href="tel:+79175995222" itemprop="telephone">+7(917)599-52-22</a><br>
+                    <a class="email" href="mailto:vekomet@gmail.com" itemprop="email">vekomet@gmail.com</a><br>
                 </div>
             </div>
             <div class="footer-shedule-wr">
                 <div class="footer-shedule-title">
                     ГРАФИК РАБОТЫ
                 </div>
-                <div class="footer-shedule-text">
+                <div class="workhours footer-shedule-text">
                     пн-пт: 8.00 - 8.30<br>
                     cб: 9.00 - 13.00<br>
                     вс: выходной<br>
@@ -47,6 +57,7 @@
                 </div>
                 <div class="footer-logo-img">
                     <img alt="ООО ВеКо" src="{% static 'core/imgs/footer/veko-logo-150.png' %}"/>
+                    <link itemprop="logo" class="photo" href="{% static 'core/imgs/footer/veko-logo-150.png' %}" />
                 </div>
             </div>
         </div>

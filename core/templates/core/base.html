@@ -1,8 +1,16 @@
 <!DOCTYPE html>
-<html lang="ru">
+{% if en_lang_flag %}
+    <html lang="en">
+{% else %}
+    <html lang="ru">
+{% endif %}
 <head>
     {% load static %}
-    <meta http-equiv="content-language" content="ru"/>
+    {% if en_lang_flag %}
+        <meta http-equiv="content-language" content="en"/>
+    {% else %}
+        <meta http-equiv="content-language" content="ru"/>
+    {% endif %}
     <meta charset="utf-8" />
     {% block LangLink %}
     {% endblock %}
@@ -11,12 +19,17 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'core/favicon/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'core/favicon/favicon-16x16.png' %}">
     <link rel="mask-icon" href="{% static 'core/favicon/safari-pinned-tab.svg' %}">
+    <link rel="preconnect" href="https://www.google-analytics.com">
+    {% block OpenGraph %}
+    {% endblock %}
     {% block Meta %}
         {% for s in seo %}
             <title>{{ s.title }}</title>
             <meta name="Keywords" content="{{ s.keywords }}"/>
             <meta name="Description" content="{{s.description}}"/>
         {% endfor %}
+    {% endblock %}
+    {% block LinkAmp %}
     {% endblock %}
     {% block PreloadPrefetch %}
     {% endblock %}
@@ -46,8 +59,6 @@
 {% endblock %}
 {% include 'core/footer.html' %}
 </div>
-{% block JS %}
-{% endblock %}
 <div class="toTop-button-wr" id="toTopButton">
     <a data-scroll href="#page-top"><img class="toTop-button" height="150px" alt="Вернуться наверх сайта" src="{% static 'core/imgs/toTop/toTop-icon-250.png' %}"/></a>
 </div>
@@ -60,5 +71,7 @@
     <script>
         var scroll = new SmoothScroll('a[href*="#"]');
     </script>
+{% block JS %}
+{% endblock %}
 </body>
 </html>

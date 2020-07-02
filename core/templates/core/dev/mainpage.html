@@ -1,15 +1,67 @@
 {% extends "core/base.html" %}
 {% load static %}
+{% block OpenGraph %}
+    {% for s in seo %}
+    <meta property="og:title" content="{{ s.title }}"/>
+	<meta property="og:description" content="{{ s.description }}"/>
+    {% if s.op_graph_photo %}
+	<meta property="og:image" content="https://www.vekomet.ru{{ s.op_graph_photo.url }}"/>
+    {% else %}
+    {% endif %}
+    {% endfor %}
+	<meta property="og:type" content="website"/>
+	<meta property="og:url" content= "https://www.vekomet.ru/" />
+{% endblock %}
 {% block PreloadPrefetch %}
     {% if debug_flag %}
+    {% else %}
         <link rel="preload" href="{% static 'core/vendor/tinyslider/tiny-slider.css' %}" as="style">
         <link rel="preload" href="{% static 'core/vendor/tinyslider/tiny-slider.js' %}" as="script">
     {% endif %}
+{% endblock %}
+{% block LangLink %}
+  <meta http-equiv="content-language" content="ru"/>
+  <link rel="alternate" href="/en/" hreflang="en-en">
+{% endblock %}
+{% block LinkAmp %}
+    <link rel="amphtml" href="https://vekomet.ru/amp/">
 {% endblock %}
 {% block CSS %}
     <link rel="stylesheet" href="{% static 'core/vendor/tinyslider/tiny-slider.css' %}">
 {% endblock %}
 {% block Content %}
+         {% if errors %}
+            <div id="form-success" class="modal-success">
+                <!-- Modal content -->
+                    <div class="form-error-item">Отправка сообщения завершилась неудачей. Исправьте следующее:</div>
+                    {% for error in errors  %}
+                        <div class="form-error-item">- {{ error }}</div>
+                    {% endfor %}
+            </div>
+            <script>
+                var success = document.getElementById("form-success");
+                setTimeout(function () {
+                    success.style.display="none";
+                    }, 5000)
+            </script>
+         {% else %}
+         {% endif %}
+         {% if messages %}
+         <div id="form-success" class="modal-success">
+             <!-- Modal content -->
+             {% for message in messages  %}
+                        <div class="form-error-item">{{ message }}</div>
+             {% endfor %}
+            </div>
+            <script>
+                var success = document.getElementById("form-success");
+                setTimeout(function () {
+                    success.style.display="none";
+                    }, 5000)
+            </script>
+         {% else %}
+         {% endif %}
+
         <!-- MAINPAGE-SLIDER -->
         <div class="mainpage-slider-wr">
             <div class="slider-leftbar">
@@ -46,12 +98,11 @@
                     <div class="leftbar-leftside">
                             <div class="leftside-slider-wr">
                                 <div id="leftside-slider">
+                                {% for item in text_sliders %}
                                 <div class="leftside-text-wr">
-                                    ПРИИМАЕМ ЛОМ ЦВЕТНЫХ И РЕДКОЗЕМЕЛЬНЫХ МЕТАЛЛОВ
+                                    {{ item.sentence }}
                                 </div>
-                                <div class="leftside-text-wr">
-                                    ЛОМ ЦВЕТНЫХ И РЕДКОЗЕМЕЛЬНЫХ МЕТАЛЛОВ
-                                </div>
+                                {% endfor %}
                                 </div>
                             </div>
                             <div class="leftside-blank-div">
@@ -61,9 +112,29 @@
                 </div>
             </div>
             <div id="main-page-slider" class="main-page-slider">
-                <div class="slider-item"><img src="{% static 'core/imgs/slider/Slide_1.jpg' %}"></div>
-                <div class="slider-item"><img src="{% static 'core/imgs/slider/Slide_2.jpg' %}"></div>
-                <div class="slider-item"><img src="{% static 'core/imgs/slider/Slide_3.jpg' %}"></div>
+                {% for slider in sliders %}
+                    <div class="slider-item">
+                        {% if slider.photo_webp and photo_jp2 %}
+                            <picture>
+                                <source media="(max-width: 576px)" srcset="{{ slider.photo_576_webp }}" />
+                                <source media="(max-width: 576px)" srcset="{{ slider.photo_576_jp2 }}" />
+                                <source media="(max-width: 576px)" srcset="{{ slider.photo576.url }}" />
+                                <source media="(max-width: 768px)" srcset="{{ slider.photo_768_jp2 }}" />
+                                <source media="(max-width: 768px)" srcset="{{ slider.photo_768_webp }}" />
+                                <source media="(max-width: 768px)" srcset="{{ slider.photo768.url }}" />
+                                <img class="customresponsive carousel-image-shadow" alt="" src="{{ slider.photo_webp }}">
+                                <img class="customresponsive carousel-image-shadow" alt="" src="{{ slider.photo_jp2 }}">
+                                <img class="customresponsive carousel-image-shadow" alt="" src="{{ slider.photo.url }}">
+                            </picture>
+                        {% else %}
+                            <picture>
+                                <source media="(max-width: 576px)" srcset="{{ slider.photo576.url }}" />
+                                <source media="(max-width: 768px)" srcset="{{ slider.photo768.url }}" />
+                                <img class="customresponsive carousel-image-shadow" alt="" src="{{ slider.photo.url }}">
+                            </picture>
+                        {% endif %}
+                    </div>
+                {% endfor %}
             </div>
         </div>
         <div class="mobile-mini-slider" id="mini-slider">
@@ -151,7 +222,7 @@
                             <h2>{{ first_new.title }}</h2>
                         </div>
                         <div class="news-item-divider"></div>
-                        <div class="news-item-date">18.02.2020г</div>
+                        <div class="news-item-date">{{ first_new.pubdate }}</div>
                     </div>
                 </div>
                 <div class="news-divider-wr">
@@ -163,10 +234,10 @@
                             <img width="125px" alt='Новости' src="{% static 'core/imgs/newsblock/news-block-corner.png' %}"/>
                         </div>
                         <div class="news-item-title">
-                            <h2>{{ first_new.title }}</h2>
+                            <h2>{{ second_new.title }}</h2>
                         </div>
                         <div class="news-item-divider"></div>
-                        <div class="news-item-date">18.02.2020г</div>
+                        <div class="news-item-date">{{ second_new.pubdate }}</div>
                     </div>
                 </div>
                 <div class="news-divider-wr last-news-divider">
@@ -178,10 +249,10 @@
                             <img width="125px" alt='Новости' src="{% static 'core/imgs/newsblock/news-block-corner.png' %}"/>
                         </div>
                         <div class="news-item-title">
-                            <h2>{{ first_new.title }}</h2>
+                            <h2>{{ third_new.title }}</h2>
                         </div>
                         <div class="news-item-divider"></div>
-                        <div class="news-item-date">18.02.2020г</div>
+                        <div class="news-item-date">{{ third_new.pubdate }}</div>
                     </div>
                 </div>
             </div>
@@ -199,23 +270,25 @@
                     </div>
                 </div>
                 <div class="form-banner-form-wr">
-                    <form>
+                    <form method="post" action="">
+                            {% csrf_token %}
                             <div class="form-group">
-                                <label for="m_clientName">Как вас зовут:</label>
-                                <input class="form-control" id="m_clientName" placeholder="Как к вам обращаться?">
+                                <label for="name">Как вас зовут:</label>
+                                <input class="form-control" id="name" name="name" value="{{ form.name }}" placeholder="Как к вам обращаться?">
                             </div>
                             <div class="form-group">
-                                <label for="m_clientNamePhone">Ваш телефон или почта:</label>
-                                <input class="form-control" id="m_clientNamePhone" placeholder="Укажите телефон или почту">
+                                <label for="contacts">Ваш телефон или почта:</label>
+                                <input class="form-control" id="contacts" name="contacts" value="{{ form.contacts }}" placeholder="Укажите телефон или почту">
                             </div>
                             <div class="form-group">
-                                <label for="m_clientMessage">Ваше сообщение</label>
-                                <textarea class="form-control" id="m_clientMessage" rows="3"></textarea>
+                                <label for="message">Ваше сообщение</label>
+                                <textarea class="form-control" id="message" name="message" value="{{ form.message }}" placeholder="Текст сообщения" rows="2"></textarea>
                             </div>
+                        <div class="form-group g-recaptcha" data-sitekey="6LdgNGsUAAAAAGd7vVWvBW7wrqfxfrmsWogDBMkB"></div>
                         <div class="form-group-button">
-                            <button type="submit" class="btn btn-primary">ОТПРАВИТЬ</button>
+                            <button type="submit" name="action" class="btn btn-primary">ОТПРАВИТЬ</button>
                         </div>
-                        </form>
+                    </form>
                 </div>
             </div>
         </div>
@@ -400,8 +473,10 @@
             </div>
         </div>
         <!-- END-MAP-BLOCK -->
+
 {% endblock %}
 {% block JS %}
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="{% static 'core/vendor/tinyslider/tiny-slider.js' %}"></script>
     <script>
         if(document.body.clientWidth<768) {

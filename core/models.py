@@ -53,6 +53,17 @@ class MainPageText_P2(models.Model):
         self.text="Редактировать текст"
         return u'%s' % self.text
 
+class TextSlider(models.Model):
+    sentence = models.CharField('Фраза для слайдера', max_length=6000, blank=True, null=True)
+    en_sentence = RichTextUploadingField('EN--->Фраза для слайдера', max_length=6000, blank=True, null=True)
+
+    class Meta:
+        verbose_name = ('ТЕКСТОВЫЙ СЛАЙДЕР')
+        verbose_name_plural = ('ТЕКСТОВЫЙ СЛАЙДЕР')
+
+    def __str__(self):
+        return u'%s' % self.sentence
+
 class MainPhoto(models.Model):
     photo=ProcessedImageField(verbose_name='ФОТО | JPEG | 1920х500', upload_to='media/',
                                            format='JPEG',
@@ -107,7 +118,7 @@ class MainPhotoAdmin(admin.ModelAdmin):
                  'classes': ['collapse']}),
         ('ФОТО | РАЗМЕР 576x', {'fields': ['photo576', 'photo_576_webp', 'photo_576_jp2'], 'classes': ['collapse']}),
     ]
-
+'''
 @shared_task(acks_late=True)
 def mainphoto_alter_formats(pk):
     time.sleep(1)
@@ -146,6 +157,7 @@ def methods_image(instance, **kwargs):
         mainphoto_alter_formats(instance.pk)
     else:
         pass
+'''
 
 class Advantage(models.Model):
     image=ProcessedImageField(verbose_name='Фото',upload_to='media/',
@@ -214,10 +226,12 @@ class MainSeo(models.Model):
     en_description = models.TextField('EN--->description', max_length=1000, null=True, blank=True)
     keywords=models.TextField('keywords', max_length=1000, null=True,blank=True)
     en_keywords = models.TextField('EN--->keywords', max_length=1000, null=True, blank=True)
-
+    op_graph_photo = ProcessedImageField(verbose_name='ФОТО ДЛЯ OPENGRAPH', upload_to='media/',
+                                format='JPEG',
+                                options={'quality': 90}, null=True, blank=True)
     class Meta:
-        verbose_name = ('SEO ДЛЯ ГЛАВНОЙ СТРАНИЦЫ')
-        verbose_name_plural = ('SEO ДЛЯ ГЛАВНОЙ СТРАНИЦЫ')
+        verbose_name = ('SEO | OPENGRAPH ДЛЯ ГЛАВНОЙ СТРАНИЦЫ')
+        verbose_name_plural = ('SEO | OPENGRAPH ДЛЯ ГЛАВНОЙ СТРАНИЦЫ')
 
     def __str__(self):
         self.title="SEO"
