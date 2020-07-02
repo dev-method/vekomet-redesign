@@ -989,6 +989,9 @@ label {
     flex: 5;
     align-items: flex-end;
 }
+.news-item-title a {
+    color: white;
+}
 .news-item-divider {
     width: 90%;
     margin: auto;

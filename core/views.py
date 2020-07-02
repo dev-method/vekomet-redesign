@@ -11,8 +11,6 @@ from django.contrib import messages
 
 # Create your views here.
 def mainpage(request):
-    errors = []
-    form = {}
     text_sliders = TextSlider.objects.all()
     sliders = MainPhoto.objects.all()
     try:
@@ -32,22 +30,7 @@ def mainpage(request):
     metalls = Metall.objects.order_by("priority")[:22]
     mainpage_flag = "current"
     mainpage_navigation_flag = True
-    if request.POST:
-        form['name'] = request.POST.get('name')
-        form['contacts'] = request.POST.get('contacts')
-        form['message'] = request.POST.get('message')
-        if not form['contacts']:
-            errors.append('Оставьте свои контакты')
-        if not form['message']:
-            errors.append('Укажите с каким вопросом вы к нам обратились?')
-        if not request.recaptcha_is_valid:
-            errors.append('Необходимо пройти каптчу')
-        if not errors and request.recaptcha_is_valid:
-            Order.objects.create(name=form['name'], contacts=form['contacts'], description=form['message'])
-            messages.add_message(request, messages.INFO,
-                                 'Ваша заявка отправлена, в ближайшее время с Вами свяжутся наши специалисты.')
-            return HttpResponseRedirect('/')
-    return render(request, 'core/{}/mainpage.html'.format(settings.TEMP_PREFIX),{'errors': errors, 'form':form, 'mainpage_flag':mainpage_flag, 'mainpage_navigation_flag':mainpage_navigation_flag,
+    return render(request, 'core/{}/mainpage.html'.format(settings.TEMP_PREFIX),{'mainpage_flag':mainpage_flag, 'mainpage_navigation_flag':mainpage_navigation_flag,
                                                      'main_text_p1': main_text_p1, 'main_text_p2': main_text_p2, 'first_new': first_new, 'second_new':second_new,
                                                      'third_new':third_new, 'advantages_part1': advantages_part1, 'advantages_part2': advantages_part2, 'seo': seo,
                                                      'metalls': metalls, 'sliders': sliders, 'text_sliders': text_sliders})
