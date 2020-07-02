@@ -50,7 +50,7 @@
          <div id="form-success" class="modal-success">
              <!-- Modal content -->
              {% for message in messages  %}
-                        <div class="form-error-item">{{ message }}</div>
+                        <div class="form-error-item">-{{ message }}</div>
              {% endfor %}
             </div>
             <script>
@@ -270,7 +270,7 @@
                     </div>
                 </div>
                 <div class="form-banner-form-wr">
-                    <form method="post" action="">
+                    <form method="post" action="/main-form-handler/">
                             {% csrf_token %}
                             <div class="form-group">
                                 <label for="name">Как вас зовут:</label>

@@ -115,19 +115,21 @@
                 </div>
                 <div class="hidden-form-container">
                 <div class="hidden-form-wr">
-                        <form>
+                        <form method="post" action="/sliding-form-handler/">
+                            {% csrf_token %}
                             <div class="form-group">
-                                <label for="m_clientName">Как вас зовут:</label>
-                                <input class="form-control" id="m_clientName" placeholder="Как к вам обращаться?">
+                                <label for="slide_name">Как вас зовут:</label>
+                                <input class="form-control" id="slide_name" name="slide_name" placeholder="Как к вам обращаться?">
                             </div>
                             <div class="form-group">
-                                <label for="m_clientNamePhone">Ваш телефон или почта:</label>
-                                <input class="form-control" id="m_clientNamePhone" placeholder="Укажите телефон или почту">
+                                <label for="slide_contacts">Ваш телефон или почта:</label>
+                                <input class="form-control" id="slide_contacts" name = "slide_contacts" placeholder="Укажите телефон или почту">
                             </div>
                             <div class="form-group">
-                                <label for="m_clientMessage">Ваше сообщение</label>
-                                <textarea class="form-control" id="m_clientMessage" rows="3"></textarea>
+                                <label for="slide_message">Ваше сообщение</label>
+                                <textarea class="form-control" id="slide_message" name = "slide_message" rows="3"></textarea>
                             </div>
+                            <div class="form-group g-recaptcha" data-sitekey="6LdgNGsUAAAAAGd7vVWvBW7wrqfxfrmsWogDBMkB"></div>
                             <button type="submit" class="btn btn-primary">ОТПРАВИТЬ</button>
                         </form>
                 </div>
@@ -150,19 +152,21 @@
         <div class="modal-content form-modal">
             <div id="f-modal-close"><span class="close" >&times;</span></div>
             <div class="modal-form-wr">
-                <form>
+                <form method="post" action="/modal-form-handler/">
+                    {% csrf_token %}
                     <div class="form-group">
-                        <label for="clientName">Как вас зовут:</label>
-                        <input class="form-control" id="clientName" placeholder="Как к вам обращаться?">
+                        <label for="top_name">Как вас зовут:</label>
+                        <input class="form-control" id="top_name" name="top_name" placeholder="Как к вам обращаться?">
                     </div>
                     <div class="form-group">
-                        <label for="clientNamePhone">Ваш телефон или почта:</label>
-                        <input class="form-control" id="clientNamePhone" placeholder="Укажите телефон или почту">
+                        <label for="top_contacts">Ваш телефон или почта:</label>
+                        <input class="form-control" id="top_contacts" name = "top_contacts" placeholder="Укажите телефон или почту">
                     </div>
                     <div class="form-group">
-                        <label for="clientMessage">Ваше сообщение</label>
-                        <textarea class="form-control" id="clientMessage" rows="5"></textarea>
+                        <label for="top_message">Ваше сообщение</label>
+                        <textarea class="form-control" name = "top_message" id="top_message" rows="5"></textarea>
                     </div>
+                    <div class="form-group g-recaptcha" data-sitekey="6LdgNGsUAAAAAGd7vVWvBW7wrqfxfrmsWogDBMkB"></div>
                     <div class="form-button-wr">
                         <button type="submit" class="btn btn-primary">ОТПРАВИТЬ</button>
                     </div>
@@ -180,6 +184,7 @@
                         <div id="navbar-first-item" class="navbar-item main-dropdown {{ mainpage_flag }}">
                             <a href="/" data-hover="ГЛАВНАЯ">ГЛАВНАЯ</a>
                             <img class="dropdown-icon" alt="Раскрыть меню" src="{% static 'core/imgs/navbar/arrow-down-white-100.svg' %}"/>
+                         {% if mainpage_navigation_flag %}
                         <div id="navbar-collapse-wr" class="navbar-collapse-wr main-collapse">
                             <div class="navbar-collapse-item"><a href="#about-company-link">О КОМПАНИИ</a></div>
                             <div class="navbar-collapse-item"><a href="#news-link">НОВОСТИ</a></div>
@@ -190,6 +195,18 @@
                             <div class="navbar-collapse-item"><a href="#directions-link">НАШИ НАПРАВЛЕНИЯ</a></div>
                             <div class="navbar-collapse-item"><a href="#maps-link">МЫ НА КАРТЕ</a></div>
                         </div>
+                        {% else %}
+                        <div id="navbar-collapse-wr" class="navbar-collapse-wr main-collapse">
+                            <div class="navbar-collapse-item"><a href="/#about-company-link">О КОМПАНИИ</a></div>
+                            <div class="navbar-collapse-item"><a href="/#news-link">НОВОСТИ</a></div>
+                            <div class="navbar-collapse-item"><a href="/#form-link">ОСТАВИТЬ СООБЩЕНИЕ</a></div>
+                            <div class="navbar-collapse-item"><a href="/#advantages-link">НАШИ ПРЕИМУЩЕСТВА</a></div>
+                            <div class="navbar-collapse-item"><a href="/#howto-link">КАК МЫ РАБОТАЕМ</a></div>
+                            <div class="navbar-collapse-item"><a href="/#shortprice-link">ЦЕНЫ НА ЛОМ НАЛИЧНЫМИ</a></div>
+                            <div class="navbar-collapse-item"><a href="/#directions-link">НАШИ НАПРАВЛЕНИЯ</a></div>
+                            <div class="navbar-collapse-item"><a href="/#maps-link">МЫ НА КАРТЕ</a></div>
+                        </div>
+                        {% endif %}
                         </div>
                         <div class="navbar-item-arrow-wr"></div>
                         <div class="navbar-item {{ pricelist_flag }}"><a href="/pricelist/" data-hover="ПРАЙС-ЛИСТ">ПРАЙС-ЛИСТ</a></div>

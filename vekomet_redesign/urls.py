@@ -14,18 +14,20 @@ from analysis import views as analize_views
 from articles import views as articles_views
 from wiki import views as wiki_views
 from contacts import views as contacts_views
-from orders.decorators import check_recaptcha
 
 urlpatterns = [
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('admin/', admin.site.urls),
-    path('', check_recaptcha(coreviews.mainpage), name="main"),
+    path('', coreviews.mainpage, name="main"),
     path('en/', coreviews.en_mainpage, name="en_main"),
     path('api-auth/', include('rest_framework.urls')),
     path('articles/api/total/', articles_views.articles_collection, name="articles_collection"),
     path('articles/api/news/', articles_views.articles_news_collection, name="articles_news_collection"),
     path('articles/api/topics/', articles_views.articles_theme_collection, name="articles_theme_collection"),
     path('map/', coreviews.intaractive_map, name="intaractive-map"),
+    path('modal-form-handler/', orders_views.modal_form_handler, name="modal_form_handler"),
+    path('sliding-form-handler/', orders_views.sliding_form_handler, name="sliding_form_handler"),
+    path('main-form-handler/', orders_views.main_form_handler, name="main_form_handler"),
     path('metall-calculator/', coreviews.calculator, name="calculator"),
     path('pricelist/', price_views.pricelist, name="pricelist"),
     path('orders/api/collection/', orders_views.orders_api, name="orders_api"),

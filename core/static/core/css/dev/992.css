@@ -62,6 +62,9 @@
     .hidden-form-block {
         display: none;
     }
+    .g-recaptcha {
+        padding-left: 23px;
+    }
 
     /* NAVBAR */
     .navbar {

@@ -419,10 +419,14 @@ label {
     flex-direction: column;
     justify-content: center;
     position: absolute;
-    top: -360px;
+    top: -410px;
     background-color: #b9c8d4;
     transition: top .6s, opacity 1s;
 }
+.hidden-form-block textarea {
+    font-family: Roboto, sans-serif;
+}
+
 .hidden-form-wr {
     width: 80%;
 }
@@ -512,7 +516,7 @@ label {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
 .g-recaptcha {
-    padding-left: 23px;
+    padding-left: 0;
 }
 
 .sliding-container {
@@ -869,6 +873,13 @@ label {
     margin: auto;
     padding-bottom: 30px;
 }
+.modal-form-wr textarea {
+    font-family: 'Roboto', sans-serif;
+}
+
+.modal-form-wr .g-recaptcha {
+    padding-left: 0;
+}
 
 .modal-form-wr label {
     color: #8e969c;
@@ -998,7 +1009,7 @@ label {
     padding-top: 40px;
     padding-bottom: 40px;
     z-index: 999;
-    background-color: rgba(128, 128, 128, 0.35);
+    background-color: rgba(188, 104, 104, 0.35);
     display: flex;
     flex-direction: column;
     width: 100%;
