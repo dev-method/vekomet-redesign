@@ -274,6 +274,16 @@
     .pricelist-link-icon {
         display: block;
     }
+    .tantal-item-wr {
+        width: 60%;
+        height: 320px;
+    }
+    .tantal-positions-container {
+        justify-content: center;
+    }
+    .section-subtitle {
+        border-left: none;
+    }
 
     /* ANALYSIS PAGE */
 

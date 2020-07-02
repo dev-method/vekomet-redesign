@@ -1,11 +1,30 @@
 {% extends "core/base.html" %}
 {% load static %}
+{% block OpenGraph %}
+    {% for s in seo %}
+    <meta property="og:title" content="{{ s.title }}"/>
+	<meta property="og:description" content="{{ s.description }}"/>
+    {% if s.op_graph_photo %}
+	<meta property="og:image" content="https://www.vekomet.ru{{ s.op_graph_photo.url }}"/>
+    {% else %}
+    {% endif %}
+    {% endfor %}
+	<meta property="og:type" content="website"/>
+	<meta property="og:url" content= "https://www.vekomet.ru/pricelist/" />
+{% endblock %}
 {% block PreloadPrefetch %}
     {% if debug_flag %}
     {% else %}
         <link rel="preload" href="{% static 'pricelist/vendor/lightgallery/lightgallery.min.css' %}" as="style">
         <link rel="preload" href="{% static 'pricelist/js/prod/pricelist.js' %}" as="script">
     {% endif %}
+{% endblock %}
+{% block LangLink %}
+  <meta http-equiv="content-language" content="ru"/>
+  <link rel="alternate" href="en/pricelist" hreflang="en-en">
+{% endblock %}
+{% block LinkAmp %}
+    <link rel="amphtml" href="https://vekomet.ru/amp/pricelist/">
 {% endblock %}
 {% block CSS %}
     <link rel="stylesheet" href="{% static 'pricelist/vendor/lightgallery/lightgallery.min.css' %}" />
@@ -62,24 +81,24 @@
     <tr>
         {% if g.alterslug %}
             <td class="pricelist-table-item" id="#{{ g.alterslug }}"><a  href="{{ g.alterslug }}">{{ g.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-            <td class="pricelist-table-item" style="text-align:center"><a href="/metall/{{ g.slug }}/">{{ g.price }}</a></td>
-            <td class="pricelist-table-item" style="text-align:center"><a href="/metall/{{ g.slug }}/">{{ g.price_bn }}</a></td>
+            <td class="pricelist-table-item" style="text-align:center; justify-content: center;"><a style="justify-content: center;" href="/metall/{{ g.slug }}/">{{ g.price }}</a></td>
+            <td class="pricelist-table-item" style="text-align:center; justify-content: center;"><a style="justify-content: center;" href="/metall/{{ g.slug }}/">{{ g.price_bn }}</a></td>
         {% else %}
         <td class="pricelist-table-item"><a  href="http://www.vekolom.ru/">{{ g.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-        <td class="pricelist-table-item" style="text-align:center;"><a href="/metall/{{ g.slug }}/">{{ g.price }}</a></td>
-        <td class="pricelist-table-item" style="text-align:center;"><a href="/metall/{{ g.slug }}/">{{ g.price_bn}}</a></td>
+        <td class="pricelist-table-item" style="text-align:center; justify-content: center;"><a style="justify-content: center;" href="/metall/{{ g.slug }}/">{{ g.price }}</a></td>
+        <td class="pricelist-table-item" style="text-align:center; justify-content: center;"><a style="justify-content: center;" href="/metall/{{ g.slug }}/">{{ g.price_bn}}</a></td>
         {% endif %}
     </tr>
         {% else %}
      <tr style="display: none">
         {% if g.alterslug %}
         <td class="pricelist-table-item"><a  href="{{ g.alterslug }}">{{ g.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-        <td class="pricelist-table-item" style="text-align:center;"><a href="/metall/{{ g.slug }}/">{{ g.price }}</a></td>
-        <td class="pricelist-table-item" style="text-align:center;"><a href="/metall/{{ g.slug }}/">{{ g.price_bn }}</a></td>
+        <td class="pricelist-table-item" style="text-align:center; justify-content: center;"><a style="justify-content: center;" href="/metall/{{ g.slug }}/">{{ g.price }}</a></td>
+        <td class="pricelist-table-item" style="text-align:center; justify-content: center;"><a style="justify-content: center;" href="/metall/{{ g.slug }}/">{{ g.price_bn }}</a></td>
          {% else %}
         <td class="pricelist-table-item"><a  href="http://www.vekolom.ru/">{{ g.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-        <td class="pricelist-table-item" style="text-align:center;"><a href="/metall/{{ g.slug }}/">{{ g.price }}</a></td>
-        <td class="pricelist-table-item" style="text-align:center;"><a href="/metall/{{ g.slug }}/">{{ g.price_bn }}</a></td>
+        <td class="pricelist-table-item" style="text-align:center; justify-content: center;"><a style="justify-content: center;" href="/metall/{{ g.slug }}/">{{ g.price }}</a></td>
+        <td class="pricelist-table-item" style="text-align:center; justify-content: center;"><a style="justify-content: center;" href="/metall/{{ g.slug }}/">{{ g.price_bn }}</a></td>
         {% endif %}
     </tr>
         {% endif %}
@@ -94,28 +113,28 @@
          {%  if k.visible %}
          <tr>
              <td class="pricelist-table-item" id="#{{ k.alterslug }}"><a  href="/metall/{{ k.alterslug }}/">{{ k.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ k.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ k.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ k.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ k.price_bn }}</td>
          </tr>
          {% else %}
          <tr style="display: none">
              <td class="pricelist-table-item"><a  href="/metall/{{ k.alterslug }}/">{{ k.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ k.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ k.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ k.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ k.price_bn }}</td>
           </tr>
         {% endif %}
      {% else %}
          {%  if k.visible %}
           <tr>
              <td class="pricelist-table-item" id="#{{ k.slug }}"><a  href="/metall/{{ k.slug }}/">{{ k.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ k.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ k.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ k.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ k.price_bn }}</td>
           </tr>
           {% else %}
           <tr style="display: none">
              <td class="pricelist-table-item"><a  href="/metall/{{ k.slug }}/">{{ k.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ k.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ k.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ k.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ k.price_bn }}</td>
           </tr>
           {% endif %}
      {% endif %}
@@ -130,28 +149,28 @@
          {%  if l.visible %}
          <tr>
              <td class="pricelist-table-item" id="#{{ l.alterslug }}"><a  href="/metall/{{ l.alterslug }}/">{{ l.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ l.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ l.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ l.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ l.price_bn }}</td>
          </tr>
          {% else %}
          <tr style="display: none">
              <td class="pricelist-table-item"><a  href="/metall/{{ l.alterslug }}/">{{ l.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ l.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ l.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ l.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ l.price_bn }}</td>
           </tr>
         {% endif %}
      {% else %}
          {%  if l.visible %}
           <tr>
              <td class="pricelist-table-item" id="#{{ l.slug }}"><a  href="/metall/{{ l.slug }}/">{{ l.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ l.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ l.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ l.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ l.price_bn }}</td>
           </tr>
           {% else %}
           <tr style="display: none">
              <td class="pricelist-table-item"><a  href="/metall/{{ l.slug }}/">{{ l.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ l.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ l.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ l.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ l.price_bn }}</td>
           </tr>
           {% endif %}
      {% endif %}
@@ -166,28 +185,28 @@
          {%  if m.visible %}
          <tr>
              <td class="pricelist-table-item" id="#{{ m.alterslug }}"><a  href="/metall/{{ m.alterslug }}/">{{ m.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ m.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ m.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ m.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ m.price_bn }}</td>
          </tr>
          {% else %}
          <tr style="display: none">
              <td class="pricelist-table-item"><a  href="/metall/{{ m.alterslug }}/">{{ m.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ m.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ m.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ m.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ m.price_bn }}</td>
           </tr>
         {% endif %}
      {% else %}
          {%  if m.visible %}
           <tr>
              <td class="pricelist-table-item" id="#{{ m.slug }}"><a  href="/metall/{{ m.slug }}/">{{ m.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ m.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ m.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ m.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ m.price_bn }}</td>
           </tr>
           {% else %}
           <tr style="display: none">
              <td class="pricelist-table-item"><a  href="/metall/{{ m.slug }}/">{{ m.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ m.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ m.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ m.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ m.price_bn }}</td>
           </tr>
           {% endif %}
      {% endif %}
@@ -202,28 +221,28 @@
          {%  if n.visible %}
          <tr>
              <td class="pricelist-table-item" id="#{{ n.alterslug }}"><a  href="/metall/{{ n.alterslug }}/">{{ n.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ n.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ n.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ n.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ n.price_bn }}</td>
          </tr>
          {% else %}
          <tr style="display: none">
              <td class="pricelist-table-item"><a  href="/metall/{{ n.alterslug }}/">{{ n.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ n.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ n.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ n.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ n.price_bn }}</td>
           </tr>
         {% endif %}
      {% else %}
          {%  if n.visible %}
           <tr>
              <td class="pricelist-table-item" id="#{{ n.slug }}"><a  href="/metall/{{ n.slug }}/">{{ n.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ n.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ n.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ n.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ n.price_bn }}</td>
           </tr>
           {% else %}
           <tr style="display: none">
              <td class="pricelist-table-item"><a  href="/metall/{{ n.slug }}/">{{ n.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ n.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ n.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ n.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ n.price_bn }}</td>
           </tr>
           {% endif %}
      {% endif %}
@@ -238,28 +257,28 @@
          {%  if o.visible %}
          <tr>
              <td class="pricelist-table-item" id="#{{ o.alterslug }}"><a  href="/metall/{{ o.alterslug }}/">{{ o.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ o.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ o.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ o.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ o.price_bn }}</td>
          </tr>
          {% else %}
          <tr style="display: none">
              <td class="pricelist-table-item"><a  href="/metall/{{ o.alterslug }}/">{{ o.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ o.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ o.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ o.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ o.price_bn }}</td>
           </tr>
         {% endif %}
      {% else %}
          {%  if o.visible %}
           <tr>
              <td class="pricelist-table-item" id="#{{ o.slug }}"><a  href="/metall/{{ o.slug }}/">{{ o.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ o.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ o.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ o.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ o.price_bn }}</td>
           </tr>
           {% else %}
           <tr style="display: none">
              <td class="pricelist-table-item"><a  href="/metall/{{ o.slug }}/">{{ o.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ o.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ o.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ o.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ o.price_bn }}</td>
           </tr>
           {% endif %}
      {% endif %}
@@ -274,28 +293,28 @@
          {%  if v.visible %}
          <tr>
              <td class="pricelist-table-item" id="#{{ v.alterslug }}"><a  href="/metall/{{ v.alterslug }}/">{{ v.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ v.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ v.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ v.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ v.price_bn }}</td>
          </tr>
          {% else %}
          <tr style="display: none">
              <td class="pricelist-table-item"><a  href="/metall/{{ v.alterslug }}/">{{ v.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ v.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ v.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ v.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ v.price_bn }}</td>
           </tr>
         {% endif %}
      {% else %}
          {%  if v.visible %}
           <tr>
              <td class="pricelist-table-item" id="#{{ v.slug }}"><a  href="/metall/{{ v.slug }}/">{{ v.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ v.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ v.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ v.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ v.price_bn }}</td>
           </tr>
           {% else %}
           <tr style="display: none">
              <td class="pricelist-table-item"><a  href="/metall/{{ v.slug }}/">{{ v.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ v.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ v.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ v.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ v.price_bn }}</td>
           </tr>
           {% endif %}
      {% endif %}
@@ -310,28 +329,28 @@
          {%  if f.visible %}
          <tr>
              <td class="pricelist-table-item" id="#{{ f.alterslug }}"><a  href="/metall/{{ f.alterslug }}/">{{ f.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ f.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ f.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ f.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ f.price_bn }}</td>
          </tr>
          {% else %}
          <tr style="display: none">
              <td class="pricelist-table-item"><a  href="/metall/{{ f.alterslug }}/">{{ f.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ f.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ f.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ f.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ f.price_bn }}</td>
           </tr>
         {% endif %}
      {% else %}
          {%  if f.visible %}
           <tr>
              <td class="pricelist-table-item" id="#{{ f.slug }}"><a  href="/metall/{{ f.slug }}/">{{ f.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ f.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ f.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ f.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ f.price_bn }}</td>
           </tr>
           {% else %}
           <tr style="display: none">
              <td class="pricelist-table-item"><a  href="/metall/{{ f.slug }}/">{{ f.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ f.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ f.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ f.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ f.price_bn }}</td>
           </tr>
           {% endif %}
      {% endif %}
@@ -346,28 +365,28 @@
          {%  if d.visible %}
          <tr>
              <td class="pricelist-table-item" id="#{{ d.alterslug }}"><a  href="/metall/{{ d.alterslug }}/">{{ d.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ d.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ d.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ d.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ d.price_bn }}</td>
          </tr>
          {% else %}
          <tr style="display: none">
              <td class="pricelist-table-item"><a  href="/metall/{{ d.alterslug }}/">{{ d.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ d.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ d.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ d.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ d.price_bn }}</td>
           </tr>
         {% endif %}
      {% else %}
          {%  if d.visible %}
           <tr>
              <td class="pricelist-table-item" id="#{{ d.slug }}"><a  href="/metall/{{ d.slug }}/">{{ d.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ d.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ d.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ d.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ d.price_bn }}</td>
           </tr>
           {% else %}
           <tr style="display: none">
              <td class="pricelist-table-item"><a  href="/metall/{{ d.slug }}/">{{ d.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ d.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ d.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ d.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ d.price_bn }}</td>
           </tr>
           {% endif %}
      {% endif %}
@@ -382,28 +401,28 @@
          {%  if s.visible %}
          <tr>
              <td class="pricelist-table-item" id="#{{ s.alterslug }}"><a  href="/metall/{{ s.alterslug }}/">{{ s.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ s.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ s.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ s.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ s.price_bn }}</td>
          </tr>
          {% else %}
          <tr style="display: none">
              <td class="pricelist-table-item"><a  href="/metall/{{ s.alterslug }}/">{{ s.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ s.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ s.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ s.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ s.price_bn }}</td>
           </tr>
         {% endif %}
      {% else %}
          {%  if s.visible %}
           <tr>
              <td class="pricelist-table-item" id="#{{ s.slug }}"><a  href="/metall/{{ s.slug }}/">{{ s.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ s.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ s.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ s.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ s.price_bn }}</td>
           </tr>
           {% else %}
           <tr style="display: none">
              <td class="pricelist-table-item"><a  href="/metall/{{ s.slug }}/">{{ s.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ s.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ s.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ s.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ s.price_bn }}</td>
           </tr>
           {% endif %}
      {% endif %}
@@ -418,28 +437,28 @@
          {%  if t.visible %}
          <tr>
              <td class="pricelist-table-item" id="#{{ t.alterslug }}"><a  href="/metall/{{ t.alterslug }}/">{{ t.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ t.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ t.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ t.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ t.price_bn }}</td>
          </tr>
          {% else %}
          <tr style="display: none">
              <td class="pricelist-table-item"><a  href="/metall/{{ t.alterslug }}/">{{ t.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ t.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ t.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ t.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ t.price_bn }}</td>
           </tr>
         {% endif %}
      {% else %}
          {%  if t.visible %}
           <tr>
              <td class="pricelist-table-item" id="#{{ t.slug }}"><a  href="/metall/{{ t.slug }}/">{{ t.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ t.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ t.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ t.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ t.price_bn }}</td>
           </tr>
           {% else %}
           <tr style="display: none">
              <td class="pricelist-table-item"><a  href="/metall/{{ t.slug }}/">{{ t.title }}&nbsp; <img class="pricelist-link-icon" alt="Перейти" src="{% static 'pricelist/imgs/tables/link-icon.svg' %}"/></a></td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ t.price }}</td>
-             <td class="pricelist-table-item" style="text-align:center;">{{ t.price_bn }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ t.price }}</td>
+             <td class="pricelist-table-item" style="text-align:center; justify-content: center;">{{ t.price_bn }}</td>
           </tr>
           {% endif %}
      {% endif %}

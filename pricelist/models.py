@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.db import models
+from imagekit.models import ProcessedImageField
 
 
 # Create your models here.
@@ -11,6 +12,10 @@ class PriceSeo(models.Model):
     en_description = models.TextField('EN--->description', max_length=1000, null=True, blank=True)
     keywords=models.TextField('keywords', max_length=1000, null=True,blank=True)
     en_keywords = models.TextField('EN--->keywords', max_length=1000, null=True, blank=True)
+    op_graph_photo = ProcessedImageField(verbose_name='ФОТО ДЛЯ OPENGRAPH', upload_to='media/',
+                                         format='JPEG',
+                                         options={'quality': 90}, null=True, blank=True)
+
 
     class Meta:
         verbose_name = ('SEO ДЛЯ СТРАНИЦЫ "ПРАЙС-ЛИСТ"')

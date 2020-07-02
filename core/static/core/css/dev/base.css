@@ -53,7 +53,7 @@ label {
 }
 .section-subtitle {
     color: #292f31;
-    border-left: 3px #81a5b3 solid;
+    border-left: none;
 }
 .section-subtitle h2 {
     margin: 0;
@@ -1506,6 +1506,7 @@ footer {
 }
 
 .pricelist-table-item {
+    cursor: pointer;
     border: 2px solid #3c3b3b;
     color: #3c3b3b;
 }
@@ -1529,7 +1530,7 @@ footer {
     flex-wrap: wrap;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
 }
 .tantal-item-wr {
     position: relative;

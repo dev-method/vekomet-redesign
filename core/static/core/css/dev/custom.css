@@ -50,3 +50,10 @@
         width: 80%;
     }
 }
+@media (min-width: 1550px) {
+    /* PRICELIST PAGE */
+    .tantal-item-wr {
+        width: 27%;
+        height: 350px;
+    }
+}

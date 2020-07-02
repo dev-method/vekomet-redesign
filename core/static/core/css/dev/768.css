@@ -370,6 +370,16 @@
     .pricelist-link-icon {
         display: block;
     }
+    .tantal-item-wr {
+        width: 47%;
+        height: 320px;
+    }
+    .tantal-positions-container {
+        justify-content: space-between;
+    }
+    .section-subtitle {
+        border-left: 3px #81a5b3 solid;
+    }
 
     /* ANALYSIS PAGE */
 
