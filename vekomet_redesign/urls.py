@@ -7,6 +7,7 @@ from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
 from core import views as coreviews
+from django.contrib.sitemaps.views import sitemap
 from orders import views as orders_views
 from pricelist import views as price_views
 from positions import views as position_views
@@ -14,10 +15,22 @@ from analysis import views as analize_views
 from articles import views as articles_views
 from wiki import views as wiki_views
 from contacts import views as contacts_views
+from vekomet_redesign.sitemaps import StaticViewSitemap,PosSitemap, ArtSitemap, WikiSitemap, WikiItemSitemap
+
+
+sitemaps={
+    'static':StaticViewSitemap,
+    'positions':PosSitemap(),
+    'articles':ArtSitemap(),
+    'wiki':WikiSitemap(),
+    'wiki-item': WikiItemSitemap()
+}
 
 urlpatterns = [
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('admin/', admin.site.urls),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
+     name='django.contrib.sitemaps.views.sitemap'),
     path('', coreviews.mainpage, name="main"),
     path('en/', coreviews.en_mainpage, name="en_main"),
     path('api-auth/', include('rest_framework.urls')),

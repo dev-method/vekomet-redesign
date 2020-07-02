@@ -42,7 +42,7 @@ class Article(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.title, max_length=200)
+            self.slug = slugify(self.title)
         return super(Article, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
@@ -97,7 +97,7 @@ class NewArticle(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.title, max_length=200)
+            self.slug = slugify(self.title)
         if not self.title_body:
             soup = BeautifulSoup(self.body, "lxml")
             content =soup.get_text(strip=True)
@@ -105,7 +105,10 @@ class NewArticle(models.Model):
         return super(NewArticle, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return "/new-articles/%s/" % self.slug
+        if self.category_id==2:
+            return "/news/%s/" % self.slug
+        else:
+            return "/articles/%s/" % self.slug
 
 class NewArticlesInline(admin.TabularInline):
     model = NewArticle

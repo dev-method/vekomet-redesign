@@ -80,11 +80,12 @@ class WikiMaterials(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.title, max_length=200)
+            self.slug = slugify(self.title)
         return super(WikiMaterials, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return "/directory/%s/" % self.slug
+        if self.category_id == 1 or self.category_id == 2:
+            return "/wiki/materials/%s/" %self.id
 
 class WikiMaterialsAdmin(admin.ModelAdmin):
     list_display = ('title', 'get_position', 'category')
