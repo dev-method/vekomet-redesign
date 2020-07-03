@@ -411,4 +411,15 @@
     .contacts-form-wr {
         width: 100%;
     }
+    /* CALCULATOR */
+    .calculator-container {
+        width: 100%;
+    }
+    .profile-image-wr {
+        width: 11%;
+    }
+    .profile-draw-image-wr img {
+        width: auto;
+        height: 350px;
+    }
 }

@@ -419,7 +419,7 @@ label {
     flex-direction: column;
     justify-content: center;
     position: absolute;
-    top: -410px;
+    top: -475px;
     background-color: #b9c8d4;
     transition: top .6s, opacity 1s;
 }
@@ -2142,15 +2142,21 @@ footer {
 /* CALCULATOR */
 
 .calculator {
+    margin-top: 60px;
     display: flex;
     flex-direction: column;
+}
+#calculator {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
 }
 .calculator-container {
     border: 2px solid rgba(101, 150, 198, 0.7);
     border-radius: 6px;
     height: auto;
+    width: 100%;
     overflow: hidden;
-    width: 50%;
     margin-bottom: 60px;
 }
 .calculator-header {
@@ -2182,7 +2188,8 @@ footer {
     align-items: center;
 }
 .profile-draw-image-wr img {
-    height: 350px;
+    width: 100%;
+    height: auto;
 }
 
 .profiles-icons-container {
@@ -2190,14 +2197,16 @@ footer {
     margin-bottom: 40px;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
 }
 .profile-image-wr {
+    margin-bottom: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex: 1;
+    width: 20%;
 }
 .profile-image-wr img {
     cursor: pointer;

@@ -530,4 +530,15 @@
     .contacts-form-wr {
         width: 50%;
     }
+    /* CALCULATOR */
+    .calculator-container {
+        width: 80%;
+    }
+    .profile-image-wr {
+        width: 11%;
+    }
+    .profile-draw-image-wr img {
+        width: auto;
+        height: 350px;
+    }
 }
