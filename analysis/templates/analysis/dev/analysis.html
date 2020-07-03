@@ -1,5 +1,20 @@
 {% extends "core/base.html" %}
 {% load static %}
+{% block LinkAmp %}
+    <link rel="amphtml" href="https://vekomet.ru/amp/metall-analysis/">
+{% endblock %}
+{% block OpenGraph %}
+    {% for s in seo %}
+    <meta property="og:title" content="{{ s.title }}"/>
+	<meta property="og:description" content="{{ s.description }}"/>
+    {% if s.op_graph_photo %}
+	<meta property="og:image" content="https://www.vekomet.ru{{ s.op_graph_photo.url }}"/>
+    {% else %}
+    {% endif %}
+    {% endfor %}
+	<meta property="og:type" content="website"/>
+	<meta property="og:url" content= "https://www.vekomet.ru/metall-analysis/" />
+{% endblock %}
 {% block PreloadPrefetch %}
     {% if debug_flag %}
         <link rel="preload" href="{% static 'core/vendor/tinyslider/tiny-slider.css' %}" as="style">

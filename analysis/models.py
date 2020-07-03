@@ -64,6 +64,9 @@ class AnalysisSeo(models.Model):
     title=models.TextField('title', max_length=300, null=True,blank=True)
     description=models.TextField('description', max_length=1000, null=True,blank=True)
     keywords=models.TextField('keywords', max_length=1000, null=True,blank=True)
+    op_graph_photo = ProcessedImageField(verbose_name='ФОТО ДЛЯ OPENGRAPH', upload_to='media/',
+                                         format='JPEG',
+                                         options={'quality': 90}, null=True, blank=True)
 
     class Meta:
         verbose_name = ('SEO ДЛЯ РАЗДЕЛА "АНАЛИЗ"')

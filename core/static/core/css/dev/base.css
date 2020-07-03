@@ -1610,6 +1610,7 @@ footer {
 .analysis-container {
     color: #3c3b3b;
     font-size: 1.4em;
+    line-height: 1.5;
     display: flex;
     flex-direction: column;
 }
