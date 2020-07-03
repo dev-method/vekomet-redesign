@@ -49,6 +49,12 @@
     .modal-form-wr {
         width: 80%;
     }
+    /* WIKI PAGE */
+    .wiki-item-wr {
+        width: 25%;
+        height: 350px;
+    }
+
 }
 @media (min-width: 1550px) {
     /* PRICELIST PAGE */
@@ -56,4 +62,5 @@
         width: 27%;
         height: 350px;
     }
+
 }

@@ -467,6 +467,15 @@
         flex-direction: row;
     }
 
+    /* WIKI PAGE */
+    .wiki-item-wr {
+        width: 45%;
+        height: 350px;
+    }
+    .wiki-container {
+        justify-content: space-between;
+    }
+
     /* POSITION PAGE  */
     .position-contacts-container {
         flex-direction: row;

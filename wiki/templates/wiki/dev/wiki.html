@@ -1,11 +1,19 @@
 {% extends "core/base.html" %}
 {% load static %}
-{% block Meta %}
-         {% for s in seo %}
-             <title>{{ s.title }}</title>
-             <meta name="Keywords" content="{{ s.keywords }}"/>
-             <meta name="Description" content="{{ s.description }}"/>
-         {% endfor %}
+{% block LinkAmp %}
+    <link rel="amphtml" href="https://vekomet.ru/amp/wiki/">
+{% endblock %}
+{% block OpenGraph %}
+    {% for s in seo %}
+    <meta property="og:title" content="{{ s.title }}"/>
+	<meta property="og:description" content="{{ s.description }}"/>
+    {% if s.op_graph_photo %}
+	<meta property="og:image" content="https://www.vekomet.ru{{ s.op_graph_photo.url }}"/>
+    {% else %}
+    {% endif %}
+    {% endfor %}
+	<meta property="og:type" content="website"/>
+	<meta property="og:url" content= "https://www.vekomet.ru/wiki/" />
 {% endblock %}
 {% block Content %}
     <div class="section-container wiki">
@@ -19,11 +27,14 @@
                 <div class="wiki-item-wr">
                     <div class="wiki-content-back" style="background: url({{ item.photo_amp_1.url }}); background-size: cover;">
                         <div class="wiki-item-content">
+                            <div class="wiki-item-icon-wr">
+                                <a href="/wiki/{{ item.slug }}"><img height="50px" alt="{{ item.title }} | Справочные материалы" src="{% static 'core/imgs/common/question_icon.png' %}"/></a>
+                            </div>
                             <div class="wiki-item-title">
                                 <a href="/wiki/{{ item.slug }}">{{ item.title }}</a>
                             </div>
                             <div class="wiki-item-more">
-                                <a href="/wiki/{{ item.slug }}">СМОТРЕТЬ МАТЕРИАЛЫ ></a>
+                                <a href="/wiki/{{ item.slug }}">СМОТРЕТЬ МАТЕРИАЛЫ <img height="13px" alt="Смотреть материалы" src="{% static 'core/imgs/common/wiki-arrow-icon.png' %}"/></a>
                             </div>
                         </div>
                     </div>

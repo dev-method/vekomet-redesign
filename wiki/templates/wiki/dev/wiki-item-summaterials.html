@@ -1,5 +1,18 @@
 {% extends "core/base.html" %}
 {% load static %}
+{% block LinkAmp %}
+    <link rel="amphtml" href="https://vekomet.ru/amp/wiki/{{ metallslug.slug }}/">
+{% endblock %}
+{% block OpenGraph %}
+    <meta property="og:title" content="{{ metallslug.wiki_seo_title }}"/>
+	<meta property="og:description" content="{{ metallslug.wiki_seo_descript }}"/>
+    {% if metallslug.photo_grid %}
+	<meta property="og:image" content="https://www.vekomet.ru{{ metallslug.photo_grid.url }}"/>
+    {% else %}
+    {% endif %}
+	<meta property="og:type" content="website"/>
+	<meta property="og:url" content= "https://www.vekomet.ru/wiki/{{ metallslug.slug }}/" />
+{% endblock %}
 {% block Meta %}
     <title>{{ metallslug.wiki_seo_title }}</title>
     <meta name="Keywords" content="{{ metallslug.wiki_seo_keywords }}"/>
@@ -36,13 +49,13 @@
              <div class="wiki-sum-sprav-items-wr">
                  {% for material in materials %}
                      {% if material.category_id == 1 %}
-                         <div class="wiki-sum-sprav-item wiki-item-video"><img style="padding-right: 10px;" height="15px" alt="справочный материал" src="{% static 'core/imgs/common/list_item_icon.png' %}"/><a href="/wiki/materials/{{ material.id }}"><span class="wiki-item-icon"></span>{{ material.title }}</a> | <span onclick="showYouTube({{ material.id}})">СМОТРЕТЬ</span></div>
+                         <div class="wiki-sum-sprav-item wiki-item-video"><img style="padding-right: 10px;" height="15px" alt="справочный материал" src="{% static 'core/imgs/common/list-item-icon.png' %}"/><a href="/wiki/materials/{{ material.id }}"><span class="wiki-item-icon"></span>{{ material.title }}</a> | <span onclick="showYouTube({{ material.id}})">СМОТРЕТЬ</span></div>
                      {% elif material.category_id == 2 %}
-                         <div class="wiki-sum-sprav-item wiki-item-text"><img style="padding-right: 10px;" height="15px" alt="справочный материал" src="{% static 'core/imgs/common/list_item_icon.png' %}"/><a href="/wiki/materials/{{ material.id }}"><span class="wiki-item-icon"></span>{{ material.title }}</a></div>
+                         <div class="wiki-sum-sprav-item wiki-item-text"><img style="padding-right: 10px;" height="15px" alt="справочный материал" src="{% static 'core/imgs/common/list-item-icon.png' %}"/><a href="/wiki/materials/{{ material.id }}"><span class="wiki-item-icon"></span>{{ material.title }}</a></div>
                      {% elif material.category_id == 3 %}
-                         <div class="wiki-sum-sprav-item wiki-item-filehost"><img style="padding-right: 10px;" height="15px" alt="справочный материал" src="{% static 'core/imgs/common/list_item_icon.png' %}"/><a href="{{ material.host_file.url }}" download><span class="wiki-item-icon"></span>{{ material.title }}</a></div>
+                         <div class="wiki-sum-sprav-item wiki-item-filehost"><img style="padding-right: 10px;" height="15px" alt="справочный материал" src="{% static 'core/imgs/common/list-item-icon.png' %}"/><a href="{{ material.host_file.url }}" download><span class="wiki-item-icon"></span>{{ material.title }}</a></div>
                      {% elif material.category_id == 4 %}
-                         <div class="wiki-sum-sprav-item wiki-item-filelink"><img style="padding-right: 10px;" height="15px" alt="справочный материал" src="{% static 'core/imgs/common/list_item_icon.png' %}"/><a href="{{ material.file_url }}" target="_blank"><span class="wiki-item-icon"></span>{{ material.title }}</a></div>
+                         <div class="wiki-sum-sprav-item wiki-item-filelink"><img style="padding-right: 10px;" height="15px" alt="справочный материал" src="{% static 'core/imgs/common/list-item-icon.png' %}"/><a href="{{ material.file_url }}" target="_blank"><span class="wiki-item-icon"></span>{{ material.title }}</a></div>
                      {% endif %}
                  {% endfor %}
              </div>
