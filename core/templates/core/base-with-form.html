@@ -66,11 +66,12 @@
 <div class="toTop-button-wr" id="toTopButton">
     <a data-scroll href="#page-top"><img class="toTop-button" height="150px" alt="Вернуться наверх сайта" src="{% static 'core/imgs/toTop/toTop-icon-250.png' %}"/></a>
 </div>
-<script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+    async defer>
+</script>
 {% if debug_flag %}
     <script src="{% static 'core/vendor/smooth-scroll/smooth-scroll.polyfills.min.js' %}"></script>
     <script src="{% static 'core/js/dev/navbar-dev.js' %}"></script>
-    <script src="{% static 'core/vendor/lazyload/lazyload.min.js' %}"></script>
     <script src="{% static 'contacts/js/svelte/contacts-form-dev.js' %}"></script>
 {% else %}
     <script src="{% static 'core/js/prod/core.js' %}"></script>
@@ -78,7 +79,6 @@
 {% endif %}
     <script>
         var scroll = new SmoothScroll('a[href*="#"]');
-        var lazyLoadInstance = new LazyLoad({});
     </script>
 {% block JS %}
 {% endblock %}

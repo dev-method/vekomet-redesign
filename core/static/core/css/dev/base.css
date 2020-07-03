@@ -2339,7 +2339,9 @@ footer {
     font-size: 1.4em;
     line-height: 1.5em;
 }
-
+.position-description a {
+    color: #678595;
+}
 .title-to-price-wr {
     margin-top: 40px;
 }

@@ -74,6 +74,9 @@
            </div>
        {% else %}
        {% endif %}
+       <div class="position-gallery-icon-wr">
+           <img alt="{{ position.titlealt }}| СМОТРЕТЬ ФОТО" height="40px" src="{% static 'core/imgs/common/images.svg' %}"/>
+       </div>
        {% if first_foto %}
            <div class="position-slider" id="position-slider">
                <a data-fancybox="{{ position }}" class="pos-gallery-first-item" href="{{ first_foto.foto.url }}"><img src="{{ first_foto.galleryfoto.url }}"/></a>
@@ -91,7 +94,7 @@
        {% else %}
        {% endif %}
        <div class="title-to-price-wr">
-           <a href="/pricelist/"><h1><img class="position-title-icon" alt="ПЕРЕЙТИ К ПОЛНОМУ ПРАЙС-ЛИСТУ" height="25px" src="{% static 'core/imgs/common/arrow_icon_position.svg' %}"/>ПЕРЕЙТИ К ПОЛНОМУ ПРАЙС-ЛИСТУ</h1></a>
+           <a href="/pricelist/"><h1><img class="position-title-icon" alt="ПЕРЕЙТИ К ПОЛНОМУ ПРАЙС-ЛИСТУ" height="25px" src="{% static 'core/imgs/common/circle-right.svg' %}"/>ПЕРЕЙТИ К ПОЛНОМУ ПРАЙС-ЛИСТУ</h1></a>
        </div>
         {% if position.description1 %}
             <div class="position-description">
@@ -103,7 +106,7 @@
             </div>
         {% endif %}
         <div class="title-to-analysis">
-           <a href="/pricelist/"><h1><img class="position-title-icon" alt="УЗНАЙТЕ КАК ПРОВОДЯТ АНАЛИЗ ЛОМА" height="25px" src="{% static 'core/imgs/common/bulb_icon_position.svg' %}"/>УЗНАЙТЕ КАК ПРОВОДЯТ АНАЛИЗ ЛОМА</h1></a>
+           <a href="/pricelist/"><h1><img class="position-title-icon" alt="УЗНАЙТЕ КАК ПРОВОДЯТ АНАЛИЗ ЛОМА" height="25px" src="{% static 'core/imgs/common/info.svg' %}"/>УЗНАЙТЕ КАК ПРОВОДЯТ АНАЛИЗ ЛОМА</h1></a>
        </div>
     <div class="position-contacts-container">
        <div class="contacts-form-wr">
@@ -117,17 +120,17 @@
         <div class="position-contacts-text-wr">
             <h2>Контакты для связи:</h2>
             <div class="pos-det-info-block">
-            <h3><a href="tel:+79175995222"><img class="position-title-icon" alt="Телефон для связи" height="15px" src="{% static 'core/imgs/common/phone_icon_position.svg' %}"/>8(917)599-52-22</a></h3>
-            <h3><a href="tel:+74994998474"><img class="position-title-icon" alt="Телефон для связи" height="15px" src="{% static 'core/imgs/common/phone_icon_position.svg' %}"/>8(499)499-84-74</a></h3>
-            <h3><a href="mailto:vekomet@gmail.com"><img class="position-title-icon" alt="Адрес почты" height="15px" src="{% static 'core/imgs/common/mail_icon_position.svg' %}"/>vekomet@gmail.com</a></h3>
+            <h2><a href="tel:+79175995222"><img class="position-title-icon" alt="Телефон для связи" height="17px" src="{% static 'core/imgs/common/phone.svg' %}"/>8(917)599-52-22</a></h2>
+            <h2><a href="tel:+74994998474"><img class="position-title-icon" alt="Телефон для связи" height="17px" src="{% static 'core/imgs/common/phone.svg' %}"/>8(499)499-84-74</a></h2>
+            <h2><a href="mailto:vekomet@gmail.com"><img class="position-title-icon" alt="Адрес почты" height="20px" src="{% static 'core/imgs/common/envelop.svg' %}"/>vekomet@gmail.com</a></h2>
         </div>
     </div>
     </div>
     <div class="pos-det-vk">
-        <h2><a href="https://vk.com/vekomet" style="color: #544e4e">Наша группа в VK:  vk.com/vekomet</a></h2>
+        <h2><a href="https://vk.com/vekomet" style="color: #544e4e">Наша группа в VK<img style="margin-left: 15px; margin-right: 15px;" alt="Наша группа в VK" height="30px" src="{% static 'core/imgs/common/vk.svg' %}"/>vk.com/vekomet</a></h2>
     </div>
     <div class="pos-det-play">
-        <h2 ><a href="https://play.google.com/store/apps/details?id=com.vekornapp" style="color: #544e4e">Скачать приложение для андроид</a></h2>
+        <h2 ><a href="https://play.google.com/store/apps/details?id=com.vekornapp" style="color: #544e4e">Скачать приложение для андроид<img style="margin-left: 15px;" alt="Скачать приложение для андроид" height="30px" src="{% static 'core/imgs/common/android.svg' %}"/></a></h2>
     </div>
     </div>
 
