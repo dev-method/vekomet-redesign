@@ -4,6 +4,7 @@ from pricelist.models import PriceSeo
 
 # Create your views here.
 def pricelist(request):
+    pricelist_flag = "current"
     tantal_positions=TantalPositions.objects.all().order_by('priority')
     tantal_desc=TantalDesc.objects.all()
     tantal_fotos=TantalFoto.objects.all()
@@ -25,7 +26,7 @@ def pricelist(request):
     pricedate=PriceData.objects.all()[0]
     pricerare=PriceRare.objects.all()
     seo=PriceSeo.objects.all()
-    return render(request, 'pricelist/dev/pricelist.html', {'seo':seo,'group1':group1,'group2':group2,
+    return render(request, 'pricelist/dev/pricelist.html', {'pricelist_flag': pricelist_flag, 'seo':seo,'group1':group1,'group2':group2,
                                                         'group3':group3,'group4':group4,'group5':group5, 'group6':group6,'group7':group7,'group8':group8,
                                                         'group9':group9,'group10':group10,'group11':group11,'pricedate':pricedate, 'pricerare':pricerare,
                                                         'raregroup1':raregroup1, 'raregroup2':raregroup2, 'raregroup3':raregroup3, 'catols':catols,
