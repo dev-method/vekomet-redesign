@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
 from django.db import models
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 from slugify import slugify
 from bs4 import BeautifulSoup
 from ckeditor.fields import RichTextField
@@ -18,46 +15,6 @@ def replace_tag_content(soup, *tags):
                 content = item.string
                 item.replace_with(content)
     return soup
-
-# Create your models here.
-class Article(models.Model):
-    seotitle = models.CharField('Seo-title', null=True, blank=True, max_length=300)
-    seodescript = RichTextField('Seo-description', null=True, blank=True)
-    seokeywords = RichTextField('Seo-keywords', null=True, blank=True)
-    title = models.CharField('Название статьи', max_length=400)
-    slug = models.SlugField(unique=True)
-    body = RichTextField('Текст статьи', null=True, blank=True)
-    pubdate = models.DateTimeField('Добавлено', auto_now_add=True, null=True, blank=True)
-    photo = ProcessedImageField(verbose_name='Фото для оформления', upload_to='media/',
-                                processors=[ResizeToFill(250, 150)],
-                                format='JPEG',
-                                options={'quality': 90}, null=True, blank=True)
-
-    class Meta:
-        verbose_name = 'Статья'
-        verbose_name_plural = 'Статьи'
-
-    def __str__(self):
-        return u'%s' % self.title
-
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.title)
-        return super(Article, self).save(*args, **kwargs)
-
-    def get_absolute_url(self):
-        return "/articles/%s/" % self.slug
-
-
-class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('title',)
-    exclude = ('slug', 'pubdate',)
-    fieldsets = [
-        ('Статья', {'fields': ['title', 'body', 'photo']}),
-        ('SEO', {'fields': ['seotitle', 'seodescript', 'seokeywords'], 'classes': ['collapse']})
-
-    ]
-
 
 class NewArticle(models.Model):
     seotitle = models.CharField('Seo-title', null=True, blank=True, max_length=300)
@@ -100,7 +57,7 @@ class NewArticle(models.Model):
             self.slug = slugify(self.title)
         if not self.title_body:
             soup = BeautifulSoup(self.body, "lxml")
-            content =soup.get_text(strip=True)
+            content =soup.get_text()
             self.title_body = content[:150]
         return super(NewArticle, self).save(*args, **kwargs)
 
@@ -140,6 +97,9 @@ class ArticlesSeo(models.Model):
     title=models.TextField('title', max_length=300, null=True,blank=True)
     description=models.TextField('description', max_length=1000, null=True,blank=True)
     keywords=models.TextField('keywords', max_length=1000, null=True,blank=True)
+    op_graph_photo = ProcessedImageField(verbose_name='ФОТО ДЛЯ OPENGRAPH', upload_to='media/',
+                                         format='JPEG',
+                                         options={'quality': 90}, null=True, blank=True)
 
     class Meta:
         verbose_name = ('SEO ДЛЯ РАЗДЕЛА "СТАТЬИ"')
@@ -153,6 +113,9 @@ class NewsSeo(models.Model):
     title=models.TextField('title', max_length=300, null=True,blank=True)
     description=models.TextField('description', max_length=1000, null=True,blank=True)
     keywords=models.TextField('keywords', max_length=1000, null=True,blank=True)
+    op_graph_photo = ProcessedImageField(verbose_name='ФОТО ДЛЯ OPENGRAPH', upload_to='media/',
+                                         format='JPEG',
+                                         options={'quality': 90}, null=True, blank=True)
 
     class Meta:
         verbose_name = ('SEO ДЛЯ РАЗДЕЛА "НОВОСТИ"')

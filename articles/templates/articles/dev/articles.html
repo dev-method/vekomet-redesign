@@ -1,11 +1,19 @@
 {% extends "core/base.html" %}
 {% load static %}
-{% block Meta %}
+{% block OpenGraph %}
     {% for s in seo %}
-        <title>{{ s.title }}</title>
-        <meta name="Keywords" content="{{ s.keywords }}"/>
-        <meta name="Description" content="{{s.description}}"/>
+    <meta property="og:title" content="{{ s.title }}"/>
+	<meta property="og:description" content="{{ s.description }}"/>
+    {% if s.op_graph_photo %}
+	<meta property="og:image" content="https://www.vekomet.ru{{ s.op_graph_photo.url }}"/>
+    {% else %}
+    {% endif %}
     {% endfor %}
+	<meta property="og:type" content="website"/>
+	<meta property="og:url" content= "https://www.vekomet.ru/articles/" />
+{% endblock %}
+{% block LinkAmp %}
+    <link rel="amphtml" href="https://vekomet.ru/amp/articles/">
 {% endblock %}
 {% block PreloadPrefetch %}
     {% if debug_flag %}

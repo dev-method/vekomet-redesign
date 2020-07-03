@@ -2056,23 +2056,37 @@ footer {
 
 }
 .thumbview-image-wr {
-    height: 100px;
-    flex: 0.7
+    height: 130px;
+    flex: 4
 }
-.thumbview-title-wr {
-    flex: 8;
-}
-.thumbview-title-wr {
-    text-transform: uppercase;
-    justify-content: flex-start;
-    align-items: center;
-    font-size: 1.5em;
-    padding-left: 40px;
-    display: flex;
 
+.thumbview-title-wr {
+    display: flex;
+    flex: 8;
+    flex-direction: column;
+    text-transform: uppercase;
+    align-items: flex-start;
+    font-size: 1.2em;
+    padding-left: 40px;
+}
+.thumbview-title {
+    display: flex;
+    align-items: flex-start;
+    flex: 1;
+}
+.thumbview-pubdate {
+    display: flex;
+    align-items: flex-end;
+    flex: 1;
+    font-size: 0.7em;
+    color: grey;
 }
 .thumbview-title-wr a {
     color: #1d1f21;
+}
+.titleview-item-list-icon {
+    height: 18px;
+    padding-right: 10px;
 }
 .titleview-area-wr {
     display: flex;

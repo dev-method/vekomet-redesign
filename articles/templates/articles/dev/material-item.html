@@ -5,6 +5,27 @@
     <meta name="Keywords" content="{{ material.seokeywords }}"/>
     <meta name="Description" content="{{material.seodescript}}"/>
 {% endblock %}
+{% block OpenGraph %}
+    <meta property="og:title" content="{{ material.seotitle }}"/>
+	<meta property="og:description" content="{{ material.seodescript }}"/>
+    {% if s.op_graph_photo %}
+	<meta property="og:image" content="https://www.vekomet.ru{{ material.cover.url }}"/>
+    {% else %}
+    {% endif %}
+	<meta property="og:type" content="website"/>
+    {% if material.category_id == 1 %}
+        <meta property="og:url" content= "https://www.vekomet.ru/articles/{{ material.slug }}/" />
+    {% else %}
+        <meta property="og:url" content= "https://www.vekomet.ru/news/{{ material.slug }}/" />
+    {% endif %}
+{% endblock %}
+{% block LinkAmp %}
+    {% if material.category_id == 1 %}
+        <link rel="amphtml" href="https://vekomet.ru/amp/articles/{{ material.slug }}/">
+    {% else %}
+        <link rel="amphtml" href="https://vekomet.ru/amp/news/{{ material.slug }}/">
+    {% endif %}
+{% endblock %}
 {% block Content %}
 
 <!-- MATERIALS-ITEM-PAGE -->

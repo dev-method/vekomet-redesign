@@ -452,6 +452,14 @@
         font-size: 2em;
         flex: 2;
     }
+    /* MATERIALS BLOCK */
+    .thumbview-image-wr {
+        flex: 1.1;
+        height: 100px;
+    }
+    .thumbview-title-wr {
+        font-size: 1.5em;
+    }
     /* WIKI PAGE */
     .wiki-item-wr {
         width: 33%;

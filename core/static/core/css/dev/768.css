@@ -447,6 +447,14 @@
         font-size: 1.7em;
         flex: 1;
     }
+    /* MATERIALS BLOCK */
+    .thumbview-image-wr {
+        flex: 1.5;
+        height: 100px;
+    }
+    .thumbview-title-wr {
+        font-size: 1.5em;
+    }
 
     /* WIKI SUMMATERIALS PAGE */
 
