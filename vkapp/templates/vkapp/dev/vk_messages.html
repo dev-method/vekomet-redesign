@@ -1,0 +1,43 @@
+{% extends "core/base-old-version.html" %}
+{% load static %}
+{% block ExtraCSS %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+{% endblock %}
+{% block Content %}
+    <div class="wrapper">
+    <div class="main_wrapper_dt">
+    {% verbatim %}
+    <div class="mp_dt_vk_list_mes_wr" >
+    <div>
+      <ul class="tabs">
+        <li class="tab col s6"><a href="#containerperson">Личные</a></li>
+        <li class="tab col s6"><a class="active" href="#containergroup">Сообщения группы</a></li>
+      </ul>
+    </div>
+    <div id="containerperson">
+	   <h3>Согласно изменениям VK API, личные собщения более недоступны для отображения. Перейдите на вкладку сообщения группы</h3>
+    </div>
+    <div id="containergroup">
+    </div>
+    </div>
+    {% endverbatim %}
+  </div>
+    </div>
+{% endblock %}
+{% block ExtraJS_2 %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+<script>
+$(document).ready(function() {
+    Materialize.updateTextFields();
+  });
+</script>
+<script>
+  $('#textarea1').trigger('autoresize');
+</script>
+<script>
+  $(document).ready(function(){
+    $('ul.tabs').tabs();
+  });
+</script>
+<script src="{% static 'vkapp/react/vk-chat-prod.js' %}"></script>
+{% endblock %}

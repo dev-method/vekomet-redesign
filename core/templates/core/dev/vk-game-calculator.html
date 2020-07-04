@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {% load static %}
+    <title>КАЛЬКУЛЯТОР МЕТАЛЛОВ</title>
+    <meta http-equiv="content-language" content="ru"/>
+    <meta charset="utf-8" />
+    {% if debug_flag %}
+        <link rel="stylesheet" href="{% static 'core/css/dev/base.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'core/css/dev/576.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'core/css/dev/768.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'core/css/dev/992.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'core/css/dev/custom.css' %}" type="text/css">
+    {% else %}
+        <link rel="preload" href="{% static 'core/css/prod/prod.css' %}" as="style">
+        <link rel="stylesheet" href="{% static 'core/css/prod/prod.css' %}" type="text/css">
+    {% endif %}
+    <script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
+</head>
+<body style="background: url({% static 'core/imgs/calculator/vk-app-fon.jpg' %}) no-repeat center center fixed;background-size: cover;">
+<div class="vk-calculator">
+    <div id="calculator">
+
+    </div>
+</div>
+    <script type="text/javascript">
+        VK.init(function() {
+            {% include 'core/calculator-bundle.js' %}
+        });
+    </script>
+</body>
+</html>

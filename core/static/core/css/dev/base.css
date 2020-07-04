@@ -2141,6 +2141,11 @@ footer {
 
 /* CALCULATOR */
 
+.vk-calculator {
+    width: 85%;
+    margin: auto;
+}
+
 .calculator {
     margin-top: 60px;
     display: flex;
@@ -2152,6 +2157,7 @@ footer {
     justify-content: center;
 }
 .calculator-container {
+    background-color: white;
     border: 2px solid rgba(101, 150, 198, 0.7);
     border-radius: 6px;
     height: auto;

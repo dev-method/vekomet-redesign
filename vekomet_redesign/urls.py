@@ -13,8 +13,10 @@ from pricelist import views as price_views
 from positions import views as position_views
 from analysis import views as analize_views
 from articles import views as articles_views
+from vkapp import views as vk_views
 from wiki import views as wiki_views
 from contacts import views as contacts_views
+from mobappmessages import views as mobapp_views
 from vekomet_redesign.sitemaps import StaticViewSitemap,PosSitemap, ArtSitemap, WikiSitemap, WikiItemSitemap
 
 
@@ -54,7 +56,16 @@ urlpatterns = [
     path('wiki/<slug:slug>/',wiki_views.wiki_summaterials, name='wiki_summaterials'),
     path('wiki/materials/<int:id>/', wiki_views.wiki_item_material, name="wiki_item_material"),
     path('contacts/', contacts_views.contacts, name="contacts"),
+    path('vk-game-calculator/', coreviews.vk_game_calculator, name="vk-game-calculator"),
+    path('app-privacy-police/', coreviews.privacy_police, name="privacy_police"),
     path('en/contacts/', contacts_views.en_contacts, name="en_contacts"),
+    path('vk-messages/', vk_views.vk_messages, name="vkmessages"),
+    path('vk-messages/api/messages-list/personal/', vk_views.mes_collection, name="mes_personal_collection"),
+    path('vk-messages/api/messages-list/group/', vk_views.mes_group_collection, name="mes_group_collection"),
+    path('metalls/api/rare/collection/', position_views.metalls_rare_collection, name="metalls_rare_collection"),
+    path('metalls/api/total/', position_views.metalls_total, name="metalls_total"),
+    path('metalls/api/common/collection/', position_views.metalls_common_collection, name="metalls_common_collection"),
+    path('messages/api/collection/', mobapp_views.mobappmess, name="mobappmessages"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

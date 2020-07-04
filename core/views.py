@@ -4,10 +4,9 @@ from django.shortcuts import render
 from core.models import MainPageText_P1, MainPageText_P2, Advantage, MainPhoto, MainSeo, TextSlider
 from articles.models import NewArticle
 from positions.models import Metall
-from orders.models import Order
+from django.views.decorators.clickjacking import xframe_options_exempt
 from vekomet_redesign import settings
-from django.http import HttpResponseRedirect
-from django.contrib import messages
+
 
 # Create your views here.
 def mainpage(request):
@@ -40,7 +39,14 @@ def en_mainpage(request):
     return render(request, 'core/{}/mainpage.html',{'en_lang_flag': en_lang_flag})
 
 def intaractive_map(request):
-    return render(request, 'core/dev/intaractive-map.html',{})
+    return render(request, 'core/{}/intaractive-map.html'.format(settings.TEMP_PREFIX))
 
 def calculator(request):
-    return render(request, 'core/dev/calculator.html',{})
+    return render(request, 'core/{}/calculator.html'.format(settings.TEMP_PREFIX))
+
+def privacy_police(request):
+    return render(request, 'core/{}/app-privacy.html'.format(settings.TEMP_PREFIX))
+
+@xframe_options_exempt
+def vk_game_calculator(request):
+    return render(request, 'core/{}/vk-game-calculator.html'.format(settings.TEMP_PREFIX))

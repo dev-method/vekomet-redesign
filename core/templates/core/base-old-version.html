@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <meta http-equiv="content-language" content="ru"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="{% static 'core/css/old_version/prod-style.css' %}" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    {% block ExtraCSS %}
+    {% endblock %}
+	{% block ExtraCSS2 %}
+	{% endblock %}
+    <style>
+        .slicknav_btn,.slicknav_nav .slicknav_item{cursor:pointer}.slicknav_menu,.slicknav_menu *{box-sizing:border-box}.slicknav_btn{position:relative;display:block;vertical-align:middle;float:right;padding:.438em .625em;line-height:1.125em}.slicknav_btn .slicknav_icon-bar+.slicknav_icon-bar{margin-top:.188em}.slicknav_menu .slicknav_menutxt{display:block;line-height:1.188em;float:left;color:#fff;font-weight:700;text-shadow:0 1px 3px #000}.slicknav_menu .slicknav_icon{float:left;width:1.125em;height:.875em;margin:.188em 0 0 .438em}.slicknav_menu .slicknav_icon:before{background:0 0;width:1.125em;height:.875em;display:block;content:"";position:absolute}.slicknav_menu .slicknav_no-text{margin:0}.slicknav_menu .slicknav_icon-bar{display:block;width:1.125em;height:.125em;-webkit-border-radius:1px;-moz-border-radius:1px;border-radius:1px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.25);-moz-box-shadow:0 1px 0 rgba(0,0,0,.25);box-shadow:0 1px 0 rgba(0,0,0,.25)}.slicknav_menu:after,.slicknav_menu:before{content:" ";display:table}.slicknav_menu:after{clear:both}.slicknav_nav li,.slicknav_nav ul{display:block}.slicknav_nav .slicknav_arrow{font-size:.8em;margin:0 0 0 .4em}.slicknav_nav .slicknav_item a{display:inline}.slicknav_nav .slicknav_row,.slicknav_nav a{display:block}.slicknav_nav .slicknav_parent-link a{display:inline}.slicknav_menu{*zoom:1;font-size:16px;background:#356281;padding:5px}.slicknav_nav,.slicknav_nav ul{list-style:none;overflow:hidden;padding:0}.slicknav_menu .slicknav_icon-bar{background-color:#fff}.slicknav_btn{margin:5px 5px 6px;text-decoration:none;text-shadow:0 1px 1px rgba(255,255,255,.75);-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}.slicknav_nav{clear:both;color:#fff;margin:0;font-size:.875em}.slicknav_nav ul{margin:0 0 0 20px}.slicknav_nav .slicknav_row,.slicknav_nav a{padding:5px 10px;margin:2px 5px}.slicknav_nav .slicknav_row:hover{-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;background:#ccc;color:#fff}.slicknav_nav a{text-decoration:none;color:#fff}.slicknav_nav a:hover{-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;background:#ccc;color:#222}.slicknav_nav .slicknav_txtnode{margin-left:15px}.slicknav_nav .slicknav_item a,.slicknav_nav .slicknav_parent-link a{padding:0;margin:0}.slicknav_brand{float:left;color:#fff;font-size:18px;line-height:30px;padding:7px 12px;height:44px}
+    </style>
+</head>
+<body>
+    {% block Wrapper %}
+    <header>
+     <div class="header_cnt_wrp_dt" id="header_wrap_calc" itemscope itemtype="http://schema.org/Organization">
+
+       <div class="logo_wrapper_dt">
+          <div class="logo_img_dt">
+              <a itemprop="url" href="http://www.vekomet.ru/"><img src="{% static 'core/imgs/old_version/logo.gif' %}" /></a>
+          </div>
+       </div>
+
+       <div class="header_title_dt">
+           <div class="description" itemprop="description">
+              <div class="description_wr">
+                <div class="mp_dt_company_title">ООО"Веко"</div>
+                <div class="mp_dt_slogan">Прием лома цветных и редкоземельных металлов</div>
+              </div>
+           </div>
+           <div class="divider-wr">
+               <img src="{% static 'core/imgs/old_version/arrow.png' %}" />
+           </div>
+           <div class="main_top_contacts_title">Наши контакты</div>
+           <div class="mp_dt_company_mail">
+               <div class="mp_company_mail_wr">
+                   <span class="hidden"><i class="fa fa-at font-aw-mail" aria-hidden="true"></i>&nbsp;<a href="mailto:vekomet@gmail.com">vekomet@gmail.com&nbsp;</a>|&nbsp;<a href="/orders/">оставить сообщение&nbsp;<i class="fa fa-envelope-open-o" aria-hidden="true"></i></a></span>
+               </div>
+           </div>
+       </div>
+
+       <div class="header_contacts_dt" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+           <div class="adress_wr"><div><i class="fa fa-map font-aw-cont" aria-hidden="true"></i>&nbsp;Московская область <span class="hidden-line">|</span> город Электросталь <span class="hidden-line">|</span> ул.Пионерская д.22</div></div>
+           <div class="telephone_wr" itemprop="telephone">
+               <div class="phone_item_wr"><i class="fa fa-phone-square font-aw-cont" aria-hidden="true"></i>&nbsp;<a href="tel:+74994998474">+7(499)499-84-74</a></div>
+               <div class="phone_item_wr"><i class="fa fa-phone-square font-aw-cont" aria-hidden="true"></i>&nbsp;<a href="tel:+79175995222">+7(917) 599-52-22</a></div>
+           </div>
+       </div>
+
+     </div>
+    </header>
+    {% block Menu_Dt %}
+        <ul id="menu">
+	     <li><a class="menu-link-hover" href="/">Главная</a></li>
+	     <li><a class="menu-link-hover" href="/pricelist/">Прайс-лист</a></li>
+	     <li><a class="menu-link-hover" href="/metall-analysis/">Анализ</a></li>
+	     <li><a class="menu-link-hover" href="/wiki/">Справочник</a></li>
+         <li><a class="menu-link-hover" href="/articles/">Статьи</a></li>
+         <li><a class="menu-link-hover" href="/news/">Новости</a></li>
+         <li><a class="menu-link-hover" href="/contacts/">Контакты</a></li>
+    </ul>
+    <div class="menu_wrap_dt">
+            <div id="menu_delete_wrap" class="menu_delete_wrap active-delete"><i class="fas fa-times"></i>&nbsp;СКРЫТЬ/ПОКАЗАТЬ МЕНЮ</div>
+            <div class="menu_dt">
+                <div class="menu_dt_block flow-text hvr-fade {{ menumain }}"><a class="menu-link-hover" href="/">Главная</a></div>
+                <div class="menu_dt_block flow-text hvr-fade {{ menuprice }}"><a class="menu-link-hover" href="/pricelist/">Прайс-лист</a></div>
+                <div class="menu_dt_block flow-text hvr-fade {{ menuanalize }}"><a class="menu-link-hover" href="/metall-analysis/">Анализ</a></div>
+                <div class="menu_dt_block flow-text hvr-fade {{ menudict }}"><a class="menu-link-hover" href="/wiki/">Справочник</a></div>
+                <div class="menu_dt_block menu_parent_block flow-text hvr-fade {{ menuarticles }}"><a class="menu-link-hover" href="#">Материалы</a>
+                    <div class="menu_first_child hidden_item"><a class="menu-link-hover" href="/news/">Новости</a></div>
+                    <div class="menu_second_child hidden_item"><a class="menu-link-hover" href="/articles/">Статьи</a></div>
+                </div>
+                <div class="menu_dt_block flow-text hvr-fade {{ menucontacts }}"><a class="menu-link-hover" href="/contacts/">Контакты</a></div>
+            </div>
+    </div>
+    {% endblock %}
+    {% block Content %}
+    {% endblock %}
+    {% block ExtraContent %}
+    {% endblock %}
+    <footer>
+      <div class="footer_dt_wrapper">
+          <div class="footer_dt_logowrap">
+              <a href="/"><img src="{% static 'core/imgs/old_version/logo.gif'%}" /></a>
+          </div>
+          <div class="footer_dt_contacts_wrap">
+              <div class="footer_dt_contacts">
+                  <h5>Контакты</h5>
+                  <p>город Электросталь&nbsp;&nbsp;&nbsp;</p>
+                  <p>ул.Пионерская д.22</p>
+                  <p>&nbsp;+7(499)499-84-74</p>
+                  <p>&nbsp;+7(917)599-52-22</p>
+                  <p>mail: vekomet@gmail.com</p>
+				  <p>График работы:</p>
+                  <p>пн-пт: 8.00-18.30 | cб: 9.00-13.00</p>
+                  <p> обед: 13.00-14.00</p>
+                  <p>   вс: выходной</p>
+              </div>
+          </div>
+          <div class="footer_dt_info_wrapper">
+              <div class="footer_dt_info">
+                <h5>Информация</h5>
+                <div class="footer_dt_link"><a href="/">Главная</a></div>
+                  <div class="footer_dt_link"><a href="/pricelist/">Прайс-лист</a></div>
+                  <div class="footer_dt_link"><a href="/metall-analysis/">Анализ</a></div>
+                  <div class="footer_dt_link"><a href="/wiki/">Справочник</a></div>
+                  <div class="footer_dt_link"><a href="/metall-calculator/">Калькулятор металла</a></div>
+                  <div class="footer_dt_link"><a href="/articles/">Статьи</a></div>
+				  <div class="footer_dt_link"><a href="/news/">Новости</a></div>
+                  <div class="footer_dt_link"><a href="/orders/">Оставить сообщение</a></div>
+                  <div class="footer_dt_link"><a href="/contacts/">Контакты</a></div>
+              </div>
+          </div>
+      </div>
+      <div class="footer_dt_bottom">
+          <div class="dt_bottom_rights">
+              2020@ ООО "ВеКо" Все права защищены
+
+          </div>
+          <div class="dt_bottom_social">
+              <a href="https://vk.com/vekomet"><i class="fab fa-vk" aria-hidden="true"></i></a>
+          </div>
+      </div>
+    </footer>
+    <script
+             src="https://code.jquery.com/jquery-3.2.1.min.js"
+             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+             crossorigin="anonymous"></script>
+    <script
+			  src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
+			  integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="
+			  crossorigin="anonymous">
+    </script>
+    {% endblock %}
+    <script src="{% static 'core/js/old_version/base.js' %}"></script>
+    <script>
+        jQuery(function($) {
+                $(document).ready( function() {
+                    $('#menu').slicknav({
+                           label:'МЕНЮ'
+                        });
+                    if ($(window).width()>768) {
+                           $('.menu_dt').stickUp();
+                        }
+                    if ($(window).width()<768) {
+                        $('.slicknav_menu').stickUp();
+                    }
+                });
+              });
+    </script>
+    {% block ExtraJS %}
+    {% endblock %}
+    {% block ExtraJS_2 %}
+    {% endblock %}
+</body>
+</html>
